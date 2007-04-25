@@ -1,0 +1,101 @@
+2007-04-23	KAKUTANI Shintaro  <shintaro@kakutani.com>
+
+    * index.html: changelog for 0.4.0
+
+2006-11-07  KAKUTANI Shintaro  <shintaro@kakutani.com>
+
+	* ChangeLog: create via cvs2cl.pl
+
+2006-06-21 13:01  kakutani
+
+	* index.html: Fix to enable executeing JUnit4 TestCase (Thanks to
+	  iwanaga-san).
+
+2006-06-21 12:59  kakutani
+
+	* .settings/org.eclipse.core.resources.prefs: add index.html file
+	  encoding explicitly.
+
+2006-06-21 12:59  kakutani
+
+	* site.xml: Increment version number to 0.4.0.
+
+2006-04-26 16:54  kakutani
+
+	* index.html, site.xml: 0.3.0.1 (cannnot use under J2SDK 1.4.2).
+	  thanks t-wada for reporting.
+
+2006-04-26 03:58  kakutani
+
+	* index.html: changelog for 0.3.0
+
+2006-04-25 13:46  kakutani
+
+	* site.xml: increment version number to 0.3.0.
+
+2005-12-01 15:35  kakutani
+
+	* .cvsignore: add target directory.
+
+2005-07-13 14:34  kakutani
+
+	* index.html: rel 0.2.0.
+
+2005-07-13 00:05  kakutani
+
+	* site.xml: adapt to Eclipse 3.1(Thanks, koichik!!!!)
+
+2005-06-02 09:27  kakutani
+
+	* index.html, site.xml: REL-1_1_1_1
+
+2005-06-01 23:52  kakutani
+
+	* index.html: merge with REL-0_1_1.
+
+2005-06-01 23:19  kakutani
+
+	* index.html: add site document.
+
+2005-05-31 20:38  kakutani
+
+	* site.xml: increment version number to 0.1.1.
+
+2005-05-20 21:01  kakutani
+
+	* features/.cvsignore: [no log message]
+
+2005-05-20 01:08  kakutani
+
+	* site.xml: delete version for REL-0_1_0-BRANCH.
+
+2005-05-20 01:02  kakutani
+
+	* site.xml: FIX compile problem in Eclipse 3.1M7
+
+2005-05-17 22:18  kakutani
+
+	* site.xml: increment version number to 0.2.0.
+
+2005-05-17 22:10  kakutani
+
+	* site.xml: merge from Root_REL-0_1_x-BRANCH  to REL-0_1_0
+
+2005-05-17 16:00  kakutani
+
+	* site.xml: delete 0.1.0.beta
+
+2005-05-02 23:41  kakutani
+
+	* site.xml: * increment product version number to 0.1.0 * add
+	  plugin description on feature.xml    (thanks
+	  nekop!<URL:http://nekop.programmers.jp/>)
+
+2005-04-28 02:41  kakutani
+
+	* .project, site.xml: update site project for 0.1.0.beta
+
+2005-04-28 02:39  kakutani
+
+	* features/.cvsignore, plugins/.cvsignore: ignore *.jar files.
+
