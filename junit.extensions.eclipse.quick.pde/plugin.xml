@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="junit.extensions.eclipse.quick.pde"
+   name="%plugin.name"
+   version="0.1.0.beta"
+   provider-name="Masaru Ishii">
+
+   <runtime>
+      <library name="quick-junit-pde.jar">
+         <export name="*"/>
+         <packages prefixes="junit.extensions.eclipse.quick.pde"/>
+      </library>
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="junit.extensions.eclipse.quick"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.jdt.junit"/>
+      <import plugin="org.eclipse.pde.ui"/>
+   </requires>
+
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            targetID="#CompilationUnitEditorContext"
+            id="junit.extensions.eclipse.quick.pde.viewer.java">
+         <action
+               label="%PDEJUnitDebugAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitDebugAction"
+               menubarPath="junit.extensions.eclipse.quick.viewer.java.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.viewer.java.PDEJUnitDebugAction">
+         </action>
+         <action
+               label="%PDEJUnitRunAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitRunAction"
+               menubarPath="junit.extensions.eclipse.quick.viewer.java.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.viewer.java.PDEJUnitRunAction">
+         </action>
+      </viewerContribution>
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.IJavaElement"
+            adaptable="true"
+            id="junit.extensions.eclipse.quick.pde.object.java">
+         <action
+               label="%PDEJUnitDebugAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitDebugAction"
+               menubarPath="junit.extensions.eclipse.quick.object.java.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.object.java.PDEJUnitDebugAction">
+         </action>
+         <action
+               label="%PDEJUnitRunAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitRunAction"
+               menubarPath="junit.extensions.eclipse.quick.object.java.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.object.java.PDEJUnitRunAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            targetID="org.eclipse.jdt.ui.CompilationUnitEditor"
+            id="junit.extensions.eclipse.quick.pde.editor.java">
+         <action
+               definitionId="junit.extensions.eclipse.quick.pde.command.PDEJUnitDebugAction"
+               label="%PDEJUnitDebugAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitDebugAction"
+               menubarPath="Edit/junit.extensions.eclipse.quick.editor.java.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.editor.java.PDEJUnitDebugAction">
+         </action>
+         <action
+               definitionId="junit.extensions.eclipse.quick.pde.command.PDEJUnitRunAction"
+               label="%PDEJUnitRunAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitRunAction"
+               menubarPath="Edit/junit.extensions.eclipse.quick.editor.java.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.editor.java.PDEJUnitRunAction">
+         </action>
+      </editorContribution>
+      <editorContribution
+            targetID="CompilationUnitEditor"
+            id="junit.extensions.eclipse.quick.pde.editor.aspectj">
+         <action
+               definitionId="junit.extensions.eclipse.quick.pde.command.PDEJUnitDebugAction"
+               label="%PDEJUnitDebugAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitDebugAction"
+               menubarPath="Edit/junit.extensions.eclipse.quick.editor.aspectj.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.editor.aspectj.PDEJUnitDebugAction">
+         </action>
+         <action
+               definitionId="junit.extensions.eclipse.quick.pde.command.PDEJUnitRunAction"
+               label="%PDEJUnitRunAction.label"
+               class="junit.extensions.eclipse.quick.pde.PDEJUnitRunAction"
+               menubarPath="Edit/junit.extensions.eclipse.quick.editor.aspectj.Actions/additions2"
+               id="junit.extensions.eclipse.quick.pde.editor.aspectj.PDEJUnitRunAction">
+         </action>
+      </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="%PDEJUnitDebugAction.label"
+            description="%PDEJUnitDebugAction.description"
+            category="junit.extensions.eclipse.quick.command.category"
+            id="junit.extensions.eclipse.quick.pde.command.PDEJUnitDebugAction">
+      </command>
+      <keyBinding
+            string=""
+            scope="org.eclipse.ui.textEditorScope"
+            command="junit.extensions.eclipse.quick.pde.command.PDEJUnitDebugAction"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </keyBinding>
+      <command
+            name="%PDEJUnitRunAction.label"
+            description="%PDEJUnitRunAction.description"
+            category="junit.extensions.eclipse.quick.command.category"
+            id="junit.extensions.eclipse.quick.pde.command.PDEJUnitRunAction">
+      </command>
+      <keyBinding
+            string=""
+            scope="org.eclipse.ui.textEditorScope"
+            command="junit.extensions.eclipse.quick.pde.command.PDEJUnitRunAction"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </keyBinding>
+   </extension>
+
+</plugin>
