@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+
+   <description url="http://quick-junit.sourceforge.jp/updates/3.0/">
+      
+   </description>
+   <feature url="features/junit.extensions.eclipse.quick.feature_0.1.1.1.jar" id="junit.extensions.eclipse.quick.feature" version="0.1.1.1">
+      <category name="QuickJUnit"/>
+   </feature>
+   <category-def name="QuickJUnit" label="QuickJUnit"/>
+</site>

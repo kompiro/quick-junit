@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-build
+      autobuild="false"
+      scrub-output="false"
+      use-console="false">
+   <feature id="junit.extensions.eclipse.quick.feature" version="0.1.1.1"/>
+</site-build>
