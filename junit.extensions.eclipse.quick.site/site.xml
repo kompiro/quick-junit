@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://quick-junit.sourceforge.jp/updates/3.1/">
+      update site for Quick JUnit Plugin.
+   </description>
+   <feature url="features/junit.extensions.eclipse.quick.feature_0.3.0.jar" id="junit.extensions.eclipse.quick.feature" version="0.3.0">
+      <category name="QuickJUnit"/>
+   </feature>
+   <category-def name="QuickJUnit" label="QuickJUnit">
+      <description>
+         This plugin makes easy to launch JUnit and switch editors between
+test code and production code.
+This plugin dadecated to the memory of Masaru Ishii.
+      </description>
+   </category-def>
+</site>
