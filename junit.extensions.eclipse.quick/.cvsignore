@@ -1,0 +1,5 @@
+bin
+temp.folder
+*.jar
+*.zip
+target
