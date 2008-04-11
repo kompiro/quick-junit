@@ -1,0 +1,97 @@
+2006-11-07  KAKUTANI Shintaro  <shintaro@kakutani.com>
+
+	* ChangeLog: create via cvs2cl.pl
+
+2006-06-21 13:00  kakutani
+
+	* .settings/org.eclipse.core.runtime.prefs: Add line separator type
+	  explicitly.
+
+2006-06-21 12:59  kakutani
+
+	* META-INF/MANIFEST.MF: Increment version number to 0.4.0.
+
+2006-04-26 16:54  kakutani
+
+	* build.properties, META-INF/MANIFEST.MF: 0.3.0.1 (cannnot use
+	  under J2SDK 1.4.2).  thanks t-wada for reporting.
+
+2006-04-26 01:39  kakutani
+
+	* META-INF/MANIFEST.MF: use Eclipse-AutoStart insteadof
+	  Eclipse-LazyStart (for Eclipse3.1 work around?)
+
+2006-04-25 13:46  kakutani
+
+	* META-INF/MANIFEST.MF: increment version number to 0.3.0.
+
+2006-04-15 22:26  kakutani
+
+	* plugin.xml: Add Run/Debug Shortcut for PDE JUnit.
+
+2006-04-03 06:05  kakutani
+
+	* META-INF/MANIFEST.MF: use Eclipse-LazyStart instead of
+	  Eclipse-AutoStart(deprecated).
+
+2006-04-03 06:04  kakutani
+
+	* .settings/: org.eclipse.jdt.core.prefs, org.eclipse.jdt.ui.prefs:
+	  set JDK compliance to 1.4.
+
+2005-07-13 00:05  kakutani
+
+	* .classpath, build.properties, plugin.properties, plugin.xml,
+	  plugin_ja.properties, META-INF/MANIFEST.MF,
+	  src/junit/extensions/eclipse/quick/pde/ExtensionSupport.java,
+	  src/junit/extensions/eclipse/quick/pde/PDEJUnitDebugAction.java,
+	  src/junit/extensions/eclipse/quick/pde/PDEJUnitRunAction.java:
+	  adapt to Eclipse 3.1(Thanks, koichik!!!!)
+
+2005-06-02 09:27  kakutani
+
+	* plugin.xml: REL-1_1_1_1
+
+2005-06-02 00:36  kakutani
+
+	* plugin.xml: fix deprecated plugin manifest almostly.
+
+2005-05-31 20:38  kakutani
+
+	* plugin.xml: increment version number to 0.1.1.
+
+2005-05-17 22:18  kakutani
+
+	* plugin.xml: increment version number to 0.2.0.
+
+2005-05-03 00:13  kakutani
+
+	* Makefile: *** change keyword replace ***
+
+2005-05-02 23:41  kakutani
+
+	* plugin.xml: * increment product version number to 0.1.0 * add
+	  plugin description on feature.xml    (thanks
+	  nekop!<URL:http://nekop.programmers.jp/>)
+
+2005-04-28 02:39  kakutani
+
+	* .cvsignore: ignore *.jar files.
+
+2005-04-28 02:39  kakutani
+
+	* plugin.xml: increment version number to 0.1.0.beta.
+
+2005-04-28 02:37  kakutani
+
+	* .settings/org.eclipse.core.resources.prefs: original source code
+	  encoding is Windows-31J
+
+2005-03-27 16:26  masarl
+
+	* .classpath, .cvsignore, .project, Makefile, build.properties,
+	  plugin.properties, plugin.xml, plugin_ja.properties,
+	  src/junit/extensions/eclipse/quick/pde/PDEJUnitDebugAction.java,
+	  src/junit/extensions/eclipse/quick/pde/PDEJUnitRunAction.java:
+	  initial
+

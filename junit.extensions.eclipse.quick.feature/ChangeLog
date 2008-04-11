@@ -1,0 +1,68 @@
+2006-11-07  KAKUTANI Shintaro  <shintaro@kakutani.com>
+
+	* ChangeLog: create via cvs2cl.pl
+
+2006-06-21 12:59  kakutani
+
+	* feature.xml: Increment version number to 0.4.0.
+
+2006-04-26 16:54  kakutani
+
+	* build.properties, feature.xml: 0.3.0.1 (cannnot use under J2SDK
+	  1.4.2).  thanks t-wada for reporting.
+
+2006-04-25 13:46  kakutani
+
+	* feature.xml: increment version number to 0.3.0.
+
+2005-06-02 09:27  kakutani
+
+	* feature.xml: REL-1_1_1_1
+
+2005-05-31 20:38  kakutani
+
+	* feature.xml: increment version number to 0.1.1.
+
+2005-05-20 13:38  kakutani
+
+	* feature.xml: increment version number to 0.2.0.
+
+2005-05-17 22:18  kakutani
+
+	* feature.xml: increment version number to 0.2.0.
+
+2005-05-17 22:10  kakutani
+
+	* feature.xml: merge from Root_REL-0_1_x-BRANCH  to REL-0_1_0
+
+2005-05-17 08:55  kakutani
+
+	* feature.xml: [no log message]
+
+2005-05-17 08:24  kakutani
+
+	* feature.xml: [no log message]
+
+2005-05-17 08:04  kakutani
+
+	* feature.xml: [no log message]
+
+2005-05-02 23:41  kakutani
+
+	* feature.xml: * increment product version number to 0.1.0 * add
+	  plugin description on feature.xml    (thanks
+	  nekop!<URL:http://nekop.programmers.jp/>)
+
+2005-04-28 02:41  kakutani
+
+	* .project, build.properties, feature.xml: feature project for
+	  0.1.0.beta
+
+2005-04-28 02:40  kakutani
+
+	* cpl-v10.html: CPL1.0 License.
+
+2005-04-28 02:39  kakutani
+
+	* .cvsignore: ignore *.jar files.
+

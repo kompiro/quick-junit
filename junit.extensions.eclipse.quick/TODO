@@ -1,0 +1,7 @@
+* write unit test codes.
+
+* support excludes filter on testing pair.
+
+* support pending test methods.
+
+* running class-level testing as a cursor in method context.(Alt + Ctrl + 0)??

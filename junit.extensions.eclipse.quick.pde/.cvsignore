@@ -1,0 +1,5 @@
+bin
+temp.folder
+*.zip
+quick-junit-pde.jar
+*.jar
