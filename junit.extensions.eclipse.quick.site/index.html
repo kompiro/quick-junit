@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Quick JUnit Plugin for Eclipse</title>
+<style type="text/css">
+  body {
+    background-color: #fff;
+    color: #000;
+    font-family: Verdana, arial, helvetica, sans-serif, Gothic;
+    line-height: 1.5;
+  }
+  h2 {
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #ccc;
+  }
+  div.contents { margin-left: 1em}
+  div ul { margin-left: 0em}
+  li { margin-left: 0em}
+</style>
+</head>
+<body>
+<h1>Quick JUnit Plugin for Eclipse</h1>
+<h2>NEWS</h2>
+<div class="contents">
+<ul>
+<li>2005/06/01: バージョン 0.1.1をリリースしました。変更点は<a href="#changes011">「変更履歴」</a>を参照してください。
+<li>2005/05/17: バージョン 0.1.0をリリースしました。変更点は<a href="#changes010">「変更履歴」</a>を参照してください。
+</li>
+</ul>
+</div>
+<h2>Quick JUnitプラグインについて</h2>
+<div class="contents">
+<strong>Quick JUnitプラグイン</strong>は<a href="http://www.eclipse.org/">Eclipse</a>のプラグインです。<a href="http://www.junit.org/">JUnit</a>の起動およびテストコードと実装コード間のエディタ切り替えを簡単に行えるようにします。
+</p>
+<p>
+Quick Junitプラグインのオリジナル版は2003年に<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/index.html">故石井勝(masarl)</a>さんによって作成・公開されました。現在は<a href="#aboutus">Quick JUnitプラグイン・プロジェクト</a>が開発を行なっています。
+</p>
+</div>
+<h2>動作環境</h2>
+<div class="contents">
+マイナーバージョン番号の違いが、ターゲットとするEclipseのバージョンが異なることを表わしています。
+<ul>
+<li><strong>0.2.x</strong>(予定): Eclipse 3.1.x</li>
+<li><strong>0.1.x</strong>: Eclipse 3.0.x</li>
+<li><strong>0.0.4</strong>: Eclipse 2.1.x</li>
+</ul>
+</div>
+<h3>0.1.xのElcipse3.1系での動作について</h3>
+<div class="contents">
+Eclipse3.1M6では動作するようですが、3.1M7以降では動作しません。ご注意ください。3.1M6での動作報告は<a href="http://www.wingnest.com/blog/index.php?itemid=359">ごうぎ</a>さんから頂きました。ありがとうございます。
+</div>
+
+<h2>ダウンロードとインストール</h2>
+<div class="contents">
+<strong>現在0.0.4をお使いの方は、0.1.xのインストールの前にまず、0.0.4をアンインストール(削除)してください。</strong>詳細は「<a href="#migration004">0.0.4からの移行方法</a>」を参照してください。
+</div>
+<h3><a name="softwareupdate">Eclipseの「ソフトウェア更新」を利用する(推奨)</a></h3>
+<div class="contents">
+Quick JUnit Plugin 0.1.0からEclipseのソフトウェア更新に対応しました。<br />
+「<strong>ヘルプ</strong>」→「<strong>ソフトウェア更新</strong>」→「<strong>検索とインストール</strong>」で、以下のURLをリモートサイトに追加してください。
+<ul>
+<li><a href="http://quick-junit.sourceforge.jp/updates/3.0/">http://quick-junit.sourceforge.jp/updates/3.0/</a></li>
+</ul>
+</div>
+<h3>プラグインZIPアーカイブを利用する</h3>
+<div class="contents">
+<a href="http://sourceforge.jp/projects/quick-junit/files/">sf.jpのQuick JUnitプラグイン・プロジェクト</a>で配布しています。
+</div>
+<h3><a name="migration004">0.0.4からの移行方法</a></h3>
+Eclipseのインストールディレクトリを$ECLIPSEとします(例: c:\eclipse)。
+<ol>
+<li>Eclipseが起動していないことを確認します。</li>
+<li>$ECLIPSE_HOME/plugins にある以下の2ディレクトリを削除します:
+<ul>
+<li>junit.extensions.eclipse.quick_0.0.4</li>
+<li>junit.extensions.eclipse.quick.pde_0.0.4 (あれば)</li>
+</ul></li>
+<li><a href="#softwareupdate">Eclipseのソフトウェア更新</a>を使用して、0.1.0をインストールしてください。</li>
+</ol>
+
+<h2>基本的な使い方</h2>
+<div class="contents">
+<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/article/eclipse/quick-junit.html">石井さんによるオリジナルの文書</a>を参照してください。0.0.4時点の解説ですが、基本的な使い方は変わっていません。
+</div>
+<h2>CVSリポジトリ</h2>
+<div class="contents">
+<a href="http://sourceforge.jp/cvs/?group_id=1617">チェックアウト</a> / 
+<a href="http://cvs.sourceforge.jp/cgi-bin/viewcvs.cgi/quick-junit/">閲覧</a> /
+<a href="http://lists.sourceforge.jp/mailman/listinfo/quick-junit-cvs">コミット内容のメール通知</a>
+</div>
+<h2>メーリングリスト</h2>
+<div class="contents">
+<p><a href="http://lists.sourceforge.jp/mailman/listinfo/quick-junit-devel">quick-junit-devel@lists.sourceforge.jp</a></p>
+<p>メーリングリストはいまのところ一つだけです。開発者/ユーザー共用です。</p>
+</div>
+<h2>ライセンス</h2>
+<div class="contents">
+<a href="http://www.eclipse.org/legal/cpl-v10.html">CPL1.0</a>です。Eclipseと同じです。
+</div>
+<h2><a name="changes">更新履歴</a></h2>
+<div class="contents">
+<h3><a name="changes#011">0.1.1</a></h3>
+<ul>
+<li>ネストクラス、匿名クラス上にエディタのカーソルがポイントされている状態でのテスト実行に対応しました。</li>
+</ul>
+<h3><a name="changes#010">0.1.0</a></h3>
+<ul>
+<li>Eclipse 3.0.x に対応しました。</li>
+<li>Eclipseの「ソフトウェア更新」を利用できるようにしました。</li>
+<li>対応するテスティングペアが存在しない場合に、テスティングペア作成を促すダイアログを出すようにしました。</li>
+<li>「テスティングペアを開くときにエディタを分割する」機能を廃止しました。</li>
+<li>Quick JUnitとQuick PDE JUnitをfeatureとして一つにまとめました(Eclipse 3.0からPDE JUnitが標準添付されるようになったことを受けて)。</li>
+<li>このリリースをmasarlさんとの思い出に捧げます。</li>
+</div>
+
+<h2><a name="aboutus">Quick JUnitプラグイン・プロジェクトについて</a></h2>
+<div class="contents">
+<p>
+Quick JUnitプラグイン・プロジェクトは、石井さんのご遺族の許可を得て、Quick JUnitプラグインを引き継ぎ、開発を続けています。
+</p>
+<p>
+<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/article/eclipse/quick-junit.html">石井さんによるオリジナルの文書</a>は、<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/index.html">森さん/助田さんがミラーしているサーバ</a>に保管されています。
+</p>
+</div>
+<hr />
+<div>Copyright &copy; 2003-2005 Masaru Ishii,The Quick JUnit Plugin Project.</div>
+<a href="http://sourceforge.jp/projects/quick-junit/"><img src="http://sourceforge.jp/sflogo.php?group_id=1617" width="96" height="31" border="0" alt="SourceForge.jp"></a>
+</body>
+</html>
