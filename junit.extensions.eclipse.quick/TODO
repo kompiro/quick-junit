@@ -1,0 +1,7 @@
+* write unit test codes.
+
+* support excludes filter on testing pair.
+
+* migrate to Eclipse 3.1.
+
+* support pending test methods.
