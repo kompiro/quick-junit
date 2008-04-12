@@ -60,6 +60,7 @@ public class JavaElements {
                 IType type = (IType) element;
                 if (isTestClass(type)) return element;
                 if (hasSuiteMethod(type)) return element;
+                if (hasSuiteAnnotation(type)) return element;
                 if (hasTestAnnotation(type)) return element;
             }
             element = element.getParent();
@@ -67,7 +68,11 @@ public class JavaElements {
         return null;
     }
 
-    private static boolean isTestRunnerPassibleClass(IJavaElement element) throws JavaModelException {
+    private static boolean hasSuiteAnnotation(IType type) throws JavaModelException {
+        return type.getSource() == null ? false:type.getSource().indexOf("@SuiteClasses") > -1;
+	}
+
+	private static boolean isTestRunnerPassibleClass(IJavaElement element) throws JavaModelException {
         if (!(element instanceof IType))
             return false;
         IType type = (IType) element;
