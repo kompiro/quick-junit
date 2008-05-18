@@ -1,3 +1,7 @@
+2008-04-13  kompiro
+	* src/junit/extensions/eclipse/quick/JavaElements.java:
+	enabled launch TestSuite for JUnit4
+
 2006-11-07  KAKUTANI Shintaro  <shintaro@kakutani.com>
 
 	* ChangeLog: create via cvs2cl.pl
@@ -206,4 +210,3 @@
 	  src/junit/extensions/eclipse/quick/messages.properties,
 	  src/junit/extensions/eclipse/quick/messages_ja.properties:
 	  initial
-
