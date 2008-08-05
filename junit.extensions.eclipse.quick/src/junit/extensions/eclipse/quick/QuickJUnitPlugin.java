@@ -5,6 +5,8 @@ import java.util.Dictionary;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -93,4 +95,9 @@ public class QuickJUnitPlugin extends AbstractUIPlugin {
     public String getID() {
         return getBundle().getSymbolicName();
     }
+    
+	public ILaunchManager getLaunchManager() {
+		return DebugPlugin.getDefault().getLaunchManager();
+	}
+
 }

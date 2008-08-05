@@ -196,23 +196,39 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            sequence="Ctrl+9"
+            sequence="M1+9"
             commandId="junit.extensions.eclipse.quick.command.OpenTestingPairAction"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
-            sequence="Ctrl+0"
+            sequence="M1+0"
             commandId="junit.extensions.eclipse.quick.command.JUnitRunAction"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
-            sequence="Ctrl+Shift+0"
+            sequence="M1+M2+0"
             commandId="junit.extensions.eclipse.quick.command.JUnitDebugAction"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="junit.extensions.eclipse.quick.QuickJUnitInfoPage"
+            name="Quick JUnit"
+            id="junit.extensions.eclipse.quick.QuickJUnitInfoPage">
+         <!--
+         <filter
+               name="projectPersistentProperty"
+               value="org.eclipse.jdt.core.javanature">
+         </filter>
+         -->
+         <enabledWhen>
+         	<adapt type="org.eclipse.jdt.core.IJavaProject"/>
+         </enabledWhen>
+      </page>
+   </extension>
 </plugin>

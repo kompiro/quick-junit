@@ -6,6 +6,10 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunchConfigurationType;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.internal.ui.DebugUIPlugin;
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
@@ -15,11 +19,20 @@ import org.eclipse.ui.wizards.IWizardRegistry;
 
 public class ExtensionSupport {
 
-    public static ILaunchShortcut createJUnitLaunchShortcut() throws CoreException {
-        return createLaunchShortcut("org.eclipse.jdt.junit"); //$NON-NLS-1$
+    public static final String QUICK_JUNIT_DEFAULT = "QuickJUnitDefault";
+
+	public static ILaunchShortcut createJUnitLaunchShortcut() throws CoreException {
+    	return new QuickJUnitLaunchShortcut();
+//        return createLaunchShortcut("org.eclipse.jdt.junit"); //$NON-NLS-1$
     }
 
-    public static IWorkbenchWizard createNewClassCreationWizard() throws CoreException {
+    public static ILaunchConfigurationWorkingCopy createLaunchConfigurationWorkingCopy() throws CoreException{
+    	return createWorkingCopy("org.eclipse.jdt.junit.launchconfig");
+    }
+    
+
+
+	public static IWorkbenchWizard createNewClassCreationWizard() throws CoreException {
         return createWizard("org.eclipse.jdt.ui.wizards.NewClassCreationWizard"); //$NON-NLS-1$
     }
 
@@ -45,6 +58,14 @@ public class ExtensionSupport {
         throw new RuntimeException("LaunchShortcut not found. namespace:" + namespace); //$NON-NLS-1$
     }
 
+    private static ILaunchConfigurationWorkingCopy createWorkingCopy(final String namespace)throws CoreException {
+    	ILaunchConfigurationWorkingCopy launchConfiguration = DebugPlugin.getDefault().getLaunchManager().getLaunchConfigurationType(namespace).newInstance(null, QUICK_JUNIT_DEFAULT);
+    	if(launchConfiguration == null){
+    		throw new RuntimeException("LaunchConfigurationTypes not found. namespace:" + namespace); //$NON-NLS-1$
+    	}
+		return launchConfiguration;
+	}
+    
     protected static IWorkbenchWizard createWizard(final String id) throws CoreException {
         final IWorkbench wb = PlatformUI.getWorkbench();
         final IWizardRegistry reg = wb.getNewWizardRegistry();

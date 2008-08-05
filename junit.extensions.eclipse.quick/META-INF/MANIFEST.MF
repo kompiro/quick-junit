@@ -18,7 +18,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jdt.core,
  org.eclipse.jdt.ui,
  org.eclipse.jdt.junit,
- org.eclipse.jdt.junit4.runtime;resolution:=optional
+ org.eclipse.jdt.junit4.runtime;resolution:=optional,
+ org.eclipse.jdt.debug.ui,
+ org.eclipse.jdt.launching;bundle-version="3.4.0"
 Bundle-ClassPath: quick-junit.jar
 Eclipse-LazyStart: true
 Export-Package: junit.extensions.eclipse.quick
