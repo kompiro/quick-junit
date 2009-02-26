@@ -30,6 +30,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jdt.core.IClasspathEntry;
@@ -97,12 +99,13 @@ public class TestProject {
 
 	public IType createType(IPackageFragment pack, String cuName, String source)
 			throws JavaModelException {
-		StringBuffer buf = new StringBuffer();
-		buf.append("package " + pack.getElementName() + ";¥n");
-		buf.append("¥n");
+		StringBuilder buf = new StringBuilder();
+		buf.append("package " + pack.getElementName() + ";\n");
+		buf.append("\n");
 		buf.append(source);
+		IProgressMonitor monitor = new NullProgressMonitor();
 		ICompilationUnit cu = pack.createCompilationUnit(cuName,
-				buf.toString(), false, null);
+				buf.toString(), false, monitor);
 		return cu.getTypes()[0];
 	}
 
