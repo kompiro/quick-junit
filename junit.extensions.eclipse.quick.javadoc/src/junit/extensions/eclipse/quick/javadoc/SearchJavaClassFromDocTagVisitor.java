@@ -69,8 +69,10 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 	}
 
 	private void acceptClassPattern(String patternString) {
-		SearchPattern pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.CLASS_AND_INTERFACE, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
+		SearchPattern pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.TYPE, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
 		search(pattern);
+//		pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.ENUM, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
+//		search(pattern);
 	}
 
 	private void acceptMethodPattern(String patternString) {

@@ -1,20 +1,16 @@
 package junit.extensions.eclipse.quick.javadoc;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.extensions.eclipse.quick.javadoc.SearchJavaClassFromDocTagVisitor;
+import junit.framework.AssertionFailedError;
 
 import org.eclipse.contribution.junit.test.TestProject;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRunnable;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IMethod;
-import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -25,12 +21,12 @@ import org.eclipse.jdt.core.search.SearchRequestor;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SearchJavaClassFromDocTagVisitorTest {
 
 	private static TestProject project;
-	private static IWorkspace workspace;
 	private static ASTParser parser;
 	private static IType type;
 	private List<Object> results = new ArrayList<Object>();
@@ -38,61 +34,9 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	
 	@BeforeClass
 	public static void before() throws Exception{
-		project = new TestProject();
-		project.addJar("org.junit4", "junit.jar");
-		IWorkspaceRunnable runnable = new IWorkspaceRunnable(){
-
-			public void run(IProgressMonitor monitor) throws CoreException {
-				monitor.beginTask("create test project", 10);
-				IPackageFragment pack = project.createPackage("test");
-				monitor.setTaskName("create TestClass");
-				type = project.createType(pack, "TestClass.java", 
-						"public class TestClass{\n" +
-						"	/**\n" +
-						"	 *	@see test.TestClass\n" +
-						"	 */\n" +
-						"	@org.junit.Test\n" +
-						"	public void do_test() throws Exception{\n" +
-						"	}\n" +
-						"}\n"
-				);
-				monitor.setTaskName("create TestClass2");
-				project.createType(pack, "TestClass2.java", 
-						"public class TestClass2{\n" +
-						"	/**\n" +
-						"	 *	@see test.TestClass\n" +
-						"	 */\n" +
-						"	@org.junit.Test\n" +
-						"	public void do_test() throws Exception{\n" +
-						"	}\n" +
-						"	public void do_test2(){\n" +
-						"	}\n" +
-						"}\n"
-				);
-				monitor.setTaskName("create TestClass3");
-				extendsType = project.createType(pack, "TestClass3.java", 
-						"import junit.framework.TestCase\n" +
-						"import org.junit.Test\n" +
-						"\n" +
-						"public class TestClass3 extends TestCase{\n" +
-						"	/**\n" +
-						"	 *	@see test.TestClass\n" +
-						"	 */\n" +
-						"	@org.junit.Test\n" +
-						"	public void do_test() throws Exception{\n" +
-						"	}\n" +
-						"	public void do_test2(){\n" +
-						"	}\n" +
-						"	public void setUp() throws Exception{\n" +
-						"	}" +
-						"}\n"
-				);
-
-				project.getJavaProject().open(monitor);
-			}
-		};
-		workspace = ResourcesPlugin.getWorkspace();
-		workspace.run(runnable, null);
+		project = CreateTestProjectUtil.createTestProject();
+		type = project.getJavaProject().findType("test.TestClass");
+		extendsType = project.getJavaProject().findType("test.TestClassExtendsTestClass");
 	}
 	
 	@Before
@@ -110,6 +54,7 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	public void emptyStringAccepted() throws Exception {
 		assertExpectZeroResultAndVisit("");
 	}
+	
 	
 	@Test
 	public void illegalJavaSourceAccepted() throws Exception {
@@ -164,10 +109,34 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		assertSameSigunatureMethodFromExtendsClassOnMethod();
 		assertInterface();
 		assertEnum();
+		assertAnnotation();
+	}
+
+	private void assertAnnotation() {
+		String source = 
+			"/**\n" +
+			" * @see org.junit.Test\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit(source);
 	}
 
 	private void assertEnum() {
-	}
+		String source = 
+			"/**\n" +
+			" * @see test.Priority\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit(source);
+		source = 
+			"/**\n" +
+			" * @see Priority\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit(source);	}
 
 	private void assertNotExistClassOnMethod() {
 		String source = 
@@ -238,7 +207,14 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	private void assertInterface() {
 		String source = 
 			"/**\n" +
-			" * @see Test\n" +
+			" * @see test.IDocService\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit(source);
+		source = 
+			"/**\n" +
+			" * @see IDocService\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
@@ -316,20 +292,28 @@ public class SearchJavaClassFromDocTagVisitorTest {
 
 	private void assertExpectTwoResultsAndVisit(String source) {
 		assertAndVisit(source);
-		assertEquals(2,results.size());
-		results.clear();
+		assertResults(2);
+	}
+
+	private void assertResults(int i) {
+		try{
+			assertEquals(i,results.size());
+		}catch(AssertionError e){
+			System.err.println(results);
+			throw e;
+		}finally{
+			results.clear();
+		}
 	}
 
 	private void assertExpectOneResultAndVisit(String source) {
 		assertAndVisit(source);
-		assertEquals(1,results.size());
-		results.clear();
+		assertResults(1);
 	}
 
 	private void assertExpectZeroResultAndVisit(String source) {
 		assertAndVisit(source);
-		assertEquals(0,results.size());
-		results.clear();
+		assertResults(0);
 	}
 
 
@@ -354,7 +338,9 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		};
 		ASTVisitor visitor = new SearchJavaClassFromDocTagVisitor(type,requester);
 		createNewParser();
-		parser.setSource(source.toCharArray());
+		if(source != null){
+			parser.setSource(source.toCharArray());
+		}
 		ASTNode node = parser.createAST(null);
 		node.accept(visitor);
 	}
@@ -364,6 +350,18 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		project.dispose();
 	}
 
+	/*
+	 * 渡ってくるSourceがNullの場合はNullPointerExceptionが発生する。
+	 * NullPointerExceptionを期待している訳ではないので、assertはしない
+	 * Testも取り合えず行わない
+	 */
+	@Test
+	@Ignore
+	public void nullStringAccepted() throws Exception {
+		assertExpectZeroResultAndVisit(null);		
+	}
+
+	
 //	public void pattern() throws Exception {
 //		CharSequence patternString = "#test(param,param2)";
 //		Pattern methodPattern = Pattern.compile("#(.*)\\((.*)\\)");
