@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick.javadoc.handlers;
+package junit.extensions.eclipse.quick.javadoc;
 
 import static org.junit.Assert.assertEquals;
 
