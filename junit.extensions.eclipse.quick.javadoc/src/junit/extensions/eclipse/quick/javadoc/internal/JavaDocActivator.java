@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick.javadoc;
+package junit.extensions.eclipse.quick.javadoc.internal;
 
 import java.util.Dictionary;
 
@@ -6,15 +6,12 @@ import junit.extensions.eclipse.quick.javadoc.exception.QuickJUnitJavaDocExtensi
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 
-public class JavaDocActivator extends AbstractUIPlugin {
+public class JavaDocActivator extends Plugin {
 
 	public static final String PLUGIN_ID = "junit.extensions.eclipse.quick.javadoc";
 
@@ -35,10 +32,6 @@ public class JavaDocActivator extends AbstractUIPlugin {
 
 	public static JavaDocActivator getDefault() {
 		return plugin;
-	}
-
-	public static ImageDescriptor getImageDescriptor(String path) {
-		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 	
     public IStatus createSystemErrorStatus(Exception ex, Object caller) {
@@ -86,7 +79,6 @@ public class JavaDocActivator extends AbstractUIPlugin {
     public void handleSystemError(Exception e, Object caller) {
         IStatus status = createSystemErrorStatus(e, caller);
         getLog().log(status);
-        ErrorDialog.openError((Shell) null, "QuickJUnit JavaDoc Extension", "", status); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     public void logSystemError(Exception e, Object caller) {

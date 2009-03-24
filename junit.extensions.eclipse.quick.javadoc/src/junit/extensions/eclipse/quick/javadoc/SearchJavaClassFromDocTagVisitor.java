@@ -1,9 +1,10 @@
-package junit.extensions.eclipse.quick.javadoc.handlers;
+package junit.extensions.eclipse.quick.javadoc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import junit.extensions.eclipse.quick.javadoc.JavaDocActivator;
+import junit.extensions.eclipse.quick.javadoc.internal.JavaDocActivator;
+
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -68,7 +69,7 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 	}
 
 	private void acceptClassPattern(String patternString) {
-		SearchPattern pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.CLASS, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
+		SearchPattern pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.CLASS_AND_INTERFACE, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
 		search(pattern);
 	}
 

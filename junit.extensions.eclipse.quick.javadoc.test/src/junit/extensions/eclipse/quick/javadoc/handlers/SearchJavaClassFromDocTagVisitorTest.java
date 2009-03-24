@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.extensions.eclipse.quick.javadoc.SearchJavaClassFromDocTagVisitor;
+
 import org.eclipse.contribution.junit.test.TestProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -20,9 +22,6 @@ import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.search.SearchMatch;
 import org.eclipse.jdt.core.search.SearchRequestor;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.intro.IIntroManager;
-import org.eclipse.ui.intro.IIntroPart;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -39,7 +38,6 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	
 	@BeforeClass
 	public static void before() throws Exception{
-		closeIntro();
 		project = new TestProject();
 		project.addJar("org.junit4", "junit.jar");
 		IWorkspaceRunnable runnable = new IWorkspaceRunnable(){
@@ -164,75 +162,11 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		assertMethodOnMethod();
 		assertNotExistClassOnMethod();
 		assertSameSigunatureMethodFromExtendsClassOnMethod();
+		assertInterface();
+		assertEnum();
 	}
 
-	private void assertSameSigunatureMethodFromExtendsClassOnMethod() {
-		String source = 
-			"/**\n" +
-			" * @see #setUp()\n" +
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertAndVisit(source,SearchJavaClassFromDocTagVisitorTest.extendsType);
-		assertEquals(1,results.size());
-		results.clear();		
-		
-	}
-
-	@Test
-	public void assertTwoTagsContainedOnMethod() {
-		assertTwoTagsClassTwoTagsOnMethod();
-		assertTwoTagsMethodOnMethod();
-		assertTwoTagsNotExistClassOnMethod();
-	}
-
-	private void assertTwoTagsNotExistClassOnMethod() {
-		String source = 
-			"/**\n" +
-			" * @see #do_tast()\n" + // #do_test <= #do_tast
-			" * @see #start()\n" +  // not exist method
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertExpectZeroResultAndVisit(source);
-	}
-
-	private void assertTwoTagsMethodOnMethod() {
-		String source = 
-			"/**\n" +
-			" * @see #do_test()\n" + 
-			" * @see junit.framework.TestCase#setUp()\n" +  
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertExpectTwoResultsAndVisit(source);
-	}
-
-	private void assertTwoTagsClassTwoTagsOnMethod() {
-		String source = 
-			"/**\n" +
-			" * @see TestSuite\n" +
-			" * @see TestResult\n" +
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertExpectTwoResultsAndVisit(source);		
-		source = 
-			"/**\n" +
-			" * @see test.TestClass\n" +
-			" * @see TestSuite\n" +
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertExpectTwoResultsAndVisit(source);		
-		source = 
-			"/**\n" +
-			" * @see test.TestClass\n" +
-			" * @see junit.framework.TestCase\n" +
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertExpectTwoResultsAndVisit(source);		
+	private void assertEnum() {
 	}
 
 	private void assertNotExistClassOnMethod() {
@@ -300,6 +234,85 @@ public class SearchJavaClassFromDocTagVisitorTest {
 			"}\n";
 		assertExpectOneResultAndVisit(source);
 	}
+	
+	private void assertInterface() {
+		String source = 
+			"/**\n" +
+			" * @see Test\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit(source);
+	}
+
+
+	private void assertSameSigunatureMethodFromExtendsClassOnMethod() {
+		String source = 
+			"/**\n" +
+			" * @see #setUp()\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertAndVisit(source,SearchJavaClassFromDocTagVisitorTest.extendsType);
+		assertEquals(1,results.size());
+		results.clear();		
+	}
+
+	@Test
+	public void assertTwoTagsContainedOnMethod() {
+		assertTwoTagsClassTwoTagsOnMethod();
+		assertTwoTagsMethodOnMethod();
+		assertTwoTagsNotExistClassOnMethod();
+	}
+	
+	private void assertTwoTagsNotExistClassOnMethod() {
+		String source = 
+			"/**\n" +
+			" * @see #do_tast()\n" + // #do_test <= #do_tast
+			" * @see #start()\n" +  // not exist method
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectZeroResultAndVisit(source);
+	}
+
+	private void assertTwoTagsMethodOnMethod() {
+		String source = 
+			"/**\n" +
+			" * @see #do_test()\n" + 
+			" * @see junit.framework.TestCase#setUp()\n" +  
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectTwoResultsAndVisit(source);
+	}
+
+	private void assertTwoTagsClassTwoTagsOnMethod() {
+		String source = 
+			"/**\n" +
+			" * @see TestSuite\n" +
+			" * @see TestResult\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectTwoResultsAndVisit(source);		
+		source = 
+			"/**\n" +
+			" * @see test.TestClass\n" +
+			" * @see TestSuite\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectTwoResultsAndVisit(source);		
+		source = 
+			"/**\n" +
+			" * @see test.TestClass\n" +
+			" * @see junit.framework.TestCase\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectTwoResultsAndVisit(source);		
+	}
 
 	private void assertExpectTwoResultsAndVisit(String source) {
 		assertAndVisit(source);
@@ -346,15 +359,6 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		node.accept(visitor);
 	}
 	
-	private static void closeIntro() {
-		if( PlatformUI.isWorkbenchRunning() == false) return;
-		IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();
-		IIntroPart intro = introManager.getIntro();
-		if(intro != null && introManager.isIntroStandby(intro)){
-			introManager.closeIntro(intro);
-		}
-	}
-
 	@AfterClass
 	public static void after() throws Exception{
 		project.dispose();
