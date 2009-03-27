@@ -30,6 +30,10 @@ public final class CreateTestProjectUtil {
 						"	@org.junit.Test\n" +
 						"	public void do_test() throws Exception{\n" +
 						"	}\n" +
+						"	public void do_test(String str) throws Exception{\n" +
+						"	}\n" +
+						"	public void do_test(String str,Object obj) throws Exception{\n" +
+						"	}\n" +
 						"}\n"
 				);
 				monitor.setTaskName("create TestClass2");

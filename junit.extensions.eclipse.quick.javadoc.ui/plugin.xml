@@ -41,7 +41,7 @@
       <key
             commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand"
             contextId="org.eclipse.ui.contexts.window"
-            sequence="M1+M3+8"
+            sequence="M1+M2+8"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>

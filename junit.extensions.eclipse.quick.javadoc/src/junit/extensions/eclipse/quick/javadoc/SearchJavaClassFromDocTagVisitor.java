@@ -5,12 +5,14 @@ import java.util.regex.Pattern;
 
 import junit.extensions.eclipse.quick.javadoc.internal.JavaDocActivator;
 
-
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Javadoc;
 import org.eclipse.jdt.core.dom.TagElement;
@@ -29,11 +31,17 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 	private SearchRequestor requestor;
 	private TypeDeclaration type = null;
 	private IType targetType;
+	private IProgressMonitor monitor = new NullProgressMonitor();
 
 	public SearchJavaClassFromDocTagVisitor(IType targetType, SearchRequestor requestor) {
 		super(true);
 		this.targetType = targetType;
 		this.requestor = requestor;
+	}
+
+	public SearchJavaClassFromDocTagVisitor(IType targetType, SearchRequestor requestor,IProgressMonitor monitor) {
+		this(targetType,requestor);
+		this.monitor = monitor;
 	}
 	
 	@Override
@@ -71,8 +79,6 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 	private void acceptClassPattern(String patternString) {
 		SearchPattern pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.TYPE, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
 		search(pattern);
-//		pattern = SearchPattern.createPattern(patternString, IJavaSearchConstants.ENUM, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EQUIVALENT_MATCH);
-//		search(pattern);
 	}
 
 	private void acceptMethodPattern(String patternString) {
@@ -85,7 +91,7 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 			SearchEngine engine = new SearchEngine();
 			IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
 			SearchParticipant[] participants = new SearchParticipant[] {SearchEngine.getDefaultSearchParticipant()};
-			engine.search(pattern, participants, scope, requestor, new NullProgressMonitor());
+			engine.search(pattern, participants, scope, requestor, monitor);
 		} catch (CoreException e) {
 			JavaDocActivator.getDefault().handleSystemError(e, this);
 		}
@@ -94,7 +100,7 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 	private SearchPattern createMethodPattern(String patternString) {
 		SearchPattern pattern;
 		patternString = patternString.replace(METHOD_PREFIX, ".");
-		pattern= SearchPattern.createPattern(patternString, IJavaSearchConstants.METHOD, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_FULL_MATCH | SearchPattern.R_EQUIVALENT_MATCH);
+		pattern= SearchPattern.createPattern(patternString, IJavaSearchConstants.METHOD, IJavaSearchConstants.DECLARATIONS, SearchPattern.R_ERASURE_MATCH);
 		return pattern;
 	}
 
@@ -104,9 +110,27 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 		if( matcher.matches() == false) return;
 		String name = matcher.group(1);
 		String paramString = matcher.group(2);
-		String[] params = paramString == null || paramString.equals("") ? null : matcher.group(2).split(",");
+		String[] params = paramString == null || paramString.equals("") ? null : paramString.split(",");
+		int index = 0;
+		if(params != null && params.length != 0){
+			for(String param : params){
+				params[index++] = transParamToSignatureStyle(param);
+			}
+		}
 		IMethod element = targetType.getMethod(name, params);
+		match(element);
+	}
+
+	private String transParamToSignatureStyle(String param) {
+		String sigStyle = Signature.createTypeSignature(param, true);
+		System.out.println(sigStyle);
+		return sigStyle;
+	}
+
+	private void match(IJavaElement elem) {
+		if(!(elem instanceof IMethod)) return;
 		try {
+			IMethod element = (IMethod) elem;
 			if(element.exists() == false) return;
 			ISourceRange range = element.getSourceRange();
 			SearchMatch match = new SearchMatch(element, SearchMatch.A_ACCURATE, range.getOffset(), range.getLength(), null, null);

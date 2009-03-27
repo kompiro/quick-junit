@@ -6,12 +6,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.AssertionFailedError;
-
 import org.eclipse.contribution.junit.test.TestProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -30,6 +29,7 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	private static ASTParser parser;
 	private static IType type;
 	private List<Object> results = new ArrayList<Object>();
+	private String source;
 	protected static IType extendsType;
 	
 	@BeforeClass
@@ -52,48 +52,50 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	
 	@Test
 	public void emptyStringAccepted() throws Exception {
-		assertExpectZeroResultAndVisit("");
+		source = "";
+		assertExpectZeroResultAndVisit();
 	}
 	
 	
 	@Test
 	public void illegalJavaSourceAccepted() throws Exception {
-		assertExpectZeroResultAndVisit("test");
-		String source = 
+		source = "test";
+		assertExpectZeroResultAndVisit();
+		source = 
 				"public class TestClass{\n" +
 				"]";// <- Illegal Close Blanket
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 		source = 
 			"public void test(){\n" +
 			"]"; // <- Illegal Close Blanket
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 	}
 
 	@Test
 	public void assertNoTagsContainedOnMethod() {
-		String source = 
+		source = 
 			"public void test(){}";
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 		source = 
 			"public void test(){\n" +
 			"	System.out.println(\"test\")\n" +
 			"}";
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 	}
 
 	@Test
 	public void assertNoTagsContainedOnClass() {
-		String source = 
+		source = 
 			"public class TestOnClassOnlyClassDecralation{\n" +
 			"}\n";
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 		source = 
 			"public class TestOnClass{\n" +
 			"	public void test(){\n" +
 			"		System.out.println(\"test\")\n" +
 			"	}\n" +
 			"}\n";
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 	}
 	
 	/**
@@ -112,126 +114,176 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		assertAnnotation();
 	}
 
+	@Test
+	@Ignore
+	public void assertPolimophism() {
+		source = 
+			"/**\n" +
+			" * @see TestClass#do_test(String)\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit();
+		source = 
+			"/**\n" +
+			" * @see TestClass#do_test(String,Object)\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit();
+	}
+	
+	@Test
+	@Ignore
+	public void assertPoliphonismSameClass() throws Exception {
+		source = 
+			"/**\n" +
+			" * @see #do_test(String)\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit();
+		source = 
+			"/**\n" +
+			" * @see #do_test(String,Object)\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit();
+	}
+
 	private void assertAnnotation() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see org.junit.Test\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 	}
 
 	private void assertEnum() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see test.Priority\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 		source = 
 			"/**\n" +
 			" * @see Priority\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);	}
+		assertExpectOneResultAndVisit();	}
 
 	private void assertNotExistClassOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			// wrong word TestCase -> TestCaze
 			" * @see junit.framework.TestCaze\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 	}
 
 	private void assertFQCNClassOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see junit.framework.TestCase\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);		
+		assertExpectOneResultAndVisit();		
 		source = 
 		"/**\n" +
 		" * @see test.TestClass2" +
 		" */\n" +
 		"public void do_test() throws Exception{\n" +
 		"}\n";
-		assertExpectOneResultAndVisit(source);		
+		assertExpectOneResultAndVisit();		
 	}
 
 	private void assertMethodOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see junit.framework.TestCase#setUp()\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);		
+		assertExpectOneResultAndVisit();		
 		source = 
 			"/**\n" +
 			" * @see TestClass2#do_test()\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 	}
 
 
 	private void assertCurrentMethodOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see #do_test()\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 	}
 
 	private void assertClassOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see TestClass2\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 	}
 	
 	private void assertInterface() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see test.IDocService\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 		source = 
 			"/**\n" +
 			" * @see IDocService\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectOneResultAndVisit(source);
+		assertExpectOneResultAndVisit();
 	}
 
 
-	private void assertSameSigunatureMethodFromExtendsClassOnMethod() {
-		String source = 
+	public void assertSameSigunatureMethodFromExtendsClassOnMethod() {
+		source = 
 			"/**\n" +
 			" * @see #setUp()\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertAndVisit(source,SearchJavaClassFromDocTagVisitorTest.extendsType);
+		assertAndVisit(SearchJavaClassFromDocTagVisitorTest.extendsType);
 		assertEquals(1,results.size());
-		results.clear();		
+		results.clear();
+	}
+
+	@Test
+	@Ignore
+	public void assertSameSignatureMethodFromExtendsClassOnMethods() {
+		source = 
+			"/**\n" +
+			" * @see TestClass#do_test()\n" +
+			" */\n" +
+			"public void do_test() throws Exception{\n" +
+			"}\n";
+		assertExpectOneResultAndVisit();
 	}
 
 	@Test
@@ -242,36 +294,36 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	}
 	
 	private void assertTwoTagsNotExistClassOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see #do_tast()\n" + // #do_test <= #do_tast
 			" * @see #start()\n" +  // not exist method
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectZeroResultAndVisit(source);
+		assertExpectZeroResultAndVisit();
 	}
 
 	private void assertTwoTagsMethodOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see #do_test()\n" + 
 			" * @see junit.framework.TestCase#setUp()\n" +  
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectTwoResultsAndVisit(source);
+		assertExpectTwoResultsAndVisit();
 	}
 
 	private void assertTwoTagsClassTwoTagsOnMethod() {
-		String source = 
+		source = 
 			"/**\n" +
 			" * @see TestSuite\n" +
 			" * @see TestResult\n" +
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectTwoResultsAndVisit(source);		
+		assertExpectTwoResultsAndVisit();		
 		source = 
 			"/**\n" +
 			" * @see test.TestClass\n" +
@@ -279,7 +331,7 @@ public class SearchJavaClassFromDocTagVisitorTest {
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectTwoResultsAndVisit(source);		
+		assertExpectTwoResultsAndVisit();		
 		source = 
 			"/**\n" +
 			" * @see test.TestClass\n" +
@@ -287,11 +339,11 @@ public class SearchJavaClassFromDocTagVisitorTest {
 			" */\n" +
 			"public void do_test() throws Exception{\n" +
 			"}\n";
-		assertExpectTwoResultsAndVisit(source);		
+		assertExpectTwoResultsAndVisit();		
 	}
 
-	private void assertExpectTwoResultsAndVisit(String source) {
-		assertAndVisit(source);
+	private void assertExpectTwoResultsAndVisit() {
+		assertAndVisit();
 		assertResults(2);
 	}
 
@@ -299,6 +351,7 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		try{
 			assertEquals(i,results.size());
 		}catch(AssertionError e){
+			System.err.println(source);
 			System.err.println(results);
 			throw e;
 		}finally{
@@ -306,22 +359,22 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		}
 	}
 
-	private void assertExpectOneResultAndVisit(String source) {
-		assertAndVisit(source);
+	private void assertExpectOneResultAndVisit() {
+		assertAndVisit();
 		assertResults(1);
 	}
 
-	private void assertExpectZeroResultAndVisit(String source) {
-		assertAndVisit(source);
+	private void assertExpectZeroResultAndVisit() {
+		assertAndVisit();
 		assertResults(0);
 	}
 
 
-	private void assertAndVisit(String source) {
-		assertAndVisit(source,SearchJavaClassFromDocTagVisitorTest.type);
+	private void assertAndVisit() {
+		assertAndVisit(SearchJavaClassFromDocTagVisitorTest.type);
 	}
 	
-	private void assertAndVisit(String source,IType type) {
+	private void assertAndVisit(IType type) {
 		SearchRequestor requester = new SearchRequestor(){
 			@Override
 			public void acceptSearchMatch(SearchMatch match) throws CoreException {
@@ -358,9 +411,9 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	@Test
 	@Ignore
 	public void nullStringAccepted() throws Exception {
-		assertExpectZeroResultAndVisit(null);		
+		source = null;
+		assertExpectZeroResultAndVisit();		
 	}
-
 	
 //	public void pattern() throws Exception {
 //		CharSequence patternString = "#test(param,param2)";
