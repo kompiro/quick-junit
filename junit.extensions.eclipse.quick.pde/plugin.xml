@@ -100,13 +100,13 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            sequence="Ctrl+-"
+            sequence="M1+-"
             commandId="junit.extensions.eclipse.quick.pde.command.PDEJUnitRunAction"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
-            sequence="Ctrl+Shift+-"
+            sequence="M1+M2+-"
             commandId="junit.extensions.eclipse.quick.pde.command.PDEJUnitDebugAction"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">

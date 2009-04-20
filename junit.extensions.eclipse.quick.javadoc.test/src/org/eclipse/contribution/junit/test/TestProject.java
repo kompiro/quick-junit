@@ -96,6 +96,12 @@ public class TestProject {
 			sourceFolder = createSourceFolder();
 		return sourceFolder.createPackageFragment(name, false, null);
 	}
+	
+	public IPackageFragment getPackage(String packageName) throws CoreException{
+		if (sourceFolder == null)
+			return createPackage(packageName);
+		return sourceFolder.getPackageFragment(packageName);
+	}
 
 	public IType createType(IPackageFragment pack, String cuName, String source)
 			throws JavaModelException {

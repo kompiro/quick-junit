@@ -64,7 +64,7 @@ public abstract class AbstractJavaDocHandler extends AbstractHandler {
         return (ITextSelection) selection;
     }
         
-    private ICompilationUnit getCompilationUnitOfJavaEditor() throws JavaModelException {
+    protected ICompilationUnit getCompilationUnitOfJavaEditor() throws JavaModelException {
         ITextEditor textEdtior = getTextEdtior();
 		if (textEdtior == null)
             return null;

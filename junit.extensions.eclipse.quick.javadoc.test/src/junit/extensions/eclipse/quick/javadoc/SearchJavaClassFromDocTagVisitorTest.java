@@ -1,7 +1,7 @@
 package junit.extensions.eclipse.quick.javadoc;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static junit.extensions.eclipse.quick.javadoc.CreateTestProjectUtil.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,6 @@ import org.eclipse.contribution.junit.test.TestProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -34,7 +33,59 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	
 	@BeforeClass
 	public static void before() throws Exception{
-		project = CreateTestProjectUtil.createTestProject();
+		project = createTestProject();
+		createType(project,"test","TestClass", 
+				"public class TestClass{\n" +
+				"	/**\n" +
+				"	 *	@see test.TestClass\n" +
+				"	 */\n" +
+				"	@org.junit.Test\n" +
+				"	public void do_test() throws Exception{\n" +
+				"	}\n" +
+				"	public void do_test(String str) throws Exception{\n" +
+				"	}\n" +
+				"	public void do_test(String str,Object obj) throws Exception{\n" +
+				"	}\n" +
+				"}\n");
+		createType(project,"test", "TestClass2", 
+				"public class TestClass2{\n" +
+				"	/**\n" +
+				"	 *	@see test.TestClass\n" +
+				"	 */\n" +
+				"	@org.junit.Test\n" +
+				"	public void do_test() throws Exception{\n" +
+				"	}\n" +
+				"	public void do_test2(){\n" +
+				"	}\n" +
+				"}\n");
+		createType(project,"test", "TestClassExtendsTestClass", 
+				"import junit.framework.TestCase\n" +
+				"import org.junit.Test\n" +
+				"\n" +
+				"public class TestClassExtendsTestClass extends TestCase{\n" +
+				"	/**\n" +
+				"	 *	@see test.TestClass\n" +
+				"	 */\n" +
+				"	@org.junit.Test\n" +
+				"	public void do_test() throws Exception{\n" +
+				"	}\n" +
+				"	public void do_test2(){\n" +
+				"	}\n" +
+				"	public void setUp() throws Exception{\n" +
+				"	}" +
+				"}\n"
+		);
+		createType(project,"test", "Priority", 
+				"public enum Priority {\n" + 
+				"	BLOCKER,CRITICAL,MAJOR,MINOR,TRIVIAL;\n" +
+				"	public void do_test(){\n" +
+				"	}\n" + 
+				"}");
+		createType(project,"test", "IDocService", 
+				"public interface IDocService {\n" + 
+				"	public void do_test();\n" + 
+				"}");
+
 		type = project.getJavaProject().findType("test.TestClass");
 		extendsType = project.getJavaProject().findType("test.TestClassExtendsTestClass");
 	}
@@ -99,7 +150,8 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	}
 	
 	/**
-	 * @see SearchJavaClassFromDocTagVisitor#visit(org.eclipse.jdt.core.dom.TagElement)
+	 * @see SearchJavaClassFromDocTagVisitor
+	 * @see ASTNode
 	 */
 	@Test
 	public void assertOneTagContainedOnMethod() {
@@ -114,6 +166,11 @@ public class SearchJavaClassFromDocTagVisitorTest {
 		assertAnnotation();
 	}
 
+	/**
+	 * @see SearchJavaClassFromDocTagVisitor
+	 * @see ASTNode
+	 * @author ASTNode
+	 */
 	@Test
 	@Ignore
 	public void assertPolimophism() {

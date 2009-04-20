@@ -27,7 +27,7 @@
       </handler>
       <handler
             commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand"
-            class="junit.extensions.eclipse.quick.javadoc.ui.handlers.CreateSeeTagHandler">
+            class="junit.extensions.eclipse.quick.javadoc.ui.handlers.CreateTestContextTagHandler">
       </handler>
    </extension>
    <extension

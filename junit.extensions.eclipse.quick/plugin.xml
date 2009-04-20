@@ -52,7 +52,7 @@
             adaptable="true"
             id="junit.extensions.eclipse.quick.object.java">
          <menu
-               label="%Actions.label"
+               label="&amp;Quick JUnit"
                path="additions"
                id="junit.extensions.eclipse.quick.object.java.Actions">
             <separator
@@ -130,6 +130,7 @@
                id="junit.extensions.eclipse.quick.editor.java.OpenTestingPairAction">
          </action>
       </editorContribution>
+      <!--
       <editorContribution
             targetID="CompilationUnitEditor"
             id="junit.extensions.eclipse.quick.editor.aspectj">
@@ -166,6 +167,7 @@
                id="junit.extensions.eclipse.quick.editor.aspectj.OpenTestingPairAction">
          </action>
       </editorContribution>
+      -->
    </extension>
    <extension
          point="org.eclipse.ui.commands">
