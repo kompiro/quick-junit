@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description url="http://quick-junit.sourceforge.jp/updates/3.2/">
+   <description url="http://quick-junit.sourceforge.jp/updates/3.4/">
       update site for Quick JUnit Plugin.
    </description>
-   <feature url="features/junit.extensions.eclipse.quick.feature_0.4.0.jar" id="junit.extensions.eclipse.quick.feature" version="0.4.0"/>
+   <feature url="features/junit.extensions.eclipse.quick.feature_0.4.0.jar" id="junit.extensions.eclipse.quick.feature" version="0.4.0">
+      <category name="QuickJUnit"/>
+   </feature>
    <category-def name="QuickJUnit" label="QuickJUnit">
       <description>
          This plugin makes easy to launch JUnit and switch editors between

@@ -2,7 +2,7 @@
 <feature
       id="junit.extensions.eclipse.quick.feature"
       label="Quick JUnit Plugin"
-      version="0.4.0"
+      version="0.4.9.qualifier"
       provider-name="The Quick JUnit Plugin Project">
    <install-handler/>
 
@@ -14,7 +14,7 @@ This plugin dadecated to the memory of Masaru Ishii.
    </description>
 
    <copyright>
-      Copyright (C) 2003-2007 Masaru Ishii,The Quick JUnit Plugin Project.
+      Copyright (C) 2003-2009 Masaru Ishii,The Quick JUnit Plugin Project.
 All Rights Reserved.
    </copyright>
 
@@ -235,24 +235,24 @@ any resulting litigation.
    </license>
 
    <url>
-      <update label="Quick JUnit Plugin update site" url="http://quick-junit.sourceforge.jp/updates/3.0/site.xml"/>
+      <update label="Quick JUnit Plugin update site" url="http://quick-junit.sourceforge.jp/updates/current/site.xml"/>
    </url>
 
    <requires>
-      <import plugin="org.eclipse.core.runtime.compatibility"/>
-      <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.ui.views"/>
-      <import plugin="org.eclipse.jface.text"/>
-      <import plugin="org.eclipse.ui.workbench.texteditor"/>
-      <import plugin="org.eclipse.ui.editors"/>
-      <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.jdt.core"/>
-      <import plugin="org.eclipse.jdt.junit"/>
-      <import plugin="org.eclipse.jdt.ui"/>
       <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.jface.text"/>
       <import plugin="org.eclipse.debug.ui"/>
-      <import plugin="org.eclipse.debug.core"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jdt.junit"/>
+      <import plugin="org.eclipse.ui.views"/>
       <import plugin="org.eclipse.pde.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.jdt"/>
    </requires>
 
    <plugin
