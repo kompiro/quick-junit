@@ -6,9 +6,7 @@ Bundle-Version: 0.4.9.qualifier
 Bundle-Activator: junit.extensions.eclipse.quick.javadoc.internal.JavaDocActivator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jdt.core;visibility:=reexport,
- org.eclipse.core.resources,
- org.eclipse.text,
- org.eclipse.core.filebuffers
+ org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: Masaru Ishii and friends
