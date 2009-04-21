@@ -1,37 +1,14 @@
 package junit.extensions.eclipse.quick.javadoc;
 
-import static junit.extensions.eclipse.quick.javadoc.CreateTestProjectUtil.createPackageFragment;
-import static junit.extensions.eclipse.quick.javadoc.CreateTestProjectUtil.createTestProject;
-import static junit.extensions.eclipse.quick.javadoc.CreateTestProjectUtil.createType;
+import static junit.extensions.eclipse.quick.javadoc.CreateTestProjectUtil.*;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import junit.extensions.eclipse.quick.javadoc.internal.JavaDocActivator;
-
 import org.eclipse.contribution.junit.test.TestProject;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.jdt.core.IBuffer;
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTNode;
-import org.eclipse.jdt.core.dom.ASTParser;
-import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
-import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Javadoc;
-import org.eclipse.jdt.core.dom.SimpleName;
-import org.eclipse.jdt.core.dom.TagElement;
-import org.eclipse.jface.text.Document;
-import org.eclipse.text.edits.TextEdit;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class TestContextTagCreaterTest {
 	
@@ -66,7 +43,21 @@ public class TestContextTagCreaterTest {
 	}
 	
 	@Test
-	public void createTestContextTagEmptyString() throws Exception {
+	public void assertIllegalCases() throws Exception{
+		assertCreateTestContextTagTypeNull();
+		assertCreateTestContextTagEmptyString();
+	}
+	
+	private void assertCreateTestContextTagTypeNull() throws Exception{
+		try{
+			creator.addTag(null,null);
+			fail();
+		}catch(IllegalArgumentException e){
+			assertTrue(true);
+		}
+	}
+
+	private void assertCreateTestContextTagEmptyString() throws Exception {
 		creator.addTag(type,"");
 		String source = type.getSource();
 		assertTrue(source.contains(TEST_CONTEXT_ANNOTATION));
@@ -74,7 +65,7 @@ public class TestContextTagCreaterTest {
 	}
 
 	@Test
-	public void createTestContextTagNull() throws Exception {
+	public void assertCreateTestContextTagNull() throws Exception {
 		creator.addTag(type,null);
 		String source = type.getSource();
 		assertTrue(source.contains(TEST_CONTEXT_ANNOTATION));
@@ -92,7 +83,6 @@ public class TestContextTagCreaterTest {
 		creator.addTag(type,"test3");
 		source = type.getSource();
 		assertStringCount(3,TEST_CONTEXT_ANNOTATION,source);
-		
 	}
 	
 	private void assertStringCount(int count,String target,String source){
@@ -105,62 +95,4 @@ public class TestContextTagCreaterTest {
         assertEquals(count,hitCount);		
 	}
 	
-	public static class TestContextTagCreator{
-
-		private ASTParser parser;
-
-		public TestContextTagCreator(){
-			parser = ASTParser.newParser(AST.JLS3);
-			parser.setBindingsRecovery(true);			
-		}
-		
-		public void addTag(IType type,String clazz) {
-			ICompilationUnit jdtUnit = type.getCompilationUnit();
-			try {
-				parser.setSource(jdtUnit);
-				IProgressMonitor monitor = new NullProgressMonitor();
-				ASTNode node = parser.createAST(monitor);
-				if(node instanceof CompilationUnit){
-					CompilationUnit unit = (CompilationUnit) node;
-					List<?> types = unit.types();
-					unit.recordModifications();
-					AbstractTypeDeclaration declaratingNode = (AbstractTypeDeclaration)types.get(0);
-					AST ast = unit.getRoot().getAST();
-					Javadoc javadoc = declaratingNode.getJavadoc();
-					if(javadoc == null){
-						javadoc = ast.newJavadoc();
-						declaratingNode.setJavadoc(javadoc);
-					}
-					TagElement tag = createTag(ast, clazz);
-					javadoc.tags().add(tag);
-
-					Document document = new Document();
-					document.set(jdtUnit.getSource());
-					TextEdit edits = unit.rewrite(document,jdtUnit.getJavaProject().getOptions(true));
-					edits.apply(document);
-					String newSource = document.get();
-					ICompilationUnit workingCopy = jdtUnit.getWorkingCopy(monitor);
-					IBuffer buffer = workingCopy.getBuffer();
-					buffer.setContents(newSource);
-					workingCopy.commitWorkingCopy(true, monitor);
-				}
-			} catch (Exception e) {
-				JavaDocActivator.getDefault().handleSystemError(e, this);
-				e.printStackTrace();
-			}
-		}
-
-		private TagElement createTag(AST ast, String clazz) {
-			TagElement tag = ast.newTagElement();
-			tag.setTagName(QuickJUnitDocTagConstants.TestContext.toAnnotation());
-			if(clazz == null || clazz.equals("")){
-				return tag;
-			}
-			SimpleName newSimpleName = ast.newSimpleName(clazz);
-			tag.fragments().add(newSimpleName);
-			return tag;
-		}
-		
-	}
-
 }
