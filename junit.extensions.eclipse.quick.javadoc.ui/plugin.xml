@@ -13,9 +13,9 @@
             id="junit.extensions.eclipse.quick.javadoc.ui.commands.javadocCommand">
       </command>
       <command
-            name="Create See Tag"
+            name="Create Testing Context Tag"
             categoryId="junit.extensions.eclipse.quick.javadoc.commands.category"
-            id="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand">
+            id="junit.extensions.eclipse.quick.javadoc.ui.commands.createTestingContextCommand">
       </command>
       
    </extension>
@@ -26,7 +26,7 @@
             class="junit.extensions.eclipse.quick.javadoc.ui.handlers.OpenTestingContextHandler">
       </handler>
       <handler
-            commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand"
+            commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createTestingContextCommand"
             class="junit.extensions.eclipse.quick.javadoc.ui.handlers.CreateTestContextTagHandler">
       </handler>
    </extension>
@@ -39,7 +39,7 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
-            commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand"
+            commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createTestingContextCommand"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M1+M2+8"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
@@ -59,9 +59,9 @@
                   id="junit.extensions.eclipse.quick.javadoc.menus.javadocCommand">
             </command>
             <command
-                  commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand"
+                  commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createTestingContextCommand"
                   mnemonic="S"
-                  id="junit.extensions.eclipse.quick.javadoc.ui.menus.createSeeCommand">
+                  id="junit.extensions.eclipse.quick.javadoc.ui.menus.createTestingContextCommand">
             </command>
          </menu>
       </menuContribution>
@@ -77,9 +77,9 @@
                   id="junit.extensions.eclipse.quick.javadoc.menus.javadocCommand">
             </command>
             <command
-                  commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createSeeCommand"
-                  mnemonic="S"
-                  id="junit.extensions.eclipse.quick.javadoc.ui.menus.createSeeCommand">
+                  commandId="junit.extensions.eclipse.quick.javadoc.ui.commands.createTestingContextCommand"
+                  mnemonic="T"
+                  id="junit.extensions.eclipse.quick.javadoc.ui.menus.createTestingContextCommand">
             </command>
          </menu>
       </menuContribution>

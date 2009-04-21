@@ -1,17 +1,10 @@
 package junit.extensions.eclipse.quick.javadoc.ui.handlers;
 
-import org.eclipse.core.commands.AbstractHandler;
+import junit.extensions.eclipse.quick.javadoc.TestContextTagCreator;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTNode;
-import org.eclipse.jdt.core.dom.ASTParser;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.jdt.core.*;
 
 public class CreateTestContextTagHandler extends AbstractJavaDocHandler {
 
@@ -21,11 +14,15 @@ public class CreateTestContextTagHandler extends AbstractJavaDocHandler {
 	public Object doExecute(ExecutionEvent event) throws ExecutionException {
 		try {
 			ICompilationUnit compilationUnit = getCompilationUnitOfJavaEditor();
+			TestContextTagCreator creater = new TestContextTagCreator();
+			IJavaElement element = getElementOfCurrentCursor();
+			String clazz = "";
+			if(element != null){
+				clazz = element.getPrimaryElement().getElementName();
+			}
+			creater.addTag(compilationUnit.findPrimaryType(), clazz);
 		} catch (JavaModelException e) {
 		}
-//		String id = "org.eclipse.jdt.ui.actions.AddJavaDocComment";
-//		IAction handler = getTextEdtior().getEditorSite().getActionBars().getGlobalActionHandler(id);
-//		handler.run();
 		return null;
 	}
 }
