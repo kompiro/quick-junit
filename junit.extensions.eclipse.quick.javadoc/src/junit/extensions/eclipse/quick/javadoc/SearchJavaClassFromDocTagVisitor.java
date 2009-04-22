@@ -59,7 +59,6 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 
 	public boolean visit(TagElement node) {
 		if(QuickJUnitDocTagConstants.TestContext.toAnnotation().equals(node.getTagName())){
-			System.out.println("SearchJavaClassFromDocTagVisitor.visit()");
 			for(Object obj:node.fragments()){
 				String patternString = obj.toString();
 				if(patternString.trim().equals("")) continue;
