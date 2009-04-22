@@ -82,7 +82,7 @@ public class JavaDocUIActivator extends AbstractUIPlugin {
     public void handleSystemError(Exception e, Object caller) {
         IStatus status = createSystemErrorStatus(e, caller);
         getLog().log(status);
-        ErrorDialog.openError((Shell) null, "QuickJUnit JavaDoc Extension", "", status); //$NON-NLS-1$ //$NON-NLS-2$
+        ErrorDialog.openError((Shell) null, "QuickJUnit JavaDoc UI Extension", "", status); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     public void logSystemError(Exception e, Object caller) {

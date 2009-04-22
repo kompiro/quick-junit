@@ -41,6 +41,15 @@ public class TestContextTagCreaterTest {
 		assertTrue(source.contains(TEST_CONTEXT_ANNOTATION));
 		assertStringCount(1,TEST_CONTEXT_ANNOTATION,source);
 	}
+
+	@Test
+	public void createTestContextTagFQCNClassName() throws Exception {
+		creator.addTag(type,"test.Test");
+		String source = type.getSource();
+		assertTrue(source.contains(TEST_CONTEXT_ANNOTATION));
+		assertStringCount(1,TEST_CONTEXT_ANNOTATION,source);
+	}
+
 	
 	@Test
 	public void assertIllegalCases() throws Exception{

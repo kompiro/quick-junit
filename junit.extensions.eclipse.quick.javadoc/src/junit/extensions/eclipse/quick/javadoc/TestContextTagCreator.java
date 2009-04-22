@@ -72,8 +72,8 @@ public class TestContextTagCreator{
 		if(clazz == null || clazz.equals("")){
 			return tag;
 		}
-		SimpleName newSimpleName = ast.newSimpleName(clazz);
-		tag.fragments().add(newSimpleName);
+		Name newName = ast.newName(clazz);
+		tag.fragments().add(newName);
 		return tag;
 	}
 	

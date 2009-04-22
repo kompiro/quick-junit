@@ -1,6 +1,7 @@
 package junit.extensions.eclipse.quick.javadoc.ui.handlers;
 
 import junit.extensions.eclipse.quick.javadoc.TestContextTagCreator;
+import junit.extensions.eclipse.quick.javadoc.ui.JavaDocUIActivator;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -17,11 +18,16 @@ public class CreateTestContextTagHandler extends AbstractJavaDocHandler {
 			TestContextTagCreator creater = new TestContextTagCreator();
 			IJavaElement element = getElementOfCurrentCursor();
 			String clazz = "";
-			if(element != null){
+			if(element instanceof IMember){
+				IMember member = (IMember) element;
+				IType type = member.getDeclaringType();
+				clazz = type.getFullyQualifiedName();
+			}else if(element != null){
 				clazz = element.getPrimaryElement().getElementName();
 			}
 			creater.addTag(compilationUnit.findPrimaryType(), clazz);
-		} catch (JavaModelException e) {
+		} catch (Exception e) {
+			JavaDocUIActivator.getDefault().handleSystemError(e, this);
 		}
 		return null;
 	}
