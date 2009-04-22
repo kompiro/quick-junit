@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Quick JUnit JavaDoc Extension Plug-in
 Bundle-SymbolicName: junit.extensions.eclipse.quick.javadoc; singleton:=true
-Bundle-Version: 0.4.9.qualifier
+Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: junit.extensions.eclipse.quick.javadoc.internal.JavaDocActivator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jdt.core;visibility:=reexport,
  org.eclipse.core.resources,
- org.eclipse.text;bundle-version="3.5.0"
+ org.eclipse.text
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: Masaru Ishii and friends

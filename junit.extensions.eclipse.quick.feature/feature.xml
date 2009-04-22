@@ -2,7 +2,7 @@
 <feature
       id="junit.extensions.eclipse.quick.feature"
       label="Quick JUnit Plugin"
-      version="0.4.9.qualifier"
+      version="0.5.0.beta1"
       provider-name="The Quick JUnit Plugin Project">
    <install-handler/>
 
@@ -266,5 +266,19 @@ any resulting litigation.
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="junit.extensions.eclipse.quick.javadoc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="junit.extensions.eclipse.quick.javadoc.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
