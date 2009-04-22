@@ -58,7 +58,8 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 	}
 
 	public boolean visit(TagElement node) {
-		if(TagElement.TAG_SEE.equals(node.getTagName())){
+		if(QuickJUnitDocTagConstants.TestContext.toAnnotation().equals(node.getTagName())){
+			System.out.println("SearchJavaClassFromDocTagVisitor.visit()");
 			for(Object obj:node.fragments()){
 				String patternString = obj.toString();
 				if(patternString.trim().equals("")) continue;
@@ -123,7 +124,6 @@ public class SearchJavaClassFromDocTagVisitor extends ASTVisitor {
 
 	private String transParamToSignatureStyle(String param) {
 		String sigStyle = Signature.createTypeSignature(param, true);
-		System.out.println(sigStyle);
 		return sigStyle;
 	}
 
