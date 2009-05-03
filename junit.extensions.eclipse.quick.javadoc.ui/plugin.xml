@@ -81,6 +81,12 @@
                   mnemonic="T"
                   id="junit.extensions.eclipse.quick.javadoc.ui.menus.createTestingContextCommand">
             </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <instanceof
+                     value="org.eclipse.jdt.core.IMember">
+               </instanceof>
+            </visibleWhen>
          </menu>
       </menuContribution>
    </extension>

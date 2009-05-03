@@ -53,6 +53,7 @@ public abstract class AbstractJavaDocHandler extends AbstractHandler {
 		int offset = text.getOffset();
 		int length = text.getLength();
         IJavaElement[] elements = unit.codeSelect(offset, length);
+        if(elements.length == 0) return null;
         return elements[0];
     }
     

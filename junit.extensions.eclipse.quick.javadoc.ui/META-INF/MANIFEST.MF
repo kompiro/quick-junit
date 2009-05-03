@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Quick JUnit JavaDoc UI Plug-in
 Bundle-SymbolicName: junit.extensions.eclipse.quick.javadoc.ui; singleton:=true
-Bundle-Version: 0.4.9.qualifier
+Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: junit.extensions.eclipse.quick.javadoc.ui.JavaDocUIActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
