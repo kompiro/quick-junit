@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description url="http://quick-junit.sourceforge.jp/updates/3.4/">
-      update site for Quick JUnit Plugin.
+   <description name="Quick JUnit Beta Release" url="http://kompiro.org/quick-junit/beta/">
+      update site for Quick JUnit Plugin Beta.
    </description>
    <feature url="features/junit.extensions.eclipse.quick.feature_0.5.0.beta1.jar" id="junit.extensions.eclipse.quick.feature" version="0.5.0.beta1">
       <category name="QuickJUnit"/>
