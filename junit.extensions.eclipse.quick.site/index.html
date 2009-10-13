@@ -24,6 +24,7 @@
 <h2>NEWS</h2>
 <div class="contents">
 <ul>
+<li>2009/10/13: Beta版配布用更新サイトをsourceforge.jpに用意しました。また、実験版にMacではキーバインドが変更されているバグがあったので、修正し、beta2をリリースしました。</li>
 <li>2009/05/09: Eclipse 3.5系だとインストールできなかった問題に対応しました。</li>
 <li>2009/04/25: 実験的な機能としてTestContextを含んだQuick JUnit 0.5.0 beta1をリリースしました。</li>
 <li>2009/04/25: ソースコードのメインリポジトリをGitHubに移行しました。<a href="http://github.com/kompiro/quick-junit/tree/master">http://github.com/kompiro/quick-junit/tree/master</a>にて公開をしています。</li>
@@ -45,7 +46,7 @@ Quick Junitプラグインのオリジナル版は2003年に<a href="http://www.
 <div class="contents">
 マイナーバージョン番号の違いが、ターゲットとするEclipseのバージョンが異なることを表わしています。
 <ul>
-<li><strong>0.5.x</strong>: Eclipse 3.3.x & J2SE-1.5 (動作確認はEclipse 3.5 M6)</li>
+<li><strong>0.5.x</strong>: Eclipse 3.3.x以降 & J2SE-1.5以降 (動作確認はEclipse 3.5)</li>
 <li><strong>0.4.x</strong>: Eclipse 3.2.x</li>
 <li><strong>0.3.x</strong>: Eclipse 3.1.x</li>
 <li><strong>0.1.x</strong>: Eclipse 3.0.x</li>
@@ -62,8 +63,7 @@ Quick JUnit Plugin 0.1.0からEclipseのソフトウェア更新に対応しま�
 Eclipseのバージョンによって、指定するURLが異なります。
 <ul>
 <li>最新版(0.4.0):<a href="http://quick-junit.sourceforge.jp/updates/current/">http://quick-junit.sourceforge.jp/updates/current/</a></li>
-</ul>
-<li>実験版(0.5.0_beta1):<a href="http://kompiro.org/quick-junit/beta/">http://kompiro.org/quick-junit/beta/</a></li>
+<li>実験版(0.5.0_beta2):<a href="http://quick-junit.sourceforge.jp/updates/beta/">http://quick-junit.sourceforge.jp/updates/beta/</a></li>
 </ul>
 
 <ul>
@@ -109,6 +109,18 @@ Eclipseのインストールディレクトリを$ECLIPSEとします(例: c:\ec
 </div>
 <h2><a name="changes">更新履歴</a></h2>
 <div class="contents">
+<h3><a name="changes050beta2">0.5.0beta2(2009/10/13)</a></h3>
+<ul>
+<li>Mac版のキーバインドが変更されている障害に対応しました(Thanks to Yoshiori氏)。</li>
+</ul>
+
+<h3><a name="changes050beta1">0.5.0beta1(2009/05/09)</a></h3>
+<ul>
+<li>JUnit4のテストスイートを実行できるようにしました。</li>
+<li>Eclipse3.3以降に対応しました。</li>
+<li>実験的にTestContextを実装しました。</li>
+</ul>
+
 <h3><a name=-"changes040">0.4.0</a></h3>
 <ul>
 <li>JUnit4のテストケースを実行できるようにしました(Thanks to 岩永さん)。</li>

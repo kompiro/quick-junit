@@ -204,10 +204,38 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
+            commandId="junit.extensions.eclipse.quick.command.OpenTestingPairAction"
+            contextId="org.eclipse.ui.textEditorScope"
+            platform="cocoa"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M4+9">
+      </key>
+      <key
+            commandId="junit.extensions.eclipse.quick.command.OpenTestingPairAction"
+            contextId="org.eclipse.ui.textEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M4+9">
+      </key>
+      <key
             sequence="M1+0"
             commandId="junit.extensions.eclipse.quick.command.JUnitRunAction"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="junit.extensions.eclipse.quick.command.JUnitRunAction"
+            contextId="org.eclipse.ui.textEditorScope"
+            platform="cocoa"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M4+0">
+      </key>
+      <key
+            commandId="junit.extensions.eclipse.quick.command.JUnitRunAction"
+            contextId="org.eclipse.ui.textEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M4+0">
       </key>
       <key
             sequence="M1+M2+0"
@@ -215,7 +243,22 @@
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
+      <key
+            sequence="M4+M2+0"
+            commandId="junit.extensions.eclipse.quick.command.JUnitDebugAction"
+            platform="carbon"
+            contextId="org.eclipse.ui.textEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            sequence="M4+M2+0"
+            commandId="junit.extensions.eclipse.quick.command.JUnitDebugAction"
+            platform="cocoa"
+            contextId="org.eclipse.ui.textEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
    </extension>
+
    <extension
          point="org.eclipse.ui.propertyPages">
       <page

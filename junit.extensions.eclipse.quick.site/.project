@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.pde.UpdateSiteNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>README.textile</name>
+			<type>1</type>
+			<location>/home/kompiro/codes/java/quick-junit/README.textile</location>
+		</link>
+	</linkedResources>
 </projectDescription>

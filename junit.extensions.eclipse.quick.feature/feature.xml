@@ -2,7 +2,7 @@
 <feature
       id="junit.extensions.eclipse.quick.feature"
       label="Quick JUnit Plugin"
-      version="0.5.0.beta1"
+      version="0.5.0.beta2"
       provider-name="The Quick JUnit Plugin Project">
    <install-handler/>
 
@@ -233,7 +233,8 @@ any resulting litigation.
    </license>
 
    <url>
-      <update label="Quick JUnit Plugin update site" url="http://quick-junit.sourceforge.jp/updates/current/site.xml"/>
+      <discovery label="Quick JUnit Plugin Release Site" url="http://quick-junit.sourceforge.jp/updates/current/"/>
+      <discovery label="Quick JUnit Plugin Beta Site" url="http://quick-junit.sourceforge.jp/updates/beta/"/>
    </url>
 
    <requires>
