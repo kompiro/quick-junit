@@ -1,0 +1,30 @@
+h1. What is Quick JUnit?
+Quick JUnit provides these features.
+
+2009-10-13 written by Hiroki Kondo (a.k.a kompiro)
+
+h2. Features
+
+* Enable to change product code and test code using only one short cut key sequence(Ctrl+9).We call these set are testing pair.
+* Enable to create new test class if there are no testing pair class and you use 'Ctrl+9'. 
+* Enable to launch test code more easy.Only one short cut key sequence (Ctrl+0).
+* Enable to launch only test method. If you want to launch only test method, please locate your cursor on target test method's range and launch 'Ctrl+0'!
+
+h3. Experimental Features
+
+* Enable to use default parameters when you launch test.
+* Enable to change between TestContext classes.TestContext means Testing under the context.When your project is bigger and bigger, there are some functional tests in your project.TestContext connects these classes.
+
+h2. How to install it?
+
+Recently we provides only beta version and only test on eclipse 3.5(Galileo). If you use this plug-in, you can use update site.
+
+* "http://quick-junit.sourceforge.jp/updates/beta/":http://quick-junit.sourceforge.jp/updates/beta/
+
+h2. Change Log
+
+Please read "ChangeLog":junit.extensions.eclipse.quick/ChangeLog.
+
+h3. Copyright &copy; 2003-2008 Masaru Ishii,The Quick JUnit Plugin Project.
+
+This plugin dadecated to the memory of Masaru Ishii.

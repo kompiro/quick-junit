@@ -1,0 +1,3 @@
+h1.  What is junit.extensions.eclipse.quick
+
+This plug-in provides Quick JUnit's main feature.
