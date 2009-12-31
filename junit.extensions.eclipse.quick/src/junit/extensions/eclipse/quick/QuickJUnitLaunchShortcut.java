@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -29,6 +30,7 @@ import org.eclipse.jdt.junit.launcher.JUnitLaunchShortcut;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jdt.ui.JavaElementLabelProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
@@ -254,9 +256,20 @@ public class QuickJUnitLaunchShortcut extends JUnitLaunchShortcut {
 		throw new InterruptedException(); // cancelled by user
 	}
 
-	private IType[] findTypesToLaunch(ICompilationUnit cu) throws InterruptedException, InvocationTargetException {
-		ITestKind testKind= TestKindRegistry.getContainerTestKind(cu);
-		return TestSearchEngine.findTests(getWorkbenchWindow(), cu, testKind);
+	private IType[] findTypesToLaunch(final ICompilationUnit cu) throws InterruptedException, InvocationTargetException {
+		final ITestKind testKind= TestKindRegistry.getContainerTestKind(cu);
+		final Set result = new HashSet();
+		IRunnableWithProgress runnable= new IRunnableWithProgress() {
+			public void run(IProgressMonitor pm) throws InterruptedException, InvocationTargetException {
+				try {
+					testKind.getFinder().findTestsInContainer(cu, result, pm);
+				} catch (CoreException e) {
+					throw new InvocationTargetException(e);
+				}
+			}
+		};
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().run(false, false, runnable);
+		return (IType[]) result.toArray(new IType[]{});
 	}
 	
 	private void showNoTestsFoundDialog() {

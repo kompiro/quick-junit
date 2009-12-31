@@ -251,7 +251,7 @@ public class QuickJUnitInfoPage extends PropertyPage implements
 			}
 		}
 		if(getWorkingCopy().isReadOnly()) {
-			return LaunchConfigurationsMessages.LaunchConfigurationTabGroupViewer_9;
+			return "readonly";
 		}
 		return null;
 	}
