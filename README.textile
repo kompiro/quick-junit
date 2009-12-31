@@ -1,19 +1,35 @@
 h1. What is Quick JUnit?
 Quick JUnit provides these features.
 
-2009-10-13 written by Hiroki Kondo (a.k.a kompiro)
+2010-01-01 written by Hiroki Kondo (a.k.a kompiro)
 
 h2. Features
 
+h3. junit.extensions.eclipse.quick
+
 * Enable to change product code and test code using only one short cut key sequence(Ctrl+9).We call these set are testing pair.
 * Enable to create new test class if there are no testing pair class and you use 'Ctrl+9'. 
-* Enable to launch test code more easy.Only one short cut key sequence (Ctrl+0).
-* Enable to launch only test method. If you want to launch only test method, please locate your cursor on target test method's range and launch 'Ctrl+0'!
+* Enable to launch test more easy.Only one short cut key sequence (Ctrl+0).
+** Enable to launch only one test method. If you want to launch only it, please locate your cursor on target test method's range and push 'Ctrl+0'
+* Enable to launch debug test more easy.Only one short cut key sequence (Ctrl+Shift+0).
 
-h3. Experimental Features
+h3. junit.extensions.eclipse.quick.pde
 
-* Enable to use default parameters when you launch test.
+* Enable to launch PDE test more easy.Only one short cut key sequence (Ctrl+-).
+* Enable to launch PDE debug test more easy.Only one short cut key sequence (Ctrl+Shift+-).
+
+
+h2. Experimental Features
+
+h3. junit.extensions.eclipse.quick.javadoc (TestContext Support)
+
+* Enable to set default parameters when you launch your tests on project setting.
 * Enable to change between TestContext classes.TestContext means Testing under the context.When your project is bigger and bigger, there are some functional tests in your project.TestContext connects these classes.
+
+h3. junit.extensions.eclipse.quick.mock (Mockito Integration)
+
+* Enable to use template. it's name 'Q'.'Q' provides easy to write to use hamcrest and mockito test code.
+* Enable to use Mockito as Classpath Library on Eclipse Platform like JUnit Libraries.  
 
 h2. How to install it?
 
@@ -25,6 +41,6 @@ h2. Change Log
 
 Please read "ChangeLog":junit.extensions.eclipse.quick/ChangeLog.
 
-h3. Copyright &copy; 2003-2008 Masaru Ishii,The Quick JUnit Plugin Project.
+h3. Copyright &copy; 2003-2010 Masaru Ishii,The Quick JUnit Plugin Project.
 
 This plugin dadecated to the memory of Masaru Ishii.
