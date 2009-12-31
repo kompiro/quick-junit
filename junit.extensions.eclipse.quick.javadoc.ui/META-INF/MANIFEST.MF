@@ -12,3 +12,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: The Quick JUnit Plugin Project
