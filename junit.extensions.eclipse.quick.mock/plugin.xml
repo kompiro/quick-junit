@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors.templates">
+      <template
+            autoinsert="true"
+            contextTypeId="java-members"
+            description="Quick JUnit Mockito Integration"
+            id="junit.extensions.eclipse.quick.mock.mock"
+            name="Q">
+         <pattern>
+            @${testType:newType(org.junit.Test)}
+public void ${testname}() throws Exception {
+	${junit:importStatic(&apos;org.junit.Assert.*&apos;)} 
+    ${hamcrest:importStatic(&apos;org.hamcrest.CoreMatchers.*&apos;)}
+	${mockIto:importStatic(&apos;org.mockito.Mockito.*&apos;)}${cursor} 
+}
+            
+         </pattern>
+      </template>
+   </extension>
+   <extension
+         point="org.eclipse.jdt.core.classpathContainerInitializer">
+      <classpathContainerInitializer
+            class="junit.extensions.eclipse.quick.mock.internal.MockitoClasspathContainerInitializer"
+            id="junit.extensions.eclipse.quick.mock.MOCKITO_CONTAINER">
+      </classpathContainerInitializer>
+   </extension>
+   <extension
+         point="org.eclipse.jdt.ui.classpathContainerPage">
+      <classpathContainerPage
+            class="junit.extensions.eclipse.quick.mock.internal.wizard.MockitoPage"
+            id="junit.extensions.eclipse.quick.mock.MOCKITO_CONTAINER"
+            name="Mockito">
+      </classpathContainerPage>
+   </extension>
+   <extension
+         point="org.eclipse.jdt.ui.classpathFixProcessors">
+      <classpathFixProcessor
+            class="junit.extensions.eclipse.quick.mock.internal.MockitoClasspathFixProcessor"
+            id="junit.extensions.eclipse.quick.mock.MOCKITO_CONTAINER"
+            name="Mockito">
+            <overrides
+                  id="org.eclipse.jdt.ui.text.correction.DefaultClasspathFixProcessor">
+            </overrides>
+      </classpathFixProcessor>
+   </extension>
+
+</plugin>
