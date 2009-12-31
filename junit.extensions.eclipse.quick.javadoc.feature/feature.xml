@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="junit.extensions.eclipse.quick.feature"
-      label="Quick JUnit Plugin"
-      version="0.5.0.beta3"
+      id="junit.extensions.eclipse.quick.javadoc.feature"
+      label="TestContext Feature(Experimental)"
+      version="0.1.0"
       provider-name="The Quick JUnit Plugin Project">
    <install-handler/>
 
@@ -239,26 +239,29 @@ any resulting litigation.
    </url>
 
    <requires>
-      <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.ui.editors"/>
-      <import plugin="org.eclipse.ui.workbench.texteditor"/>
-      <import plugin="org.eclipse.jface.text"/>
-      <import plugin="org.eclipse.debug.ui"/>
-      <import plugin="org.eclipse.jdt.core"/>
-      <import plugin="org.eclipse.jdt.ui"/>
-      <import plugin="org.eclipse.jdt.junit"/>
-      <import plugin="org.eclipse.ui.views"/>
-      <import plugin="org.eclipse.pde.ui"/>
+      <import feature="junit.extensions.eclipse.quick.feature" version="0.5.0.beta3"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.jdt"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.text"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.jface.text"/>
    </requires>
 
    <plugin
-         id="junit.extensions.eclipse.quick"
+         id="junit.extensions.eclipse.quick.javadoc"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="junit.extensions.eclipse.quick.javadoc.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
