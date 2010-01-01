@@ -5,15 +5,16 @@ Quick JUnit provides these features.
 
 h2. Features
 
-h3. junit.extensions.eclipse.quick
+h3. junit.extensions.eclipse.quick.feature
 
 * Enable to change product code and test code using only one short cut key sequence(Ctrl+9).We call these set are testing pair.
 * Enable to create new test class if there are no testing pair class and you use 'Ctrl+9'. 
 * Enable to launch test more easy.Only one short cut key sequence (Ctrl+0).
 ** Enable to launch only one test method. If you want to launch only it, please locate your cursor on target test method's range and push 'Ctrl+0'
 * Enable to launch debug test more easy.Only one short cut key sequence (Ctrl+Shift+0).
+* Enable to set default parameters when you launch your tests on project setting.(Experimental)
 
-h3. junit.extensions.eclipse.quick.pde
+h3. junit.extensions.eclipse.quick.pde.feature
 
 * Enable to launch PDE test more easy.Only one short cut key sequence (Ctrl+-).
 * Enable to launch PDE debug test more easy.Only one short cut key sequence (Ctrl+Shift+-).
@@ -21,12 +22,11 @@ h3. junit.extensions.eclipse.quick.pde
 
 h2. Experimental Features
 
-h3. junit.extensions.eclipse.quick.javadoc (TestContext Support)
+h3. junit.extensions.eclipse.quick.javadoc.feature (TestContext Support)
 
-* Enable to set default parameters when you launch your tests on project setting.
 * Enable to change between TestContext classes.TestContext means Testing under the context.When your project is bigger and bigger, there are some functional tests in your project.TestContext connects these classes.
 
-h3. junit.extensions.eclipse.quick.mock (Mockito Integration)
+h3. junit.extensions.eclipse.quick.mock.feature (Mockito Integration)
 
 * Enable to use template. it's name 'Q'.'Q' provides easy to write to use hamcrest and mockito test code.
 * Enable to use Mockito as Classpath Library on Eclipse Platform like JUnit Libraries.  

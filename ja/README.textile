@@ -1,47 +1,68 @@
-h1. Quick JUnitとは?
-Quick JUnitが提供する機能について。
+h1. Quick JUnit　クイックマニュアル
 
-2010-01-01 written by Hiroki Kondo (a.k.a kompiro)
+2010-01-01 written by Hiroki Kondo (@kompiro)
 
-h2. フィーチャー(機能)
+このドキュメントでは、Quick JUnitの提供する機能やショートカットをまとめています。
 
-h3. junit.extensions.eclipse.quick
+h2. プロジェクトの目的
+
+* TDDの実践をより簡単にする
+
+h2. Quick JUnitのフィーチャー(機能)
+
+各フィーチャーごとに提供する機能をまとめています。
+
+h4. 凡例
+
+* ショートカットキーは[]で表します。例:Ctrlキー+9を押すと実行→[Ctrl+9]
+
+h3. junit.extensions.eclipse.quick.feature
 
 このフィーチャーではQuick JUnitのベースとなる機能を提供します。
 
-* [Ctrl+9]プロダクトコードとテストコードを簡単に切り替えます。プロダクトコードとテストコードの切替時にはカーソル位置が保存されるので、TDDの実践をより容易にできます。
-* Enable to create new test class if there are no testing pair class and you use 'Ctrl+9'. 
-* Enable to launch test more easy.Only one short cut key sequence (Ctrl+0).
-** Enable to launch only one test method. If you want to launch only it, please locate your cursor on target test method's range and push 'Ctrl+0'
-* Enable to launch debug test more easy.Only one short cut key sequence (Ctrl+Shift+0).
+* [Ctrl+9]プロダクトコードとテストコードを簡単に切り替えます。プロダクトコードとテストコードの紐付けはデフォルトでは「プロダクトクラス+Test」という命名規約により、紐づきます。(カスタマイズ可)プロダクトコードとテストコードの切替時にはカーソル位置が保存されるので、より容易にTDDの実践できるでしょう。
+** もし対応するプロダクトコード、もしくはテストコードが存在しない場合は、新規に作成するダイアログが表示されます。
+* [Ctrl+0]テストを実行します。Eclipse標準でも実行できますが、1回ショートカットを押すだけになります。
+** もし、テストメソッドの内側でこのショートカットを実行すると、そのメソッドのみで実行出来ます。テストメソッドを一つずつ積み上げていく場合に便利でしょう。
+* [Ctrl+Shift+0]テストをデバッグ実行します。
+** もし、テストメソッドの内側でこのショートカットを実行すると、そのメソッドのみでデバッグ実行出来ます。
 
-h3. junit.extensions.eclipse.quick.pde
+* 設定
+** JUnit実行時のデフォルトの設定値を設定するプロジェクトのプロパティを用意(実験的)
+** JUnit実行時のデフォルトの設定値を設定するプロジェクトのプロパティを用意
 
-* Enable to launch PDE test more easy.Only one short cut key sequence (Ctrl+-).
-* Enable to launch PDE debug test more easy.Only one short cut key sequence (Ctrl+Shift+-).
+h3. junit.extensions.eclipse.quick.pde.feature
 
+このフィーチャーではPDE(プラグイン開発環境)で有用な機能を提供します。
 
-h2. Experimental Features
+* [Ctrl+-]PDEテストの実行します。
+* [Ctrl+Shift+-]PDEテストをデバッグ実行します。
 
-h3. junit.extensions.eclipse.quick.javadoc (TestContext Support)
+h2. 実験的なフィーチャー
 
-* Enable to set default parameters when you launch your tests on project setting.
-* Enable to change between TestContext classes.TestContext means Testing under the context.When your project is bigger and bigger, there are some functional tests in your project.TestContext connects these classes.
+h3. junit.extensions.eclipse.quick.javadoc.feature (TestContextのサポート)
 
-h3. junit.extensions.eclipse.quick.mock (Mockito Integration)
+TextContextとはテストコードとプロダクトコードを緩くつなぐフィーチャーです。プロジェクトが多くなるにつれてFunctional Testが増えたりしますが、TestContextはこれらのクラスをつなぎます。TestContextはJavaDocに明記されます。
 
-* Enable to use template. it's name 'Q'.'Q' provides easy to write to use hamcrest and mockito test code.
-* Enable to use Mockito as Classpath Library on Eclipse Platform like JUnit Libraries.  
+* [Ctrl+8] TestContextとして明記したクラスやメソッドにジャンプします。
+* [Ctrl+Shift+8] カーソル下のクラスやメソッドをTestContextとして追加します。
 
-h2. How to install it?
+h3. junit.extensions.eclipse.quick.mock.feature (Mockito Integration)
 
-Recently we provides only beta version and only test on eclipse 3.5(Galileo). If you use this plug-in, you can use update site.
+モックを使ったテストをサポートするフィーチャーです。モックライブラリの一つであるMockitoを使ったテストを書きやすくするためのフィーチャーです。
+
+* Mockitoを使ったテストを使い始めやすくするため、JUnitのようにEclipseのクラスパスライブラリに指定できるようにしました。
+* 「Q」と名づけられたテンプレートを追加しました。Qと入力後コンテンツアシストを行うと、テンプレートが入力され、hamcrestやmockitoをstatic importした状態でテストコードを書き始める事が出来ます。
+
+h2. インストール方法
+
+betaバージョンはEclipse 3.5以降のバージョンでのみテストをしています。もしこのプラグインを使ってみたい場合は下記を更新サイトとして指定してみてください。
 
 * "http://quick-junit.sourceforge.jp/updates/beta/":http://quick-junit.sourceforge.jp/updates/beta/
 
-h2. Change Log
+h2. 更新履歴
 
-Please read "ChangeLog":junit.extensions.eclipse.quick/ChangeLog.
+"ChangeLogをお読みください。":junit.extensions.eclipse.quick/ChangeLog.
 
 h3. Copyright &copy; 2003-2010 Masaru Ishii,The Quick JUnit Plugin Project.
 
