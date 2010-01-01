@@ -20,5 +20,10 @@
 			<type>1</type>
 			<location>/home/kompiro/codes/java/quick-junit/README.textile</location>
 		</link>
+		<link>
+			<name>README_ja.textile</name>
+			<type>1</type>
+			<location>/home/kompiro/codes/java/quick-junit/ja/README.textile</location>
+		</link>
 	</linkedResources>
 </projectDescription>
