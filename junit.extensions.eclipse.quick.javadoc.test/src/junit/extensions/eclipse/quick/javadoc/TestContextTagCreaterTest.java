@@ -14,7 +14,7 @@ public class TestContextTagCreaterTest {
 	
 	private TestProject project;
 	private IType type;
-	private TestContextTagCreator creator;
+	private TestContextTagCreater creator;
 	private final String TEST_CONTEXT_ANNOTATION = QuickJUnitDocTagConstants.TestContext.toAnnotation();
 
 	@Before
@@ -26,7 +26,7 @@ public class TestContextTagCreaterTest {
 		type = createType(project, packageName, "Target", 
 				"class Target{}");
 		assertNotNull(type);
-		creator = new TestContextTagCreator();
+		creator = new TestContextTagCreater();
 	}
 	
 	@After

@@ -11,11 +11,11 @@ import org.eclipse.jdt.core.dom.*;
 import org.eclipse.jface.text.Document;
 import org.eclipse.text.edits.TextEdit;
 
-public class TestContextTagCreator{
+public class TestContextTagCreater{
 
 	private ASTParser parser;
 
-	public TestContextTagCreator(){
+	public TestContextTagCreater(){
 		parser = ASTParser.newParser(AST.JLS3);
 		parser.setBindingsRecovery(true);			
 	}
