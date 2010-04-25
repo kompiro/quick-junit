@@ -2,7 +2,7 @@
 <feature
       id="junit.extensions.eclipse.quick.feature"
       label="Quick JUnit Plugin"
-      version="0.5.0.beta3"
+      version="0.5.0.release"
       provider-name="The Quick JUnit Plugin Project">
    <install-handler/>
 
