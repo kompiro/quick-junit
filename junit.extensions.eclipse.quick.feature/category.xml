@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/junit.extensions.eclipse.quick.feature_0.6.0.qualifier.jar" id="junit.extensions.eclipse.quick.feature" version="0.6.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.feature"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.mock.feature_0.3.0.qualifier.jar" id="junit.extensions.eclipse.quick.mock.feature" version="0.3.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.feature"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.pde.feature_0.6.0.qualifier.jar" id="junit.extensions.eclipse.quick.pde.feature" version="0.6.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.feature"/>
+   </feature>
+   <category-def name="junit.extensions.eclipse.quick.feature" label="Quick JUnit Main"/>
+   <feature url="features/junit.extensions.eclipse.quick.feature.source_0.6.0.qualifier.jar" id="junit.extensions.eclipse.quick.feature.source" version="0.6.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.source.feature"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.mock.feature.source_0.3.0.qualifier.jar" id="junit.extensions.eclipse.quick.mock.feature.source" version="0.3.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.source.feature"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.pde.feature.source_0.6.0.qualifier.jar" id="junit.extensions.eclipse.quick.pde.feature.source" version="0.6.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.source.feature"/>
+   </feature>
+   <category-def name="junit.extensions.eclipse.quick.source.feature" label="Quick JUnit Source Feature"/>
+</site>
