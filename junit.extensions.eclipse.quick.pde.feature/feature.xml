@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="junit.extensions.eclipse.quick.pde.feature"
-      label="Quick JUnit PDE Feature"
-      version="0.5.0"
-      provider-name="The Quick JUnit Plugin Project">
+      label="%featureName"
+      version="0.6.0.qualifier"
+      provider-name="%providerName">
 
    <description url="http://quick-junit.sourceforge.jp/">
       This plugin makes easy to launch JUnit PDE Test.
