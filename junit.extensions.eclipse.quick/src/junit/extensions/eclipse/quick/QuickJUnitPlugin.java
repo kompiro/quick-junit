@@ -15,6 +15,7 @@ import org.osgi.framework.Constants;
 
 
 public class QuickJUnitPlugin extends AbstractUIPlugin {
+	
     private static QuickJUnitPlugin plugin;
 
     public QuickJUnitPlugin() {
@@ -67,7 +68,7 @@ public class QuickJUnitPlugin extends AbstractUIPlugin {
 
         return errorStatus;
     }
-
+    
     public IStatus createStatus(int severity, String message) {
         return createStatus(severity, message, 0, null);
     }

@@ -258,22 +258,4 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>
-
-   <extension
-         point="org.eclipse.ui.propertyPages">
-      <page
-            class="junit.extensions.eclipse.quick.QuickJUnitInfoPage"
-            name="Quick JUnit"
-            id="junit.extensions.eclipse.quick.QuickJUnitInfoPage">
-         <!--
-         <filter
-               name="projectPersistentProperty"
-               value="org.eclipse.jdt.core.javanature">
-         </filter>
-         -->
-         <enabledWhen>
-         	<adapt type="org.eclipse.jdt.core.IJavaProject"/>
-         </enabledWhen>
-      </page>
-   </extension>
 </plugin>

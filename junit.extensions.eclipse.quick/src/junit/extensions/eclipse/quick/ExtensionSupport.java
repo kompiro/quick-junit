@@ -7,6 +7,8 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.ui.IWorkbench;
@@ -28,7 +30,9 @@ public class ExtensionSupport {
     	return createWorkingCopy("org.eclipse.jdt.junit.launchconfig");
     }
     
-
+    public static ILaunchConfiguration getLaunchConfiguration() throws CoreException{
+    	return getWorkingCopy("org.eclipse.jdt.junit.launchconfig");
+    }
 
 	public static IWorkbenchWizard createNewClassCreationWizard() throws CoreException {
         return createWizard("org.eclipse.jdt.ui.wizards.NewClassCreationWizard"); //$NON-NLS-1$
@@ -64,7 +68,20 @@ public class ExtensionSupport {
 		return launchConfiguration;
 	}
     
-    protected static IWorkbenchWizard createWizard(final String id) throws CoreException {
+    private static ILaunchConfiguration getWorkingCopy(String namespace) throws CoreException {
+    	ILaunchConfigurationType type = createWorkingCopy(namespace).getType();
+		ILaunchConfiguration[] configurations = DebugPlugin.getDefault().getLaunchManager().getLaunchConfigurations(type);
+		ILaunchConfiguration launchConfiguration = null;
+		for (int i = 0; i < configurations.length; i++){
+			ILaunchConfiguration candidate = configurations[i];
+			if(candidate.getName().equals(QUICK_JUNIT_DEFAULT)){
+				launchConfiguration = candidate;
+			}
+		}
+		return launchConfiguration;
+	}
+
+	protected static IWorkbenchWizard createWizard(final String id) throws CoreException {
         final IWorkbench wb = PlatformUI.getWorkbench();
         final IWizardRegistry reg = wb.getNewWizardRegistry();
         final IWizardDescriptor desc = reg.findWizard(id);
