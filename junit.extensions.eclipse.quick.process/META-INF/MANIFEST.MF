@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: run process after JUnit plugin
+Bundle-SymbolicName: junit.extensions.eclipse.quick.process;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Quick JUnit Project
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: .
+Import-Package: javax.imageio,
+ junit.extensions;version="4.5.0",
+ org.eclipse.core.runtime;version="3.4.0",
+ org.eclipse.core.runtime.preferences;version="3.2.0",
+ org.eclipse.jdt.junit,
+ org.eclipse.jdt.junit.model,
+ org.eclipse.jface.layout,
+ org.eclipse.jface.preference,
+ org.eclipse.jface.resource,
+ org.eclipse.osgi.util;version="1.1.0",
+ org.eclipse.swt,
+ org.eclipse.swt.events,
+ org.eclipse.swt.graphics,
+ org.eclipse.swt.layout,
+ org.eclipse.swt.widgets,
+ org.eclipse.ui,
+ org.eclipse.ui.plugin,
+ org.junit;version="4.5.0"
+Bundle-Activator: junit.extensions.eclipse.quick.process.internal.ProcessActivator
+Bundle-ActivationPolicy: lazy

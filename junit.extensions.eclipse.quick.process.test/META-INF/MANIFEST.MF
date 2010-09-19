@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Process Test
+Bundle-SymbolicName: junit.extensions.eclipse.quick.process.test
+Bundle-Version: 0.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Fragment-Host: junit.extensions.eclipse.quick.process
