@@ -37,7 +37,7 @@
          version="0.0.0"
          os="macosx"
          ws="cocoa"
-         arch="x86"/>
+         arch=""/>
 
    <includes
          id="junit.extensions.eclipse.quick.process.feature"
