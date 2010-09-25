@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="junit.extensions.eclipse.quick.test"
+      id="junit.extensions.eclipse.quick.test.feature"
       label="Quick JUnit Test  Feature"
       version="0.0.0">
 

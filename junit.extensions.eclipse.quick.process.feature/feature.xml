@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="junit.extensions.eclipse.quick.process"
+      id="junit.extensions.eclipse.quick.process.feature"
       label="Quick JUnit Process Call Extension"
       version="0.1.0.qualifier"
       provider-name="Quick JUnit Project">
