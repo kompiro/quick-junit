@@ -32,12 +32,4 @@
          id="junit.extensions.eclipse.quick.pde.feature"
          version="0.0.0"/>
 
-   <includes
-         id="junit.extensions.eclipse.quick.process"
-         version="0.0.0"/>
-
-   <includes
-         id="junit.extensions.eclipse.quick.test"
-         version="0.0.0"/>
-
 </feature>
