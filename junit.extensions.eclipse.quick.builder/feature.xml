@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="junit.extensions.eclipse.quick.builder"
+      label="Quick JUnit Builder Project"
+      version="0.0.0">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="junit.extensions.eclipse.quick.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="junit.extensions.eclipse.quick.javadoc.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="junit.extensions.eclipse.quick.mock.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="junit.extensions.eclipse.quick.pde.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="junit.extensions.eclipse.quick.process"
+         version="0.0.0"/>
+
+   <includes
+         id="junit.extensions.eclipse.quick.test"
+         version="0.0.0"/>
+
+</feature>
