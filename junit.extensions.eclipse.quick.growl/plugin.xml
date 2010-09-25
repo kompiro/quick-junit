@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.jdt.junit.testRunListeners">
+      <testRunListener
+            class="junit.extensions.eclipse.quick.mac.growl.internal.TestListenerForGrowl">
+      </testRunListener>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.jdt.junit.preferences"
+            class="junit.extensions.eclipse.quick.mac.growl.internal.preferences.GrowlPreferencePage"
+            id="junit.extensions.eclipse.quick.mac.growl.GrowlPreference"
+            name="Growl Notification">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="junit.extensions.eclipse.quick.mac.growl.internal.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+</plugin>
