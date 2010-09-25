@@ -38,7 +38,7 @@ public class LearningTestProject {
 	private IWorkspace workspace;
 	
 	@Test
-	public void leaning_JavaDocのみ取得する() throws Exception {
+	public void leaning_get_only_JavaDoc() throws Exception {
 		assertTrue(project.getProject().exists());
 		assertTrue(workspace.getRoot().exists(new Path("TestProject")));
 		assertTrue(workspace.getRoot().exists(new Path("TestProject/src/test")));
