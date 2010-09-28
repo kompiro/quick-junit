@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target includeMode="feature" name="Quick JUnit Target">
+<target name="Quick JUnit Target">
 <locations>
 <location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit">
-<unit id="epp.package.java" version="1.3.0.20100617-0520"/>
-<repository location="http://download.eclipse.org/releases/helios"/>
-</location>
-<location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit">
-<unit id="org.eclipse.pde.feature.group" version="3.6.0.v20100525-7b7mFKtFEx2XmfZ4_B7NUJA"/>
+<unit id="epp.package.java" version="1.3.1.20100916-1202"/>
+<unit id="org.eclipse.pde.feature.group" version="3.6.1.r361_v20100727-7b7mFL-FET3dhESDgE5_bkJ"/>
 <repository location="http://download.eclipse.org/releases/helios"/>
 </location>
 </locations>
