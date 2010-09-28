@@ -5,3 +5,4 @@ Bundle-SymbolicName: junit.extensions.eclipse.quick.process.test
 Bundle-Version: 0.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Fragment-Host: junit.extensions.eclipse.quick.process
+Import-Package: org.junit
