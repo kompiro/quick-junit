@@ -3,7 +3,8 @@
       id="junit.extensions.eclipse.quick.feature"
       label="%featureName"
       version="0.6.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="junit.extensions.eclipse.quick">
    <install-handler/>
 
    <description url="http://quick-junit.sourceforge.jp/">

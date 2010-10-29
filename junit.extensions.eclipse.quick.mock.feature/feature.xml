@@ -3,7 +3,8 @@
       id="junit.extensions.eclipse.quick.mock.feature"
       label="%featureName"
       version="0.3.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="junit.extensions.eclipse.quick.">
 
    <description url="http://quick-junit.sourceforge.jp/">
       This plugin makes easy to write JUnit Test Code by using easy template code.
