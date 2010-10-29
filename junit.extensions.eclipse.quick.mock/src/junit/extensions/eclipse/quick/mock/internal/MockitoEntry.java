@@ -18,7 +18,7 @@ public class MockitoEntry {
 
 	public IPath getPath(){
 		Bundle bundle = Platform.getBundle("junit.extensions.eclipse.quick.mock");
-		URL entry = bundle.getEntry("mockito-all-1.8.2.jar");
+		URL entry = bundle.getEntry("mockito-all-1.8.5.jar");
 		String fileURL = null;
 		try {
 			fileURL = URLDecoder.decode(FileLocator.toFileURL(entry).getFile(), "UTF-8");
