@@ -1,24 +1,18 @@
 package junit.extensions.eclipse.quick;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import junit.framework.Assert;
 
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.ChildListPropertyDescriptor;
 import org.eclipse.jdt.core.dom.Javadoc;
-import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodRef;
 import org.eclipse.jdt.core.dom.SimpleName;
-import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 import org.eclipse.jdt.core.dom.TagElement;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.junit.Test;
 
 public class LeaningAST {
@@ -91,8 +85,8 @@ public class LeaningAST {
 		ASTParser parser = ASTParser.newParser(AST.JLS3);
 		parser.setSource(source.toCharArray());
 		final ASTNode node = parser.createAST(null);
-		final List<String> actual = new ArrayList<String>();
 		ASTVisitor visitor = new ASTVisitor(){
+			@SuppressWarnings("unchecked")
 			public boolean visit(Javadoc doc){
 				AST ast = doc.getAST();
 				TagElement tag = ast.newTagElement();
@@ -111,42 +105,42 @@ public class LeaningAST {
 		System.out.println(node);
 	}
 
-	private void extractPropertyDescriptor(ASTNode node, Object obj) {
-		if(obj == null) return;
-		System.out.println(String.format("%s %s", obj.getClass().getName(),obj));
-		if (obj instanceof StructuralPropertyDescriptor) {
-			StructuralPropertyDescriptor desc = (StructuralPropertyDescriptor) obj;
-			Object structuralProperty = node.getStructuralProperty(desc);
-			extractPropertyDescriptor(node, structuralProperty);
-			return;
-		}
-		if (obj instanceof List<?>) {
-			List<?> list = (List<?>) obj;
-			for(Object o : list){
-				extractPropertyDescriptor(node, o);
-			}
-			return;
-		}
-		if(obj instanceof TypeDeclaration){
-			TypeDeclaration type = (TypeDeclaration) obj;
-//			System.out.println(type.getName().getFullyQualifiedName());
-//			System.out.println(String.format("JavaDoc         : %s",type.getJavadoc()));
-//			System.out.println(String.format("JavaDocProperty : %s",type.getJavadocProperty()));
-			for (MethodDeclaration method : type.getMethods()) {
-				extractPropertyDescriptor(node, method);
-			}
-		}
-		if(obj instanceof MethodDeclaration){
-			MethodDeclaration method = (MethodDeclaration) obj;
-			System.out.println(method.getName());
-			Javadoc javadoc = method.getJavadoc();
-			List list = javadoc.structuralPropertiesForType();
-			for(Object o : list){
-				extractPropertyDescriptor(javadoc, o);
-			}
-//			System.out.println(String.format("JavaDoc         : %s",javadoc));
-//			System.out.println(String.format("JavaDocProperty : %s",method.getJavadocProperty()));
-		}
-	}
+//	private void extractPropertyDescriptor(ASTNode node, Object obj) {
+//		if(obj == null) return;
+//		System.out.println(String.format("%s %s", obj.getClass().getName(),obj));
+//		if (obj instanceof StructuralPropertyDescriptor) {
+//			StructuralPropertyDescriptor desc = (StructuralPropertyDescriptor) obj;
+//			Object structuralProperty = node.getStructuralProperty(desc);
+//			extractPropertyDescriptor(node, structuralProperty);
+//			return;
+//		}
+//		if (obj instanceof List<?>) {
+//			List<?> list = (List<?>) obj;
+//			for(Object o : list){
+//				extractPropertyDescriptor(node, o);
+//			}
+//			return;
+//		}
+//		if(obj instanceof TypeDeclaration){
+//			TypeDeclaration type = (TypeDeclaration) obj;
+////			System.out.println(type.getName().getFullyQualifiedName());
+////			System.out.println(String.format("JavaDoc         : %s",type.getJavadoc()));
+////			System.out.println(String.format("JavaDocProperty : %s",type.getJavadocProperty()));
+//			for (MethodDeclaration method : type.getMethods()) {
+//				extractPropertyDescriptor(node, method);
+//			}
+//		}
+//		if(obj instanceof MethodDeclaration){
+//			MethodDeclaration method = (MethodDeclaration) obj;
+//			System.out.println(method.getName());
+//			Javadoc javadoc = method.getJavadoc();
+//			List list = javadoc.structuralPropertiesForType();
+//			for(Object o : list){
+//				extractPropertyDescriptor(javadoc, o);
+//			}
+////			System.out.println(String.format("JavaDoc         : %s",javadoc));
+////			System.out.println(String.format("JavaDocProperty : %s",method.getJavadocProperty()));
+//		}
+//	}
 	
 }
