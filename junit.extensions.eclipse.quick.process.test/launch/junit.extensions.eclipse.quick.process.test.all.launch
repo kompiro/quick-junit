@@ -12,7 +12,7 @@
 <booleanAttribute key="clearws" value="true"/>
 <booleanAttribute key="clearwslog" value="false"/>
 <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
-<booleanAttribute key="default" value="false"/>
+<booleanAttribute key="default" value="true"/>
 <stringAttribute key="deselected_workspace_plugins" value="junit.extensions.eclipse.quick,org.eclipse.debug.ui,junit.extensions.eclipse.quick.javadoc,junit.extensions.eclipse.quick.javadoc.test,junit.extensions.eclipse.quick.test,org.eclipse.osgi,junit.extensions.eclipse.quick.javadoc.ui,junit.extensions.eclipse.quick.growl,junit.extensions.eclipse.quick.args,junit.extensions.eclipse.quick.mock,junit.extensions.eclipse.quick.pde"/>
 <stringAttribute key="featureDefaultLocation" value="workspace"/>
 <stringAttribute key="featurePluginResolution" value="workspace"/>
@@ -57,7 +57,7 @@
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="templateConfig" value="${target_home}/configuration/config.ini"/>
 <booleanAttribute key="tracing" value="false"/>
-<booleanAttribute key="useCustomFeatures" value="true"/>
+<booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfig" value="true"/>
 <booleanAttribute key="useDefaultConfigArea" value="false"/>
 <booleanAttribute key="useProduct" value="false"/>
