@@ -3,7 +3,7 @@
 
 <target name="Quick JUnit Target">
 <locations>
-<location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit">
+<location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
 <unit id="org.eclipse.sdk.ide" version="3.6.1.M20100909-0800"/>
 <repository location="http://download.eclipse.org/releases/helios"/>
 </location>
