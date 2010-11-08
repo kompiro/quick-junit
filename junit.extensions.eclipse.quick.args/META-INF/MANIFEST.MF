@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Quick JUnit Configure Arguments Plugin
+Bundle-SymbolicName: junit.extensions.eclipse.quick.args;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: junit.extensions.eclipse.quick.args.ArgsPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.commands;bundle-version="3.6.0",
+ org.eclipse.ui;bundle-version="3.6.0",
+ org.eclipse.core.resources;bundle-version="3.6.0",
+ org.eclipse.debug.ui;bundle-version="3.6.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.eclipse.debug.core,
+ org.eclipse.debug.ui,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.debug.ui.launchConfigurations,
+ org.eclipse.jdt.launching

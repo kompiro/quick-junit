@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="junit.extensions.eclipse.quick.args.prefererence.QuickJUnitInfoPage"
+            name="Quick JUnit"
+            id="junit.extensions.eclipse.quick">
+         <enabledWhen>
+         	<adapt type="org.eclipse.jdt.core.IJavaProject"/>
+         </enabledWhen>
+      </page>
+   </extension>
+</plugin>
