@@ -114,11 +114,9 @@ public class QuickJUnitLaunchShortcut extends JUnitLaunchShortcut {
 		DebugUITools.launch(config, mode);
 	}
 
-	private static final Set DISABLE_KEY_SET = new HashSet();
+	private static final Set KEY_SET = new HashSet();
 	static {
-		DISABLE_KEY_SET.add(IJavaLaunchConfigurationConstants.ATTR_PROJECT_NAME);
-		DISABLE_KEY_SET.add(IJavaLaunchConfigurationConstants.ATTR_MAIN_TYPE_NAME);
-		DISABLE_KEY_SET.add(JUnitLaunchConfigurationConstants.ATTR_TEST_METHOD_NAME);
+		KEY_SET.add(IJavaLaunchConfigurationConstants.ATTR_PROGRAM_ARGUMENTS);
 	}
 	
 	private void setDefaultAttributes(
@@ -131,10 +129,9 @@ public class QuickJUnitLaunchShortcut extends JUnitLaunchShortcut {
 			try{
 				contains = attributes.containsKey(key);
 			}catch(NullPointerException e){
-				System.out.println(key);
 				continue;
 			}
-			if(contains && !DISABLE_KEY_SET.contains(key)){
+			if(contains && KEY_SET.contains(key)){
 				Object object = attributes.get(key);
 				if(object != null){
 					String value = object.toString();

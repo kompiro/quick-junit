@@ -13,3 +13,5 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: The Quick JUnit Plugin Project
+Import-Package: org.mockito,
+ org.mockito.stubbing
