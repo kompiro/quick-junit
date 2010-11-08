@@ -12,13 +12,14 @@ import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaCore;
 import org.osgi.framework.Bundle;
 
+
 public class MockitoEntry {
 
 	public static final String CONTAINER_PATH = "junit.extensions.eclipse.quick.mock.MOCKITO_CONTAINER";
 
 	public IPath getPath(){
-		Bundle bundle = Platform.getBundle("junit.extensions.eclipse.quick.mock");
-		URL entry = bundle.getEntry("mockito-all-1.8.5.jar");
+		Bundle bundle = Platform.getBundle("org.mockito");
+		URL entry = bundle.getEntry("mockito.jar");
 		String fileURL = null;
 		try {
 			fileURL = URLDecoder.decode(FileLocator.toFileURL(entry).getFile(), "UTF-8");

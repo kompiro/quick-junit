@@ -4,7 +4,7 @@
       label="%featureName"
       version="0.3.0.qualifier"
       provider-name="%providerName"
-      plugin="junit.extensions.eclipse.quick.">
+      plugin="junit.extensions.eclipse.quick">
 
    <description url="http://quick-junit.sourceforge.jp/">
       This plugin makes easy to write JUnit Test Code by using easy template code.
@@ -328,6 +328,13 @@ any resulting litigation.
 
    <plugin
          id="junit.extensions.eclipse.quick.mock"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.mockito"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
