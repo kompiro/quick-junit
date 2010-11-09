@@ -2,7 +2,9 @@
 <feature
       id="junit.extensions.eclipse.quick.growl.feature"
       label="Quick JUnit growl support"
-      version="0.1.0.qualifier">
+      version="0.1.1.qualifier"
+      os="macosx"
+      arch="x86">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]

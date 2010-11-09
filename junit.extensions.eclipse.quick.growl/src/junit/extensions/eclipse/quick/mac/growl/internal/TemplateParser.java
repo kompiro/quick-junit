@@ -1,8 +1,8 @@
-package junit.extensions.eclipse.quick.growl.internal;
+package junit.extensions.eclipse.quick.mac.growl.internal;
 
 import org.eclipse.jdt.junit.model.ITestRunSession;
 
-import static junit.extensions.eclipse.quick.growl.internal.TemplateKey.*;
+import static junit.extensions.eclipse.quick.mac.growl.internal.TemplateKey.*;
 
 class TemplateParser {
 

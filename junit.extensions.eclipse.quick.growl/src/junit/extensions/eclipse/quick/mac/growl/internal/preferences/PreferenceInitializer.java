@@ -4,7 +4,7 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import junit.extensions.eclipse.quick.growl.internal.GrowlActivator;
+import junit.extensions.eclipse.quick.mac.growl.internal.GrowlActivator;
 
 import static junit.extensions.eclipse.quick.mac.growl.internal.preferences.Preference.*;
 

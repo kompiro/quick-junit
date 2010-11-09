@@ -1,8 +1,8 @@
 package junit.extensions.eclipse.quick.mac.growl.internal.preferences;
 
 import static junit.extensions.eclipse.quick.mac.growl.internal.preferences.Preference.TEMPLATE;
-import junit.extensions.eclipse.quick.growl.internal.GrowlActivator;
-import junit.extensions.eclipse.quick.growl.internal.TemplateKey;
+import junit.extensions.eclipse.quick.mac.growl.internal.GrowlActivator;
+import junit.extensions.eclipse.quick.mac.growl.internal.TemplateKey;
 
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;

@@ -1,6 +1,6 @@
 package junit.extensions.eclipse.quick.mac.growl.internal.preferences;
 
-import junit.extensions.eclipse.quick.growl.internal.GrowlActivator;
+import junit.extensions.eclipse.quick.mac.growl.internal.GrowlActivator;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 

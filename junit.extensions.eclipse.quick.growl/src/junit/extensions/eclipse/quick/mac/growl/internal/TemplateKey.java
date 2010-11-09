@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick.growl.internal;
+package junit.extensions.eclipse.quick.mac.growl.internal;
 
 public enum TemplateKey {
 	RESULT_COUNT("results",		Messages.TemplateKey_RESULT_DESCRIPTION), //$NON-NLS-1$

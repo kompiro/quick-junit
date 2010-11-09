@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick.growl.internal;
+package junit.extensions.eclipse.quick.mac.growl.internal;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
