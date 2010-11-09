@@ -42,6 +42,8 @@
 
    <includes
          id="junit.extensions.eclipse.quick.growl.feature"
-         version="0.0.0"/>
+         version="0.0.0"
+         os="macosx"
+         arch="x86"/>
 
 </feature>
