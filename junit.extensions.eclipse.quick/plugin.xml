@@ -5,7 +5,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             name="Quick JUnit"
-            category="org.eclipse.jdt.ui.preferences.JavaBasePreferencePage"
+            category="org.eclipse.jdt.junit.preferences"
             class="junit.extensions.eclipse.quick.QuickJUnitPreferencePage"
             id="junit.extensions.eclipse.quick.QuickJUnitPreferencePage">
       </page>
