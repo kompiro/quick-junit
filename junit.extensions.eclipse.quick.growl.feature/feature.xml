@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="junit.extensions.eclipse.quick.growl.feature"
-      label="Quick JUnit growl support"
+      label="%featureName"
       version="0.1.1.qualifier"
+      provider-name="%providerName"
+      plugin="junit.extensions.eclipse.quick."
       os="macosx"
-      ws="cocoa"
       arch="x86">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://quick-junit.sourceforge.jp/">
+      This feature provides to notify JUnit test results to growl. So this feature supports only Mac OSX platform.
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright url="http://quick-junit.sourceforge.jp/">
+      Copyright (C) 2003-2010 Masaru Ishii,The Quick JUnit Plugin Project.
+All Rights Reserved.
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
    </license>
 
    <plugin
