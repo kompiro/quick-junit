@@ -24,6 +24,7 @@
 <h2>NEWS</h2>
 <div class="contents">
 <ul>
+<li>2010/04/25: <a href="#changes050">0.5.0をリリースしました。詳しくはリンク先の変更履歴をご覧ください。</a></li>
 <li>2010/01/01: <a href="#changes050beta3">beta3をリリースしました。詳しくはリンク先の変更履歴をご覧ください。</a></li>
 <li>2009/10/13: Beta版配布用更新サイトをsourceforge.jpに用意しました。また、実験版にMacではキーバインドが変更されているバグがあったので、修正し、beta2をリリースしました。</li>
 <li>2009/05/09: Eclipse 3.5系だとインストールできなかった問題に対応しました。</li>
@@ -40,7 +41,7 @@
 <strong>Quick JUnitプラグイン</strong>は<a href="http://www.eclipse.org/">Eclipse</a>のプラグインです。<a href="http://www.junit.org/">JUnit</a>の起動およびテストコードと実装コード間のエディタ切り替えを簡単に行えるようにします。
 </p>
 <p>
-Quick Junitプラグインのオリジナル版は2003年に<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/index.html">故石井勝(masarl)</a>さんによって作成・公開されました。現在は<a href="#aboutus">Quick JUnitプラグイン・プロジェクト</a>が開発を行なっています。
+Quick Junitプラグインのオリジナル版は2003年に<a href="http://web.archive.org/web/20080422234145/www.morijp.com/masarl/homepage3.nifty.com/masarl/index.html">故石井勝(masarl)</a>さんによって作成・公開されました。現在は<a href="#aboutus">Quick JUnitプラグイン・プロジェクト</a>が開発を行なっています。
 </p>
 </div>
 <h2>動作環境</h2>
@@ -63,8 +64,7 @@ Quick JUnit Plugin 0.1.0からEclipseのソフトウェア更新に対応しま�
 「<strong>ヘルプ</strong>」→「<strong>ソフトウェア更新</strong>」→「<strong>検索とインストール</strong>」で、以下のURLをリモートサイトに追加してください。
 Eclipseのバージョンによって、指定するURLが異なります。
 <ul>
-<li>最新版(0.4.0):<a href="http://quick-junit.sourceforge.jp/updates/current/">http://quick-junit.sourceforge.jp/updates/current/</a></li>
-<li>実験版(0.5.0_beta3):<a href="http://quick-junit.sourceforge.jp/updates/beta/">http://quick-junit.sourceforge.jp/updates/beta/</a></li>
+<li>最新版(0.5.0):<a href="http://quick-junit.sourceforge.jp/updates/current/">http://quick-junit.sourceforge.jp/updates/current/</a></li>
 </ul>
 
 <ul>
@@ -91,7 +91,8 @@ Eclipseのインストールディレクトリを$ECLIPSEとします(例: c:\ec
 
 <h2>基本的な使い方</h2>
 <div class="contents">
-<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/article/eclipse/quick-junit.html">石井さんによるオリジナルの文書</a>を参照してください。0.0.4時点の解説ですが、基本的な使い方は変わっていません。
+<a href="http://web.archive.org/web/20080422234145/www.morijp.com/masarl/homepage3.nifty.com/masarl/article/eclipse/quick-junit.html">石井さんによるオリジナルの文書</a>を参照してください。0.0.4時点の解説ですが、基本的な使い方は変わっていません。<br />
+<a href="http://github.com/kompiro/quick-junit/tree/master/ja/">こんぴろが作成した実験的な機能などはこちらを参照してください。</a>
 </div>
 
 <h2>CVSリポジトリ</h2>
@@ -111,6 +112,12 @@ Eclipseのインストールディレクトリを$ECLIPSEとします(例: c:\ec
 </div>
 <h2><a name="changes">更新履歴</a></h2>
 <div class="contents">
+<h3><a name="changes050">0.5.0.release(2010/04/25)</a></h3>
+実験的な機能のTestContextについては、リリース用の更新サイトから外しました。
+<h4>対応したチケット一覧</h4>
+<ul>
+<li><a href="http://trac.assembla.com/quick-junit/ticket/6"/>#6. 日本語のテストメソッドが動かない</a></li>
+</ul>
 <h3><a name="changes050beta3">0.5.0beta3(2010/01/01)</a></h3>
 <h4>対応したチケット一覧</h4>
 <ul>
@@ -179,7 +186,7 @@ Eclipseのインストールディレクトリを$ECLIPSEとします(例: c:\ec
 <li>このリリースをmasarlさんとの思い出に捧げます。</li>
 </div>
 
-<h2><a name="whatsold">過去のお知らせ</a></h3>
+<h2><a name="whatsold">過去のお知らせ</a></h2>
 <ul>
 <li>2006/04/26: 0.3.0.1をリリースしました。J2SDK1.4で動作しない問題を修正したビルドです。</li>
 <li>2006/04/25: 0.3.0をリリースしました。変更点は<a href="#changes030">「変更履歴」</a>を参照してください。</li>
@@ -193,7 +200,7 @@ Eclipseのインストールディレクトリを$ECLIPSEとします(例: c:\ec
 Quick JUnitプラグイン・プロジェクトは、石井さんのご遺族の許可を得て、Quick JUnitプラグインを引き継ぎ、開発を続けています。
 </p>
 <p>
-<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/article/eclipse/quick-junit.html">石井さんによるオリジナルの文書</a>は、<a href="http://www.morijp.com/masarl/homepage3.nifty.com/masarl/index.html">森さん/助田さんがミラーしているサーバ</a>に保管されています。
+<a href="http://web.archive.org/web/20080422234145/www.morijp.com/masarl/homepage3.nifty.com/masarl/article/eclipse/quick-junit.html">石井さんによるオリジナルの文書</a>は、<a href="http://web.archive.org/web/20080422234145/www.morijp.com/masarl/homepage3.nifty.com/masarl/index.html">森さん/助田さんがミラーしているサーバ</a>に保管されています。
 </p>
 </div>
 <hr />
