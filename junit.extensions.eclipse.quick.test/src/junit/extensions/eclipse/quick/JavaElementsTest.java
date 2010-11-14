@@ -1,18 +1,15 @@
 package junit.extensions.eclipse.quick;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.ITypeHierarchy;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -89,7 +86,7 @@ public class JavaElementsTest {
 	}
 	
 	@Test
-	public void should_return_class_when_junit4_class_is_selected() throws Exception {
+	public void should_return_class_when_the_class_is_selected_that_has_junit4_method() throws Exception {
 		
 		IMethod method = methodBuilder.junit4_method().build();
 		IType element = typeBuilder.normal_class().addMethod(method).build();
@@ -107,22 +104,32 @@ public class JavaElementsTest {
 		assertThat((IType)JavaElements.getTestMethodOrClass(element),is(element));
 		
 	}
-
-	@Ignore
+	
 	@Test
-	public void parameterized_test_should_return_class() throws Exception {
+	public void should_return_class_when_junit4_suite_class_is_selected() throws Exception {
 		
-		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
-		when(typeHierarchy.getAllInterfaces()).thenReturn(new IType[]{});
+		IType element = typeBuilder.junit4_suite().build();
+		assertThat((IType)JavaElements.getTestMethodOrClass(element),is(element));
+		
+	}
 
-		IType element = mock(IType.class);
-		when(element.isClass()).thenReturn(true);
-		when(element.getFlags()).thenReturn(Flags.AccPublic);
-		when(element.newSupertypeHierarchy(null)).thenReturn(typeHierarchy);
-		when(element.getMethods()).thenReturn(new IMethod[]{});
+	@Test
+	public void should_return_class_when_junit4_parameterized_class_is_selected() throws Exception {
+		IMethod method = methodBuilder.junit4_method().build();
+
+		IType element = typeBuilder.normal_class().setRunWith("Parameterized.class").addMethod(method).build();		
+		assertThat((IType)JavaElements.getTestMethodOrClass(element),is(element));
 		
-		assertThat(JavaElements.getTestMethodOrClass(element) == element,is(true));
-		
+	}
+
+	@Test
+	public void should_return_class_when_junit4_parameterized_class_method_is_selected() throws Exception {
+		IMethod method = methodBuilder.junit4_method().build();
+
+		IType element = typeBuilder.normal_class().setRunWith("Parameterized.class").addMethod(method).build();		
+		IJavaElement result = JavaElements.getTestMethodOrClass(method);
+		assertThat(result,is(instanceOf(IType.class)));
+		assertThat((IType)result,is(element));
 	}
 
 }

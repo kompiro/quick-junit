@@ -19,6 +19,7 @@ public class ITypeMockBuilder {
 	private IType result = mock(IType.class);
 	private int flags;
 	private List<IMethod> methods = new ArrayList<IMethod>();
+	private StringBuilder source = new StringBuilder();
 	
 	{
 		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
@@ -55,12 +56,13 @@ public class ITypeMockBuilder {
 			methods.add(method);
 			IMethod[] methodsArray = (IMethod[]) methods.toArray(new IMethod[]{});
 			when(result.getMethods()).thenReturn(methodsArray);
+			when(method.getDeclaringType()).thenReturn(result);
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
 		return this;
 	}
-
+	
 	public ITypeMockBuilder junit3_class() {
 		setPublic();
 		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
@@ -70,8 +72,36 @@ public class ITypeMockBuilder {
 		try {
 			when(result.newSupertypeHierarchy((IProgressMonitor)any())).thenReturn(typeHierarchy);
 		} catch (JavaModelException e) {
+			e.printStackTrace();
 		}
 
+		return this;
+	}
+
+	public ITypeMockBuilder setRunWith(String clazz) {
+		try {
+			source.append("@RunWith(" + clazz + ")");
+			when(result.getSource()).thenReturn(source.toString());
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+
+	public ITypeMockBuilder setSuiteClasses() {
+		try {
+			source.append("@SuiteClasses");
+			when(result.getSource()).thenReturn(source.toString());
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+
+	public ITypeMockBuilder junit4_suite() {
+		setPublic();
+		setSuiteClasses();
+		setRunWith("Suite.class");
 		return this;
 	}
 	

@@ -2,6 +2,7 @@ package junit.extensions.eclipse.quick;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -62,12 +63,12 @@ public class ITypeMockBuilderTest {
 	}
 
 	@Test
-	public void normal_should_initialized() throws Exception {
+	public void normal_should_be_initialized() throws Exception {
 		
 		IType result = builder.normal_class().build();
 
 		assertThat(result.isClass(),is(true));
-		assertThat(result.getFlags() & Flags.AccPublic, is(Flags.AccPublic));
+		assertThat(Flags.isPublic(result.getFlags()), is(true));
 		assertThat(builder.build().getMethods(),is(instanceOf(IMethod[].class)));
 		assertThat(builder.build().getMethods().length,is(0));
 		assertThat(result.newSupertypeHierarchy(new NullProgressMonitor()),is(notNullValue()));
@@ -84,10 +85,21 @@ public class ITypeMockBuilderTest {
 		assertThat(methods,is(instanceOf(IMethod[].class)));
 		assertThat(methods.length,is(1));
 		
+		
 	}
 	
 	@Test
-	public void should_add_2_methods() throws Exception {
+	public void add_method_should_set_declared_type() throws Exception {
+		
+		IMethod method = new IMethodMockBuilder().build();
+		IType result = builder.normal_class().addMethod(method).build();
+		
+		assertThat(method.getDeclaringType(),is(result));
+		
+	}
+	
+	@Test
+	public void add_method_should_enable_to_add_2_methods() throws Exception {
 	
 		IMethod method1 = new IMethodMockBuilder().build();
 		IMethod method2 = new IMethodMockBuilder().build();
@@ -121,4 +133,30 @@ public class ITypeMockBuilderTest {
 		
 	}
 	
+	@Test
+	public void set_runwith_should_set_RunWith_annotation() throws Exception {
+		
+		IType result = builder.setRunWith("Suite.class").build();
+		assertThat(result.getSource().indexOf("@RunWith(Suite.class)"),is(not(-1)));
+		
+	}
+
+	@Test
+	public void set_suite_classes_should_set_SuiteClasses_annotation() throws Exception {
+		
+		IType result = builder.setSuiteClasses().build();
+		assertThat(result.getSource().indexOf("@SuiteClasses"),is(not(-1)));
+		
+	}
+
+	@Test
+	public void junit4_suite_classes_should_initialized() throws Exception {
+		
+		IType result = builder.junit4_suite().build();
+		assertThat(Flags.isPublic(result.getFlags()), is(true));
+		assertThat(result.getSource().indexOf("@SuiteClasses"),is(not(-1)));
+		assertThat(result.getSource().indexOf("@RunWith(Suite.class)"),is(not(-1)));
+
+	}
+
 }
