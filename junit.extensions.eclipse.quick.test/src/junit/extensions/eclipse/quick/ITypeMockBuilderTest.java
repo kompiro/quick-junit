@@ -4,11 +4,13 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,13 +36,13 @@ public class ITypeMockBuilderTest {
 	@Test
 	public void should_return_public_accessor_object() throws Exception {
 		
-		IType result = builder.accPublic().build();
+		IType result = builder.setPublic().build();
 		assertThat(result.getFlags() & Flags.AccPublic, is(Flags.AccPublic));
 		
 	}
 	
 	@Test
-	public void shold_return_super_hierarchy() throws Exception {
+	public void super_hierarchy_should_return_null_at_initialized() throws Exception {
 
 		IType result = builder.build();
 		
@@ -49,7 +51,7 @@ public class ITypeMockBuilderTest {
 	}
 
 	@Test
-	public void shold_return_methods() throws Exception {
+	public void get_methods_should_return_no_methods_at_initialized() throws Exception {
 		
 		IType result = builder.build();
 		
@@ -60,9 +62,9 @@ public class ITypeMockBuilderTest {
 	}
 
 	@Test
-	public void shold_initialized_by_call_normal() throws Exception {
+	public void normal_should_initialized() throws Exception {
 		
-		IType result = builder.normal().build();
+		IType result = builder.normal_class().build();
 
 		assertThat(result.isClass(),is(true));
 		assertThat(result.getFlags() & Flags.AccPublic, is(Flags.AccPublic));
@@ -73,10 +75,10 @@ public class ITypeMockBuilderTest {
 	}
 	
 	@Test
-	public void shoud_add_method() throws Exception {
+	public void add_method_should_be_enabled() throws Exception {
 		
 		IMethod method = new IMethodMockBuilder().build();
-		IType result = builder.normal().addMethod(method).build();
+		IType result = builder.normal_class().addMethod(method).build();
 		
 		IMethod[] methods = result.getMethods();
 		assertThat(methods,is(instanceOf(IMethod[].class)));
@@ -85,15 +87,38 @@ public class ITypeMockBuilderTest {
 	}
 	
 	@Test
-	public void shoud_add_2_methods() throws Exception {
+	public void should_add_2_methods() throws Exception {
 	
 		IMethod method1 = new IMethodMockBuilder().build();
 		IMethod method2 = new IMethodMockBuilder().build();
-		IType result = builder.normal().addMethod(method1).addMethod(method2).build();
+		IType result = builder.normal_class().addMethod(method1).addMethod(method2).build();
 		
 		IMethod[] methods = result.getMethods();
 		assertThat(methods,is(instanceOf(IMethod[].class)));
 		assertThat(methods.length,is(2));
+		
+	}
+	
+	@Test
+	public void junit3_class_should_extends_junit_framework_Test() throws Exception {
+		
+		IType result = builder.junit3_class().build();
+		ITypeHierarchy hierarchy = result.newSupertypeHierarchy(new NullProgressMonitor());
+		IType[] interfaces = hierarchy.getAllInterfaces();
+		for (IType type : interfaces) {
+			if(type.getFullyQualifiedName().equals(JavaTypes.TEST_INTERFACE_NAME)){
+				return;
+			}
+		}
+		fail("junit3 should extend org.junit.Test");
+	}
+	
+	@Test
+	public void junit3_class_should_be_public() throws Exception {
+		
+		IType result = builder.junit3_class().build();
+		assertThat(Flags.isPublic(result.getFlags()),is(true));
+		
 	}
 	
 }

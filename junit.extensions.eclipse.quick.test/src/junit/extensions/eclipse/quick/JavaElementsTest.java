@@ -1,6 +1,7 @@
 package junit.extensions.eclipse.quick;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -30,17 +31,17 @@ public class JavaElementsTest {
 	}
 
 	@Test
-	public void recognition_test_method_by_annotation() throws Exception {
+	public void recognition_junit4_test_method() throws Exception {
 		
-		IMethod element = methodBuilder.junit3_method().addTestAnnotation().build();	
+		IMethod element = methodBuilder.junit4_method().build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
 	
 	@Test
-	public void recognition_test_method_by_method_name() throws Exception {
+	public void recognition_junit3_test_method() throws Exception {
 		
-		IMethod element = methodBuilder.junit3_method().setName("test_mode").build();	
+		IMethod element = methodBuilder.junit3_method().build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -82,11 +83,31 @@ public class JavaElementsTest {
 
 	
 	@Test
-	public void it_should_return_null_when_empty_class() throws Exception {
-		IType element = typeBuilder.normal().build();
+	public void should_return_null_when_empty_class() throws Exception {
+		IType element = typeBuilder.normal_class().build();
 		assertThat(JavaElements.getTestMethodOrClass(element),is(nullValue()));
 	}
 	
+	@Test
+	public void should_return_class_when_junit4_class_is_selected() throws Exception {
+		
+		IMethod method = methodBuilder.junit4_method().build();
+		IType element = typeBuilder.normal_class().addMethod(method).build();
+		assertThat(JavaElements.getTestMethodOrClass(element),is(notNullValue()));
+		assertThat((IType)JavaElements.getTestMethodOrClass(element),is(element));
+		
+	}
+
+	@Test
+	public void should_return_class_when_junit3_class_is_selected() throws Exception {
+		
+		IMethod method = methodBuilder.junit3_method().build();
+		IType element = typeBuilder.junit3_class().addMethod(method).build();
+		assertThat(JavaElements.getTestMethodOrClass(element),is(notNullValue()));
+		assertThat((IType)JavaElements.getTestMethodOrClass(element),is(element));
+		
+	}
+
 	@Ignore
 	@Test
 	public void parameterized_test_should_return_class() throws Exception {

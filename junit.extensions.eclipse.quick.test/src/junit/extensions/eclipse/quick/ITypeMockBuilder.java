@@ -24,8 +24,8 @@ public class ITypeMockBuilder {
 		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
 		when(typeHierarchy.getAllInterfaces()).thenReturn(new IType[]{});
 		try {
-			when(result.isClass()).thenReturn(true);
 			when(result.newSupertypeHierarchy((IProgressMonitor)any())).thenReturn(typeHierarchy);
+			when(result.isClass()).thenReturn(true);
 			when(result.getMethods()).thenReturn(new IMethod[]{});
 		} catch (JavaModelException e) {
 		}
@@ -36,7 +36,7 @@ public class ITypeMockBuilder {
 		return result;
 	}
 	
-	public ITypeMockBuilder accPublic() {
+	public ITypeMockBuilder setPublic() {
 		flags |= Flags.AccPublic;
 		try {
 			when(result.getFlags()).thenReturn(flags);
@@ -45,8 +45,8 @@ public class ITypeMockBuilder {
 		return this;
 	}
 
-	public ITypeMockBuilder normal() {
-		accPublic();
+	public ITypeMockBuilder normal_class() {
+		setPublic();
 		return this;
 	}
 
@@ -58,6 +58,20 @@ public class ITypeMockBuilder {
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
+		return this;
+	}
+
+	public ITypeMockBuilder junit3_class() {
+		setPublic();
+		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
+		IType test = mock(IType.class);
+		when(test.getFullyQualifiedName()).thenReturn(JavaTypes.TEST_INTERFACE_NAME);
+		when(typeHierarchy.getAllInterfaces()).thenReturn(new IType[]{test });
+		try {
+			when(result.newSupertypeHierarchy((IProgressMonitor)any())).thenReturn(typeHierarchy);
+		} catch (JavaModelException e) {
+		}
+
 		return this;
 	}
 	
