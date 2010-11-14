@@ -6,7 +6,7 @@
       <template
             autoinsert="true"
             contextTypeId="java-members"
-            description="Quick JUnit Mockito Integration"
+            description="Insert Test method using Mockito"
             id="junit.extensions.eclipse.quick.mock.mock"
             name="Q">
          <pattern>

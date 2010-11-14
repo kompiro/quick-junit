@@ -4,7 +4,7 @@
       label="%featureName"
       version="0.1.1.qualifier"
       provider-name="%providerName"
-      plugin="junit.extensions.eclipse.quick."
+      plugin="junit.extensions.eclipse.quick"
       os="macosx"
       arch="x86">
 
