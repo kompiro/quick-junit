@@ -24,16 +24,18 @@ import org.junit.Test;
 public class JavaElementsTest {
 	
 	private IMethodMockBuilder methodBuilder;
+	private ITypeMockBuilder typeBuilder;
 	
 	@Before
 	public void before() throws Exception {
 		methodBuilder = new IMethodMockBuilder();
+		typeBuilder = new ITypeMockBuilder();
 	}
 
 	@Test
 	public void recognition_test_method_by_annotation() throws Exception {
 		
-		IMethod element = methodBuilder.normal().addTestAnnotation().build();	
+		IMethod element = methodBuilder.normal_test3().addTestAnnotation().build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -41,7 +43,7 @@ public class JavaElementsTest {
 	@Test
 	public void recognition_test_method_by_method_name() throws Exception {
 		
-		IMethod element = methodBuilder.normal().setMethodName("test_mode").build();	
+		IMethod element = methodBuilder.normal_test3().setMethodName("test_mode").build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -60,10 +62,10 @@ public class JavaElementsTest {
 		IMethod element = methodBuilder.returnVoid().build(); // package private
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
-		element = methodBuilder.normal().setPrivate().build();
+		element = methodBuilder.normal_test3().setPrivate().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
-		element = methodBuilder.normal().setProtected().build();
+		element = methodBuilder.normal_test3().setProtected().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 
 	}
@@ -71,26 +73,21 @@ public class JavaElementsTest {
 	@Test
 	public void test_method_should_not_static_method() throws Exception {
 		
-		IMethod element = methodBuilder.normal().setStatic().build();
+		IMethod element = methodBuilder.normal_test3().setStatic().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
+		element = methodBuilder.normal_test3().setPrivate().setStatic().build();
+		assertThat(JavaElements.isTestMethod(element),is(false));
+		
+		element = methodBuilder.normal_test3().setPrivate().setStatic().build();
+		assertThat(JavaElements.isTestMethod(element),is(false));
 	}
 
 	
 	@Test
 	public void it_should_return_null_when_empty_class() throws Exception {
-		
-		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
-		when(typeHierarchy.getAllInterfaces()).thenReturn(new IType[]{});
-
-		IType element = mock(IType.class);
-		when(element.isClass()).thenReturn(true);
-		when(element.getFlags()).thenReturn(Flags.AccPublic);
-		when(element.newSupertypeHierarchy(null)).thenReturn(typeHierarchy);
-		when(element.getMethods()).thenReturn(new IMethod[]{});
-
+		IType element = typeBuilder.normal().build();
 		assertThat(JavaElements.getTestMethodOrClass(element),is(nullValue()));
-		
 	}
 	
 	@Ignore

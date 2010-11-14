@@ -9,19 +9,7 @@ import static org.mockito.Mockito.*;
 public class IMethodMockBuilder {
 
 	private IMethod element = mock(IMethod.class);
-
-	public IMethod build() {
-		return element;
-	}
-	
-	public IMethodMockBuilder setPublic(){
-		try {
-			when(element.getFlags()).thenReturn(Flags.AccPublic);
-		} catch (JavaModelException e) {
-			e.printStackTrace();
-		}
-		return this;
-	}
+	private int flags;
 
 	public IMethodMockBuilder returnVoid(){
 		try {
@@ -32,10 +20,10 @@ public class IMethodMockBuilder {
 		return this;
 	}
 
-	public IMethodMockBuilder normal() {
+	public IMethodMockBuilder normal_test3() {
 		setPublic();
 		returnVoid();
-		setMethodName("should_normal");
+		setMethodName("test_normal");
 		return this;
 	}
 
@@ -57,7 +45,18 @@ public class IMethodMockBuilder {
 		return this;
 	}
 
+	public IMethodMockBuilder setPublic(){
+		flags |= Flags.AccPublic;
+		try {
+			when(element.getFlags()).thenReturn(flags);
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+
 	public IMethodMockBuilder setPrivate() {
+		flags |= Flags.AccPrivate;
 		try {
 			when(element.getFlags()).thenReturn(Flags.AccPrivate);
 		} catch (JavaModelException e) {
@@ -67,8 +66,10 @@ public class IMethodMockBuilder {
 	}
 
 	public IMethodMockBuilder setProtected() {
+		flags ^= Flags.AccPublic;
+		flags |= Flags.AccProtected;
 		try {
-			when(element.getFlags()).thenReturn(Flags.AccProtected);
+			when(element.getFlags()).thenReturn(flags);
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
@@ -76,8 +77,17 @@ public class IMethodMockBuilder {
 	}
 
 	public IMethodMockBuilder setStatic() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			flags |= Flags.AccStatic;
+			when(element.getFlags()).thenReturn(flags);
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+
+	public IMethod build() {
+		return element;
 	}
 
 }
