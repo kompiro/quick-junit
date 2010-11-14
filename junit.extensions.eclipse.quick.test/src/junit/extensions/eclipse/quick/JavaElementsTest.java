@@ -13,6 +13,7 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -22,14 +23,17 @@ import org.junit.Test;
  */
 public class JavaElementsTest {
 	
+	private IMethodMockBuilder methodBuilder;
+	
+	@Before
+	public void before() throws Exception {
+		methodBuilder = new IMethodMockBuilder();
+	}
+
 	@Test
 	public void recognition_test_method_by_annotation() throws Exception {
 		
-		IMethod element = mock(IMethod.class);
-		returnVoid(element);
-		publicMethod(element);
-		when(element.getElementName()).thenReturn("method_by_annotation");
-		when(element.getSource()).thenReturn("@Test");
+		IMethod element = methodBuilder.normal().addTestAnnotation().build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -37,11 +41,7 @@ public class JavaElementsTest {
 	@Test
 	public void recognition_test_method_by_method_name() throws Exception {
 		
-		IMethod element = mock(IMethod.class);
-		returnVoid(element);
-		publicMethod(element);
-		when(element.getElementName()).thenReturn("test_method_name");
-		
+		IMethod element = methodBuilder.normal().setMethodName("test_mode").build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -49,11 +49,33 @@ public class JavaElementsTest {
 	@Test
 	public void test_method_should_has_no_args() throws Exception {
 		
-		IMethod element = mock(IMethod.class);
-		when(element.getNumberOfParameters()).thenReturn(1);
+		IMethod element = methodBuilder.setNumberOfParameters(1).build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
 	}
+	
+	@Test
+	public void test_method_should_public_method() throws Exception {
+		
+		IMethod element = methodBuilder.returnVoid().build(); // package private
+		assertThat(JavaElements.isTestMethod(element),is(false));
+		
+		element = methodBuilder.normal().setPrivate().build();
+		assertThat(JavaElements.isTestMethod(element),is(false));
+		
+		element = methodBuilder.normal().setProtected().build();
+		assertThat(JavaElements.isTestMethod(element),is(false));
+
+	}
+
+	@Test
+	public void test_method_should_not_static_method() throws Exception {
+		
+		IMethod element = methodBuilder.normal().setStatic().build();
+		assertThat(JavaElements.isTestMethod(element),is(false));
+		
+	}
+
 	
 	@Test
 	public void it_should_return_null_when_empty_class() throws Exception {
@@ -88,12 +110,4 @@ public class JavaElementsTest {
 		
 	}
 
-	private void publicMethod(IMethod element) throws JavaModelException {
-		when(element.getFlags()).thenReturn(Flags.AccPublic);
-	}
-
-	private void returnVoid(IMethod element) throws JavaModelException {
-		when(element.getReturnType()).thenReturn("V");
-	}
-	
 }
