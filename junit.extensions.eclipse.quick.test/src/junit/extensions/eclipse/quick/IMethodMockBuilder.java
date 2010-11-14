@@ -20,14 +20,7 @@ public class IMethodMockBuilder {
 		return this;
 	}
 
-	public IMethodMockBuilder normal_test3() {
-		setPublic();
-		returnVoid();
-		setMethodName("test_normal");
-		return this;
-	}
-
-	public IMethodMockBuilder setMethodName(String name) {
+	public IMethodMockBuilder setName(String name) {
 		when(element.getElementName()).thenReturn(name);
 		return this;
 	}
@@ -88,6 +81,28 @@ public class IMethodMockBuilder {
 
 	public IMethod build() {
 		return element;
+	}
+
+	public IMethodMockBuilder junit4_method() {
+		setPublic();
+		returnVoid();
+		setName("junit4");
+		addTestAnnotation();
+		return this;
+	}
+
+	public IMethodMockBuilder junit3_method() {
+		setPublic();
+		returnVoid();
+		setName("test_normal");
+		return this;
+	}
+
+	public IMethodMockBuilder normal_method() {
+		setPublic();
+		returnVoid();
+		setName("normal");
+		return this;
 	}
 
 }

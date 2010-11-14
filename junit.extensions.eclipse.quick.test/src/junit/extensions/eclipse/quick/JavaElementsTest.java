@@ -1,10 +1,8 @@
 package junit.extensions.eclipse.quick;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -12,7 +10,6 @@ import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.JavaModelException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -35,7 +32,7 @@ public class JavaElementsTest {
 	@Test
 	public void recognition_test_method_by_annotation() throws Exception {
 		
-		IMethod element = methodBuilder.normal_test3().addTestAnnotation().build();	
+		IMethod element = methodBuilder.junit3_method().addTestAnnotation().build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -43,7 +40,7 @@ public class JavaElementsTest {
 	@Test
 	public void recognition_test_method_by_method_name() throws Exception {
 		
-		IMethod element = methodBuilder.normal_test3().setMethodName("test_mode").build();	
+		IMethod element = methodBuilder.junit3_method().setName("test_mode").build();	
 		assertThat(JavaElements.isTestMethod(element),is(true));
 		
 	}
@@ -62,10 +59,10 @@ public class JavaElementsTest {
 		IMethod element = methodBuilder.returnVoid().build(); // package private
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
-		element = methodBuilder.normal_test3().setPrivate().build();
+		element = methodBuilder.junit3_method().setPrivate().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
-		element = methodBuilder.normal_test3().setProtected().build();
+		element = methodBuilder.junit3_method().setProtected().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 
 	}
@@ -73,13 +70,13 @@ public class JavaElementsTest {
 	@Test
 	public void test_method_should_not_static_method() throws Exception {
 		
-		IMethod element = methodBuilder.normal_test3().setStatic().build();
+		IMethod element = methodBuilder.junit3_method().setStatic().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
-		element = methodBuilder.normal_test3().setPrivate().setStatic().build();
+		element = methodBuilder.junit3_method().setPrivate().setStatic().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
-		element = methodBuilder.normal_test3().setPrivate().setStatic().build();
+		element = methodBuilder.junit3_method().setPrivate().setStatic().build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 	}
 
