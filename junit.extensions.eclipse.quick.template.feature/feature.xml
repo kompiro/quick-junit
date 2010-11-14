@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="junit.extensions.eclipse.quick.template.feature"
+      label="%featureName"
+      version="0.1.0.qualifier"
+      provider-name="%providerName"
+      plugin="junit.extensions.eclipse.quick">
+
+   <description url="http://quick-junit.sourceforge.jp/">
+      This feature provides some template for contents assist.The templates are below.
+A : insert @After method
+B : insert @Before mehtod
+AC : insert @AfterClass method
+BC : insert @BeforeClass method
+   </description>
+
+   <copyright url="http://quick-junit.sourceforge.jp/">
+      Copyright (C) 2003-2010 Masaru Ishii,The Quick JUnit Plugin Project.
+All Rights Reserved.
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <plugin
+         id="junit.extensions.eclipse.quick.template"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

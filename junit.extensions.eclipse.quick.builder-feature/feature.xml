@@ -47,4 +47,8 @@
          os=""
          arch=""/>
 
+   <includes
+         id="junit.extensions.eclipse.quick.template.feature"
+         version="0.0.0"/>
+
 </feature>
