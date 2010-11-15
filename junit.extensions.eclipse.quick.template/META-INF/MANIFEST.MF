@@ -4,4 +4,4 @@ Bundle-Name: Quick JUnit Contents Assist Template
 Bundle-SymbolicName: junit.extensions.eclipse.quick.template;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: Quick JUnit Plugin Project
-Require-Bundle: org.eclipse.ui.editors;bundle-version="3.6.1"
+Require-Bundle: org.eclipse.ui.editors
