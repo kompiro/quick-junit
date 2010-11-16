@@ -46,5 +46,20 @@ public void ${testname}() throws Exception {
             </overrides>
       </classpathFixProcessor>
    </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="junit.extensions.eclipse.quick.mock.internal.preference.PreferenceInitializer">
+      </startup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.jdt.junit.preferences"
+            class="junit.extensions.eclipse.quick.mock.internal.preference.QuickJUnitMockitoPreferencePage"
+            id="junit.extensions.eclipse.quick.mock"
+            name="Mockito">
+      </page>
+   </extension>
 
 </plugin>

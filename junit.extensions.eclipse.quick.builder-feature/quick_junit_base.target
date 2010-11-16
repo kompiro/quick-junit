@@ -5,9 +5,13 @@
 <locations>
 <location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="3.5.1.r351_v20090810-0600-7r88FEoFI0WTo6Az-1qFRHm37ChJ"/>
+<unit id="org.eclipse.jdt.source.feature.group" version="3.5.1.r351_v20090810-0600-7r88FEoFI0WTo6Az-1qFRHm37ChJ"/>
 <unit id="org.eclipse.platform.feature.group" version="3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7"/>
+<unit id="org.eclipse.platform.source.feature.group" version="3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7"/>
 <unit id="org.eclipse.pde.feature.group" version="3.5.1.R35x_v20090811-7Z7_F9zFDX-aT6Ywvh8_S93"/>
 <unit id="org.eclipse.rcp.feature.group" version="3.5.1.R35x_v20090811-9SA0FxVFqE70OL1ARMrfcO6e7BA6"/>
+<unit id="org.eclipse.rcp.source.feature.group" version="3.5.1.R35x_v20090811-9SA0FxVFqE70OL1ARMrfcO6e7BA6"/>
+<unit id="org.eclipse.rcp.sdk.id" version="3.5.1.M20090917-0800"/>
 <repository location="http://download.eclipse.org/releases/galileo/"/>
 </location>
 </locations>
