@@ -32,7 +32,7 @@ ${cursor}
       <template
             autoinsert="true"
             contextTypeId="java-members"
-            description="Insert @AfterClass method (Quick JUnit)te.afterClass"
+            description="Insert @AfterClass method (Quick JUnit)"
             id="junit.extensions.eclipse.quick.afterClass"
             name="AC">
          <pattern>
