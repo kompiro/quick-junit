@@ -256,4 +256,20 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors.templates">
+      <template
+            autoinsert="true"
+            contextTypeId="java-members"
+            description="Insert Test method using Mockito"
+            id="junit.extensions.eclipse.quick.mock.mock"
+            name="Q">
+         <pattern>
+            @${testType:newType(org.junit.Test)}
+public void ${testname}() throws Exception {
+	${junit:importStatic(&apos;org.junit.Assert.*&apos;)}${cursor} 
+}
+         </pattern>
+      </template>
+   </extension>
 </plugin>

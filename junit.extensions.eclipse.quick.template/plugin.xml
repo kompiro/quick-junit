@@ -55,5 +55,15 @@ ${cursor}
 }
          </pattern>
       </template>
+      <template
+            autoinsert="true"
+            contextTypeId="java-statements"
+            description="Insert assertThat method (Quick JUnit)"
+            id="junit.extensions.eclipse.quick.template.assertThat"
+            name="AT">
+         <pattern>
+            ${junit:importStatic(&apos;org.junit.Assert.assertThat&apos;)}assertThat(${:localVar(java.lang.Object)}${cursor},${hamcrest:importStatic(&apos;org.hamcrest.CoreMatchers.is&apos;)}is());
+         </pattern>
+      </template>
    </extension>
 </plugin>
