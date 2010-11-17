@@ -89,6 +89,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer impleme
 
 	private LinkedHashSet<String> getDefaultFavorites() {
 		LinkedHashSet<String> orderedSet = new LinkedHashSet<String>();
+		orderedSet.add(importStatement("org.mockito.Matchers"));
 		orderedSet.add(importStatement("org.mockito.Mockito"));
 		orderedSet.add(importStatement("org.hamcrest.Matchers"));
 		orderedSet.add(importStatement("org.hamcrest.MatcherAssert"));
