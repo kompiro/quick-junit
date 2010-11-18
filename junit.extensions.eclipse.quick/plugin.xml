@@ -261,8 +261,8 @@
       <template
             autoinsert="true"
             contextTypeId="java-members"
-            description="Insert Test method using Mockito"
-            id="junit.extensions.eclipse.quick.mock.mock"
+            description="Insert Test method(Quick JUnit)"
+            id="junit.extensions.eclipse.quick"
             name="Q">
          <pattern>
             @${testType:newType(org.junit.Test)}
