@@ -62,7 +62,7 @@ ${cursor}
             id="junit.extensions.eclipse.quick.template.assertThat"
             name="AT">
          <pattern>
-            ${junit:importStatic(&apos;org.junit.Assert.assertThat&apos;)}assertThat(${:localVar(java.lang.Object)}${cursor},${hamcrest:importStatic(&apos;org.hamcrest.CoreMatchers.is&apos;)}is());
+            ${junit:importStatic(&apos;org.junit.Assert.assertThat&apos;)}assertThat(${:localVar(java.lang.Object)}${cursor},${hamcrest:importStatic(&apos;org.hamcrest.CoreMatchers.is&apos;)}is(${expected}));
          </pattern>
       </template>
    </extension>

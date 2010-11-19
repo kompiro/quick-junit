@@ -34,13 +34,9 @@
       </startup>
    </extension>
    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="org.eclipse.jdt.junit.preferences"
-            class="junit.extensions.eclipse.quick.mock.internal.preference.QuickJUnitMockitoPreferencePage"
-            id="junit.extensions.eclipse.quick.mock"
-            name="Mockito">
-      </page>
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="junit.extensions.eclipse.quick.mock.internal.preference.PreferenceInitializer">
+      </initializer>
    </extension>
-
 </plugin>

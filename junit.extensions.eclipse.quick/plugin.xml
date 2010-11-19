@@ -272,4 +272,10 @@ public void ${testname}() throws Exception {
          </pattern>
       </template>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="junit.extensions.eclipse.quick.PreferenceInitializer">
+      </initializer>
+   </extension>
 </plugin>
