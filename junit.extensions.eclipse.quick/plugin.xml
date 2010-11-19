@@ -273,9 +273,9 @@ public void ${testname}() throws Exception {
       </template>
    </extension>
    <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
+         point="org.eclipse.ui.startup">
+      <startup
             class="junit.extensions.eclipse.quick.PreferenceInitializer">
-      </initializer>
+      </startup>
    </extension>
 </plugin>

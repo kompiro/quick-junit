@@ -67,7 +67,7 @@ public class PreferenceInitializer implements IStartup{
 	private LinkedHashSet getDefaultFavorites() {
 		LinkedHashSet orderedSet = new LinkedHashSet();
 		orderedSet.add(importStatement("org.hamcrest.MatcherAssert"));
-		orderedSet.add(importStatement("org.hamcrest.Matchers"));
+		orderedSet.add(importStatement("org.hamcrest.CoreMatchers"));
 		orderedSet.add(importStatement("org.junit.Assert"));
 		return orderedSet;
 	}

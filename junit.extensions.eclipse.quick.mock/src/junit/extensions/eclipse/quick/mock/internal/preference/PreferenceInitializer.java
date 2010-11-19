@@ -7,17 +7,17 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jdt.ui.PreferenceConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.ui.IStartup;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
  * Initializes the default preferences if none exist.
  * 
  */
-public class PreferenceInitializer extends AbstractPreferenceInitializer {
+public class PreferenceInitializer implements IStartup {
 
 	private static final String		EMPTY										= "";											//$NON-NLS-1$
 	private static final String		SEMI_COLON									= ";";											//$NON-NLS-1$
@@ -41,15 +41,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		this.jdtPreferenceStore = jdtPreferenceStore;
 	}
 
-	public void initializeDefaultPreferences() {
-		initializeFavorites();
-	}
-
 	void initializeFavorites() {
-		Set<String> imports;
-		imports = getJDTImports();
-		if (imports.containsAll(getDefaultFavorites()))
-			imports.removeAll(getDefaultFavorites());
+		Set<String> imports = new LinkedHashSet<String>(getJDTImports());
+		imports.addAll(getDefaultFavorites());
 		String join = join(imports, SEMI_COLON);
 		jdtPreferenceStore.setValue(PreferenceConstants.CODEASSIST_FAVORITE_STATIC_MEMBERS, join);
 		try {
@@ -72,6 +66,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	private LinkedHashSet<String> getDefaultFavorites() {
 		LinkedHashSet<String> orderedSet = new LinkedHashSet<String>();
+		orderedSet.add(importStatement("org.mockito.Matchers"));
 		orderedSet.add(importStatement("org.mockito.Mockito"));
 		return orderedSet;
 	}
@@ -97,6 +92,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		result.lastIndexOf(delimiter);
 		result.replace(result.length() - delimiter.length(), result.length(), ""); //$NON-NLS-1$
 		return result.toString();
+	}
+
+	public void earlyStartup() {
+		new PreferenceInitializer().initializeFavorites();
 	}
 
 }
