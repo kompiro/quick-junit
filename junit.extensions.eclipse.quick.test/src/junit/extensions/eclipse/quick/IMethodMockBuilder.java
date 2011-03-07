@@ -1,6 +1,7 @@
 package junit.extensions.eclipse.quick;
 
 import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.JavaModelException;
 
@@ -28,6 +29,10 @@ public class IMethodMockBuilder {
 	public IMethodMockBuilder addTestAnnotation() {
 		try {
 			when(element.getSource()).thenReturn("@Test public void should_normal(){\n\n}");
+			IAnnotation annotation = mock(IAnnotation.class);
+			when(annotation.getElementName()).thenReturn("org.junit.Test");
+			IAnnotation[] annotations = new IAnnotation[]{annotation};
+			when(element.getAnnotations()).thenReturn(annotations );
 		} catch (JavaModelException e) {
 		}
 		return this;

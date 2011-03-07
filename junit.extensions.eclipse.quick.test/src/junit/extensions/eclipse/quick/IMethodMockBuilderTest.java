@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.JavaModelException;
 import org.junit.Before;
@@ -60,6 +61,9 @@ public class IMethodMockBuilderTest {
 
 	private void hasTestAnnotation(IMethod result) throws JavaModelException {
 		assertThat(result.getSource().indexOf("@Test"),is(not(-1)));
+		IAnnotation[] annotations = result.getAnnotations();
+		assertThat(annotations.length,is(1));
+		assertThat(annotations[0].getElementName(),is("org.junit.Test"));
 	}
 	
 	

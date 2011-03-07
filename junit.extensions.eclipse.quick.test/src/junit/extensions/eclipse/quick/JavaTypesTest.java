@@ -1,12 +1,10 @@
 package junit.extensions.eclipse.quick;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class JavaTypesTest {
@@ -19,7 +17,6 @@ public class JavaTypesTest {
 		
 	}
 	
-	@Ignore
 	@Test
 	public void junit3_class_should_return_true() throws Exception {
 		
@@ -28,7 +25,6 @@ public class JavaTypesTest {
 		
 	}
 	
-	@Ignore
 	@Test
 	public void junit4_class_should_return_true() throws Exception {
 		

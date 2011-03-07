@@ -1,6 +1,7 @@
 package junit.extensions.eclipse.quick;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyChar;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -68,6 +69,7 @@ public class ITypeMockBuilder {
 		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
 		IType test = mock(IType.class);
 		when(test.getFullyQualifiedName()).thenReturn(JavaTypes.TEST_INTERFACE_NAME);
+		when(test.getFullyQualifiedName(anyChar())).thenReturn(JavaTypes.TEST_INTERFACE_NAME);
 		when(typeHierarchy.getAllInterfaces()).thenReturn(new IType[]{test });
 		try {
 			when(result.newSupertypeHierarchy((IProgressMonitor)any())).thenReturn(typeHierarchy);
