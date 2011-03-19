@@ -7,15 +7,16 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
 
 public class JavaTypes {
+	private static final char ENCLOSING_TYPE_SEPARATOR = '.';
 	public static final String TEST_INTERFACE_NAME= "junit.framework.Test"; //$NON-NLS-1$
-	private static final String TEST_ANNOTATION_NAME = "Test";
-	private static final String TEST_ANNOTATION_FULL_NAME = "org.junit.Test";
+	private static final String TEST_ANNOTATION_NAME = "Test"; //$NON-NLS-1$
+	private static final String TEST_ANNOTATION_FULL_NAME = "org.junit.Test"; //$NON-NLS-1$
 
     public static boolean isTest(IType type) throws JavaModelException {
 		ITypeHierarchy typeHier= type.newSupertypeHierarchy(null);
 		IType[] superInterfaces= typeHier.getAllInterfaces();
 		for (int i= 0; i < superInterfaces.length; i++) {
-			if (superInterfaces[i].getFullyQualifiedName('.').equals(TEST_INTERFACE_NAME))
+			if (superInterfaces[i].getFullyQualifiedName(ENCLOSING_TYPE_SEPARATOR).equals(TEST_INTERFACE_NAME))
 				return true;
 		}
 		IMethod[] methods = type.getMethods();
