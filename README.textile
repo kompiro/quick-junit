@@ -1,24 +1,46 @@
 h1. What is Quick JUnit?
-Quick JUnit provides these features.
 
-2010-01-01 written by Hiroki Kondo (a.k.a kompiro)
+Quick JUnit is a plugin for Eclipse. It provides simple features, especially to support for TDD(Test Driven Development).
 
 h2. Features
 
 h3. junit.extensions.eclipse.quick.feature
+
+This feature provides easy to launch JUnit Test.
 
 * Enable to change product code and test code using only one short cut key sequence(Ctrl+9).We call these set are testing pair.
 * Enable to create new test class if there are no testing pair class and you use 'Ctrl+9'. 
 * Enable to launch test more easy.Only one short cut key sequence (Ctrl+0).
 ** Enable to launch only one test method. If you want to launch only it, please locate your cursor on target test method's range and push 'Ctrl+0'
 * Enable to launch debug test more easy.Only one short cut key sequence (Ctrl+Shift+0).
-* Enable to set default parameters when you launch your tests on project setting.(Experimental)
+* Enable to write test skeleton code by content assist template. it's only type 'Q' and Ctrl + space.
+* Add useful static methods for JUnit Testing to ContentAssist Favorites.
 
 h3. junit.extensions.eclipse.quick.pde.feature
+
+This feature provides easy to launch PDE JUnit Test.
 
 * Enable to launch PDE test more easy.Only one short cut key sequence (Ctrl+-).
 * Enable to launch PDE debug test more easy.Only one short cut key sequence (Ctrl+Shift+-).
 
+h3. junit.extensions.eclipse.quick.mock.feature (Mockito Integration)
+
+This feature provides easy to write to use hamcrest and mockito test code.
+
+* Enable to use Mockito as Classpath Library on Eclipse Platform like JUnit Libraries.  
+
+h3. junit.extensions.eclipse.quick.template.feature
+
+This feature provides easy to write skeleton code by simple key type.
+
+* Enable to write Before skeleton code by content assist template. it's only type 'B' and Ctrl + space.
+* Enable to write BeforeClass skeleton code by content assist template. it's only type 'BC' and Ctrl + space.
+* Enable to write After skeleton code by content assist template. it's only type 'A' and Ctrl + space.
+* Enable to write AfterClass skeleton code by content assist template. it's only type 'AC' and Ctrl + space.
+
+h3. junit.extensions.eclipse.quick.growl.feature
+
+This plugin provides to notify test results to Growl.(It supports only Mac Environment.)
 
 h2. Experimental Features
 
@@ -26,21 +48,21 @@ h3. junit.extensions.eclipse.quick.javadoc.feature (TestContext Support)
 
 * Enable to change between TestContext classes.TestContext means Testing under the context.When your project is bigger and bigger, there are some functional tests in your project.TestContext connects these classes.
 
-h3. junit.extensions.eclipse.quick.mock.feature (Mockito Integration)
+h3. junit.extensions.eclipse.quick.growl.feature
 
-* Enable to use template. it's name 'Q'.'Q' provides easy to write to use hamcrest and mockito test code.
-* Enable to use Mockito as Classpath Library on Eclipse Platform like JUnit Libraries.  
+This plugin provides to notify test results to Growl.(It supports only Mac Environment.)
 
 h2. How to install it?
 
 Recently we provides only beta version and only test on eclipse 3.5(Galileo). If you use this plug-in, you can use update site.
 
-* "http://quick-junit.sourceforge.jp/updates/beta/":http://quick-junit.sourceforge.jp/updates/beta/
+* "http://quick-junit.sourceforge.jp/updates/current/":http://quick-junit.sourceforge.jp/updates/current/
 
 h2. Change Log
 
-Please read "ChangeLog":junit.extensions.eclipse.quick/ChangeLog.
+for v0.6.0 2011-05-25 update by Hiroki Kondo
+for v0.5.0 2010-01-01 written by Hiroki Kondo (a.k.a @kompiro)
 
-h3. Copyright &copy; 2003-2010 Masaru Ishii,The Quick JUnit Plugin Project.
+h3. Copyright &copy; 2003-2011 Masaru Ishii,The Quick JUnit Plugin Project.
 
 This plugin dadecated to the memory of Masaru Ishii.
