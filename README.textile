@@ -52,6 +52,11 @@ h3. junit.extensions.eclipse.quick.growl.feature
 
 This plugin provides to notify test results to Growl.(It supports only Mac Environment.)
 
+h3. junit.extensions.eclipse.quick.process.feature
+
+This plugin provides to launch a process when the test is ended.This feature's main purpose is to notify test results.
+
+
 h2. How to install it?
 
 Recently we provides only beta version and only test on eclipse 3.5(Galileo). If you use this plug-in, you can use update site.
