@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="Quick JUnit Target">
+<target name="Quick JUnit Target" sequenceNumber="3">
 <locations>
-<location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
-<unit id="org.eclipse.jdt.feature.group" version="3.5.1.r351_v20090810-0600-7r88FEoFI0WTo6Az-1qFRHm37ChJ"/>
-<unit id="org.eclipse.jdt.source.feature.group" version="3.5.1.r351_v20090810-0600-7r88FEoFI0WTo6Az-1qFRHm37ChJ"/>
-<unit id="org.eclipse.platform.feature.group" version="3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7"/>
-<unit id="org.eclipse.platform.source.feature.group" version="3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7"/>
-<unit id="org.eclipse.pde.feature.group" version="3.5.1.R35x_v20090811-7Z7_F9zFDX-aT6Ywvh8_S93"/>
-<unit id="org.eclipse.rcp.feature.group" version="3.5.1.R35x_v20090811-9SA0FxVFqE70OL1ARMrfcO6e7BA6"/>
-<unit id="org.eclipse.rcp.source.feature.group" version="3.5.1.R35x_v20090811-9SA0FxVFqE70OL1ARMrfcO6e7BA6"/>
-<unit id="org.eclipse.rcp.sdk.id" version="3.5.1.M20090917-0800"/>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.jdt.feature.group" version="3.5.2.r352_v20100108-7r88FEwFI0WTuoBl0iaG0tyhfZH6"/>
+<unit id="org.eclipse.jdt.source.feature.group" version="3.5.2.r352_v20100108-7r88FEwFI0WTuoBl0iaG0tyhfZH6"/>
+<unit id="org.eclipse.pde.source.feature.group" version="3.5.2.R35x_v20100119-7Z7_FA2FDX-aXQYWqYDBz-z0qufo"/>
+<unit id="org.eclipse.platform.feature.group" version="3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB"/>
+<unit id="org.eclipse.platform.source.feature.group" version="3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB"/>
+<unit id="org.eclipse.pde.feature.group" version="3.5.2.R35x_v20100119-7Z7_FA2FDX-aXQYWqYDBz-z0qufo"/>
 <repository location="http://download.eclipse.org/releases/galileo/"/>
+</location>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.mylyn.commons.feature.group" version="3.6.0.v20110608-1400"/>
+<repository location="http://download.eclipse.org/mylyn/releases/3.6"/>
 </location>
 </locations>
 </target>

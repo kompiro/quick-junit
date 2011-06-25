@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.mylyn.commons.notifications.notifications">
+      <category
+            icon="icons/quickjunit.png"
+            id="junit.extensions.eclipse.quick.notifications.category"
+            label="Quick JUnit">
+      </category>
+      <event
+            categoryId="junit.extensions.eclipse.quick.notifications.category"
+            icon="icons/quickjunit.png"
+            id="junit.extensions.eclipse.quick.notifications.event"
+            label="Test Results">
+      </event>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="junit.extensions.eclipse.quick.notifications.internal.Startup">
+      </startup>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="junit.extensions.eclipse.quick.notifications.internal.preference.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.jdt.junit.preferences"
+            class="junit.extensions.eclipse.quick.notifications.internal.preference.QuickJUnitNotificationPreferencePage"
+            id="junit.extensions.eclipse.quick.notification.Preference"
+            name="JUnit Notification">
+      </page>
+   </extension>
+
+</plugin>

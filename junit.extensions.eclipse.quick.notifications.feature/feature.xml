@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="junit.extensions.eclipse.quick.notifications.feature"
+      label="%featureName"
+      version="0.1.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://quick-junit.sourceforge.jp/">
+      This feature provides to notify JUnit test results to Eclipse Notification Framework.
+   </description>
+
+   <copyright url="http://quick-junit.sourceforge.jp/">
+      Copyright (C) 2003-2011 Masaru Ishii,The Quick JUnit Plugin Project.
+All Rights Reserved.
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+   
+
+   <plugin
+         id="junit.extensions.eclipse.quick.notifications"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
