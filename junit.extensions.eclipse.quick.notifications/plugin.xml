@@ -14,6 +14,15 @@
             id="junit.extensions.eclipse.quick.notifications.event"
             label="Test Results">
       </event>
+      <sink
+            class="junit.extensions.eclipse.quick.notifications.internal.JUnitPopupNotificationSink"
+            id="junit.extensions.eclipse.quick.notifications.sink"
+            label="Quick JUnit">
+      </sink>
+      <eventMapping
+            eventIds="junit.extensions.eclipse.quick.notifications.event"
+            sinkId="junit.extensions.eclipse.quick.notifications.sink">
+      </eventMapping>
    </extension>
    <extension
          point="org.eclipse.ui.startup">
