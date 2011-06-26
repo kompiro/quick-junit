@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Quick JUnit Notifications Plugin
 Bundle-SymbolicName: junit.extensions.eclipse.quick.notifications;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.2.0.qualifier
 Bundle-Activator: junit.extensions.eclipse.quick.notifications.Activator
 Bundle-Vendor: Quick JUnit Plugin Project
 Require-Bundle: org.eclipse.ui,

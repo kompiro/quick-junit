@@ -4,6 +4,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "junit.extensions.eclipse.quick.notifications.internal.messages"; //$NON-NLS-1$
+	public static String JUnitNotificationPopup_title;
 	public static String TemplateKey_ERROR_COUNT_DESCRIPTION;
 	public static String TemplateKey_FAILURE_COUNT_DESCRIPTION;
 	public static String TemplateKey_IGNORE_COUNT_DESCRIPTION;

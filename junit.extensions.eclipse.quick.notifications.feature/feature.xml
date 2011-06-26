@@ -2,7 +2,7 @@
 <feature
       id="junit.extensions.eclipse.quick.notifications.feature"
       label="%featureName"
-      version="0.1.0.qualifier"
+      version="0.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://quick-junit.sourceforge.jp/">
@@ -17,7 +17,6 @@ All Rights Reserved.
    <license url="http://www.eclipse.org/legal/epl-v10.html">
       %license
    </license>
-   
 
    <plugin
          id="junit.extensions.eclipse.quick.notifications"

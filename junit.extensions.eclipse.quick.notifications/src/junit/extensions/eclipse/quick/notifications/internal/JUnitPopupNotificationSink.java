@@ -1,11 +1,6 @@
 package junit.extensions.eclipse.quick.notifications.internal;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.WeakHashMap;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -17,7 +12,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.mylyn.commons.ui.notifications.AbstractNotification;
 import org.eclipse.mylyn.commons.ui.notifications.NotificationSink;
 import org.eclipse.mylyn.commons.ui.notifications.NotificationSinkEvent;
-import org.eclipse.mylyn.internal.commons.ui.notifications.popup.NotificationPopup;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -28,9 +23,7 @@ public class JUnitPopupNotificationSink extends NotificationSink {
 
 	private final WeakHashMap<Object, Object> cancelledTokens = new WeakHashMap<Object, Object>();
 
-	private final Set<AbstractNotification> notifications = new HashSet<AbstractNotification>();
-
-	private final Set<AbstractNotification> currentlyNotifying = Collections.synchronizedSet(notifications);
+	private JUnitNotification currentlyNotifying;
 
 	private final Job openJob = new Job("JUnit Result popup notifier") {
 		@Override
@@ -45,24 +38,14 @@ public class JUnitPopupNotificationSink extends NotificationSink {
 							collectNotifications();
 
 							if (popup != null && popup.getReturnCode() == Window.CANCEL) {
-								List<AbstractNotification> notifications = popup.getNotifications();
-								for (AbstractNotification notification : notifications) {
-									if (notification.getToken() != null) {
-										cancelledTokens.put(notification.getToken(), null);
-									}
-								}
-							}
-
-							for (Iterator<AbstractNotification> it = currentlyNotifying.iterator(); it.hasNext();) {
-								AbstractNotification notification = it.next();
-								if (notification.getToken() != null
-										&& cancelledTokens.containsKey(notification.getToken())) {
-									it.remove();
+								AbstractNotification notification = popup.getNotification();
+								if (notification.getToken() != null) {
+									cancelledTokens.put(notification.getToken(), null);
 								}
 							}
 
 							synchronized (JUnitPopupNotificationSink.class) {
-								if (currentlyNotifying.size() > 0) {
+								if (currentlyNotifying != null) {
 //										popup.close();
 									showPopup();
 								}
@@ -85,32 +68,29 @@ public class JUnitPopupNotificationSink extends NotificationSink {
 
 	};
 
-	private NotificationPopup popup;
+	private JUnitNotificationPopup popup;
 
 	public JUnitPopupNotificationSink() {
 	}
 
 	private void cleanNotified() {
-		currentlyNotifying.clear();
+		currentlyNotifying = null;
 	}
 
 	/** public for testing */
 	public void collectNotifications() {
 	}
 
-	/**
-	 * public for testing purposes
-	 */
-	public Set<AbstractNotification> getNotifications() {
-		synchronized (JUnitPopupNotificationSink.class) {
-			return currentlyNotifying;
-		}
-	}
-
 	@Override
 	public void notify(NotificationSinkEvent event) {
-		currentlyNotifying.addAll(event.getNotifications());
-
+		List<AbstractNotification> notifications = event.getNotifications();
+		if(notifications.isEmpty()) return;
+		AbstractNotification notification = notifications.get(0);
+		if ((notification instanceof JUnitNotification) == false) {
+			return;
+		}
+		currentlyNotifying = (JUnitNotification) notification;
+		
 		if (!openJob.cancel()) {
 			try {
 				openJob.join();
@@ -127,11 +107,10 @@ public class JUnitPopupNotificationSink extends NotificationSink {
 			popup.close();
 		}
 
-		Shell shell = new Shell(PlatformUI.getWorkbench().getDisplay());
-		popup = new JUnitNotificationPopup(shell);
-		List<AbstractNotification> toDisplay = new ArrayList<AbstractNotification>(currentlyNotifying);
-		Collections.sort(toDisplay);
-		popup.setContents(toDisplay);
+		Display display = PlatformUI.getWorkbench().getDisplay();
+		Shell shell = new Shell(display);
+
+		popup = new JUnitNotificationPopup(shell,currentlyNotifying);
 		cleanNotified();
 		popup.setBlockOnOpen(false);
 		popup.open();

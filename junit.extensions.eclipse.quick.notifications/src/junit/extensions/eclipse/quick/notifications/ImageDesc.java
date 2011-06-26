@@ -1,6 +1,7 @@
 package junit.extensions.eclipse.quick.notifications;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
 
 public enum ImageDesc {
 	
@@ -14,6 +15,10 @@ public enum ImageDesc {
 	}
 	public ImageDescriptor getIamgeDescriptor(){
 		return Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, imageFilePath);
+	}
+	
+	public Image getImage() {
+		return Activator.getDefault().getImageRegistry().get(name());
 	}
 
 }
