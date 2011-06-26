@@ -49,7 +49,7 @@ public class JUnitNotificationPopup	extends	AbstractNotificationPopup {
 	
 	@Override
 	protected String getPopupShellTitle() {
-		return Messages.JUnitNotificationPopup_title;
+		return notification.getResultLabel();
 	}
 	
 	@Override
@@ -70,7 +70,7 @@ public class JUnitNotificationPopup	extends	AbstractNotificationPopup {
 		notificationLabelIcon.setImage(notification.getNotificationKindImage());
 
 		final ScalingHyperlink itemLink = new ScalingHyperlink(notificationComposite, SWT.BEGINNING
-				| SWT.NO_FOCUS);
+				| SWT.NO_FOCUS|SWT.WRAP);
 		GridDataFactory.fillDefaults().grab(true, false).align(SWT.FILL, SWT.TOP).applyTo(itemLink);
 		itemLink.setForeground(CommonColors.HYPERLINK_WIDGET);
 		itemLink.registerMouseTrackListener();
@@ -104,7 +104,7 @@ public class JUnitNotificationPopup	extends	AbstractNotificationPopup {
 			descriptionLabel.setBackground(parent.getBackground());
 			GridDataFactory.fillDefaults()
 					.span(2, SWT.DEFAULT)
-					.grab(true, false)
+					.grab(true, true)
 					.align(SWT.FILL, SWT.TOP)
 					.applyTo(descriptionLabel);
 		}

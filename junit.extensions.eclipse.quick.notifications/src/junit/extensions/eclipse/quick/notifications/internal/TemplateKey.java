@@ -2,7 +2,6 @@ package junit.extensions.eclipse.quick.notifications.internal;
 
 public enum TemplateKey {
 	RESULT_COUNT("results",		Messages.TemplateKey_RESULT_DESCRIPTION), //$NON-NLS-1$
-	NAME_COUNT	("name",		Messages.TemplateKey_NAME_DESCRIPTION), //$NON-NLS-1$
 	ERROR_COUNT	("error_counts",	Messages.TemplateKey_ERROR_COUNT_DESCRIPTION), //$NON-NLS-1$
 	// Result.IGNORED is not available on 3.5 platform
 //	IGNORE_COUNT("ignore_count",Messages.TemplateKey_IGNORE_COUNT_DESCRIPTION), //$NON-NLS-1$

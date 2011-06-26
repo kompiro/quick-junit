@@ -13,7 +13,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		store.setDefault(TEMPLATE.name(), "${name} passed:${ok_counts} failure:${fail_counts} Total:${total_counts}"); //$NON-NLS-1$
+		store.setDefault(TEMPLATE.name(), "passed:${ok_counts} failure:${fail_counts} Total:${total_counts}"); //$NON-NLS-1$
 	}
 
 }

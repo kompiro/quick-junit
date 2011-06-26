@@ -12,10 +12,11 @@ import org.eclipse.swt.graphics.Image;
 @SuppressWarnings("restriction")
 class JUnitNotification extends	AbstractNotification {
 	private static final TemplateParser parser = new TemplateParser();
-	private String title;
+	private String resultLabel;
 	private Image kind;
 	private Result testResult;
 	private String description;
+	private String label;
 	private static final String TEST_OK = "Test OK";
 	private static final String TEST_FAILURE = "Test FAILED";
 	private static final String TEST_ERROR = "Test ERROR";
@@ -27,16 +28,28 @@ class JUnitNotification extends	AbstractNotification {
 		parser.setTemplate(template);
 		this.testResult = testResult;
 		if(Result.ERROR.equals(testResult)){
-			title = TEST_ERROR;
+			resultLabel = TEST_ERROR;
 			kind = ImageDesc.ERROR.getImage();
 		}else if(Result.FAILURE.equals(testResult)){
-			title = TEST_FAILURE;
+			resultLabel = TEST_FAILURE;
 			kind = ImageDesc.FAILURE.getImage();
 		}else{
-			title = TEST_OK;
+			resultLabel = TEST_OK;
 			kind = ImageDesc.OK.getImage();
 		}
+		this.label = pickupTestClassAndMethod(session.getTestRunName());
 		this.description = parser.parseTemplate(session);
+	}
+
+	String pickupTestClassAndMethod(String testName){
+		if(testName == null) return null;
+		if(testName.indexOf('.') != 0){
+			String[] split = testName.split("\\."); //$NON-NLS-1$
+			if(split.length > 2){
+				return split[split.length - 2] + "." + split[split.length - 1]; //$NON-NLS-1$
+			}
+		}
+		return testName;
 	}
 
 
@@ -66,10 +79,14 @@ class JUnitNotification extends	AbstractNotification {
 	public Image getNotificationImage() {
 		return ImageDesc.ICON.getImage();
 	}
+	
+	public String getResultLabel(){
+		return resultLabel;
+	}
 
 	@Override
 	public String getLabel() {
-		return title;
+		return label;
 	}
 
 	@Override
