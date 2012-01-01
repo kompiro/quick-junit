@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: junit.extensions.eclipse.quick; singleton:=true
-Bundle-Version: 0.6.2.qualifier
+Bundle-Version: 0.6.3.qualifier
 Bundle-Name: Quick JUnit
 Bundle-Vendor: Masaru Ishii and Quick JUnit project
 Bundle-Activator: junit.extensions.eclipse.quick.QuickJUnitPlugin
