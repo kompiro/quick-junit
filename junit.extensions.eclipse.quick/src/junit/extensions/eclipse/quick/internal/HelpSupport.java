@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal;
 
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;

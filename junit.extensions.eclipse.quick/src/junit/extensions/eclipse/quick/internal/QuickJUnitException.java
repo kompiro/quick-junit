@@ -1,4 +1,5 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal;
+
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;

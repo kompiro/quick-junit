@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.preference;
 
 import java.io.IOException;
 import java.util.Arrays;

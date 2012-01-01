@@ -6,7 +6,7 @@
       <page
             name="Quick JUnit"
             category="org.eclipse.jdt.junit.preferences"
-            class="junit.extensions.eclipse.quick.QuickJUnitPreferencePage"
+            class="junit.extensions.eclipse.quick.internal.preference.QuickJUnitPreferencePage"
             id="junit.extensions.eclipse.quick.QuickJUnitPreferencePage">
       </page>
    </extension>
@@ -28,19 +28,19 @@
          </menu>
          <action
                label="%JUnitDebugAction.label"
-               class="junit.extensions.eclipse.quick.JUnitDebugAction"
+               class="junit.extensions.eclipse.quick.internal.action.JUnitDebugAction"
                menubarPath="junit.extensions.eclipse.quick.viewer.java.Actions/additions"
                id="junit.extensions.eclipse.quick.viewer.java.JUnitDebugAction">
          </action>
          <action
                label="%JUnitRunAction.label"
-               class="junit.extensions.eclipse.quick.JUnitRunAction"
+               class="junit.extensions.eclipse.quick.internal.action.JUnitRunAction"
                menubarPath="junit.extensions.eclipse.quick.viewer.java.Actions/additions"
                id="junit.extensions.eclipse.quick.viewer.java.JUnitRunAction">
          </action>
          <action
                label="%OpenTestingPairAction.label"
-               class="junit.extensions.eclipse.quick.OpenTestingPairAction"
+               class="junit.extensions.eclipse.quick.internal.action.OpenTestingPairAction"
                menubarPath="junit.extensions.eclipse.quick.viewer.java.Actions/additions"
                id="junit.extensions.eclipse.quick.viewer.java.OpenTestingPairAction">
          </action>
@@ -62,19 +62,19 @@
          </menu>
          <action
                label="%JUnitDebugAction.label"
-               class="junit.extensions.eclipse.quick.JUnitDebugAction"
+               class="junit.extensions.eclipse.quick.internal.action.JUnitDebugAction"
                menubarPath="junit.extensions.eclipse.quick.object.java.Actions/additions"
                id="junit.extensions.eclipse.quick.object.java.JUnitDebugAction">
          </action>
          <action
                label="%JUnitRunAction.label"
-               class="junit.extensions.eclipse.quick.JUnitRunAction"
+               class="junit.extensions.eclipse.quick.internal.action.JUnitRunAction"
                menubarPath="junit.extensions.eclipse.quick.object.java.Actions/additions"
                id="junit.extensions.eclipse.quick.object.java.JUnitRunAction">
          </action>
          <action
                label="%OpenTestingPairAction.label"
-               class="junit.extensions.eclipse.quick.OpenTestingPairAction"
+               class="junit.extensions.eclipse.quick.internal.action.OpenTestingPairAction"
                menubarPath="junit.extensions.eclipse.quick.object.java.Actions/additions"
                id="junit.extensions.eclipse.quick.object.java.OpenTestingPairAction">
             <enablement>
@@ -109,21 +109,21 @@
          <action
                definitionId="junit.extensions.eclipse.quick.command.JUnitDebugAction"
                label="%JUnitDebugAction.label"
-               class="junit.extensions.eclipse.quick.JUnitDebugAction"
+               class="junit.extensions.eclipse.quick.internal.action.JUnitDebugAction"
                menubarPath="Edit/junit.extensions.eclipse.quick.editor.java.Actions/additions"
                id="junit.extensions.eclipse.quick.editor.java.JUnitDebugAction">
          </action>
          <action
                definitionId="junit.extensions.eclipse.quick.command.JUnitRunAction"
                label="%JUnitRunAction.label"
-               class="junit.extensions.eclipse.quick.JUnitRunAction"
+               class="junit.extensions.eclipse.quick.internal.action.JUnitRunAction"
                menubarPath="Edit/junit.extensions.eclipse.quick.editor.java.Actions/additions"
                id="junit.extensions.eclipse.quick.editor.java.JUnitRunAction">
          </action>
          <action
                definitionId="junit.extensions.eclipse.quick.command.OpenTestingPairAction"
                label="%OpenTestingPairAction.label"
-               class="junit.extensions.eclipse.quick.OpenTestingPairAction"
+               class="junit.extensions.eclipse.quick.internal.action.OpenTestingPairAction"
                menubarPath="Edit/junit.extensions.eclipse.quick.editor.java.Actions/additions"
                id="junit.extensions.eclipse.quick.editor.java.OpenTestingPairAction">
          </action>
@@ -275,7 +275,7 @@ public void ${testname}() throws Exception {
    <extension
          point="org.eclipse.ui.startup">
       <startup
-            class="junit.extensions.eclipse.quick.PreferenceInitializer">
+            class="junit.extensions.eclipse.quick.internal.preference.PreferenceInitializer">
       </startup>
    </extension>
 </plugin>

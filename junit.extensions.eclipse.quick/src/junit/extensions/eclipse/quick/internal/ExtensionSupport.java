@@ -1,4 +1,6 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal;
+
+import junit.extensions.eclipse.quick.internal.launch.QuickJUnitLaunchShortcut;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -38,7 +40,7 @@ public class ExtensionSupport {
         return createWizard("org.eclipse.jdt.ui.wizards.NewClassCreationWizard"); //$NON-NLS-1$
     }
 
-    public static IWorkbenchWizard createNewTestCaseCreationWizard() throws CoreException {
+	public static IWorkbenchWizard createNewTestCaseCreationWizard() throws CoreException {
         return createWizard("org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard"); //$NON-NLS-1$
     }
 

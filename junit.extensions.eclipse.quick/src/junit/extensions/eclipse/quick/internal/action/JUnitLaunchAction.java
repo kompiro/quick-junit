@@ -1,4 +1,8 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.action;
+
+import junit.extensions.eclipse.quick.JavaElements;
+import junit.extensions.eclipse.quick.internal.Messages;
+import junit.extensions.eclipse.quick.internal.QuickJUnitPlugin;
 
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.jdt.core.IJavaElement;

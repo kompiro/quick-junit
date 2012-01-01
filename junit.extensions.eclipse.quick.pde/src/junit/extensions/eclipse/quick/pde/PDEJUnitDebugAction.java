@@ -1,6 +1,6 @@
 package junit.extensions.eclipse.quick.pde;
 
-import junit.extensions.eclipse.quick.JUnitLaunchAction;
+import junit.extensions.eclipse.quick.internal.action.JUnitLaunchAction;
 
 import org.eclipse.core.runtime.CoreException;
 

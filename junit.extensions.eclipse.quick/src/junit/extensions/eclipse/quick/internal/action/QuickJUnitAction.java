@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.action;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jdt.core.ICompilationUnit;

@@ -1,4 +1,4 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.launch;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import junit.extensions.eclipse.quick.internal.ExtensionSupport;
+import junit.extensions.eclipse.quick.internal.QuickJUnitPlugin;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;

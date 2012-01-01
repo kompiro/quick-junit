@@ -1,4 +1,7 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.preference;
+
+import junit.extensions.eclipse.quick.NamingRules;
+import junit.extensions.eclipse.quick.internal.QuickJUnitPlugin;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;

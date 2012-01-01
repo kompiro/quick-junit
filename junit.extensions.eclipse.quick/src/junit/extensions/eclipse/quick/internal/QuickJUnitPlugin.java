@@ -1,6 +1,7 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal;
 
 import java.util.Dictionary;
+
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;

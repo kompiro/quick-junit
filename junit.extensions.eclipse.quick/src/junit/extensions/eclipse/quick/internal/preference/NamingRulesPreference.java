@@ -1,8 +1,11 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.preference;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import junit.extensions.eclipse.quick.NamingRule;
+import junit.extensions.eclipse.quick.internal.Messages;
 
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;

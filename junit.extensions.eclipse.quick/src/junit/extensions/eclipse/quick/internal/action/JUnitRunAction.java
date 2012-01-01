@@ -1,4 +1,6 @@
-package junit.extensions.eclipse.quick;
+package junit.extensions.eclipse.quick.internal.action;
+
+import junit.extensions.eclipse.quick.internal.ExtensionSupport;
 
 import org.eclipse.core.runtime.CoreException;
 
