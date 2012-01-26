@@ -1,10 +1,7 @@
 package junit.extensions.eclipse.quick.internal.action;
 
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -24,7 +21,7 @@ public abstract class QuickJUnitAction implements IEditorActionDelegate, IObject
     private Shell shell;
     protected IJavaElement javaElement;
     protected ITextEditor javaEditor;
-    
+        
     public void setActiveEditor(IAction action, IEditorPart targetEditor) {
         if (!(targetEditor instanceof ITextEditor)) {
             javaEditor = null;
@@ -49,11 +46,6 @@ public abstract class QuickJUnitAction implements IEditorActionDelegate, IObject
         else
             javaElement = null;
     }
-
-    protected IJavaProject[] getJavaProjects() throws JavaModelException {
-        return JavaCore.create(ResourcesPlugin.getWorkspace().getRoot()).getJavaProjects();
-    }
-
     protected void openInformation(IAction action, String message) {
         MessageDialog.openInformation(shell, action.getText(), message);
     }
