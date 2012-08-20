@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.mylyn.commons.notifications.notifications">
+         point="org.eclipse.mylyn.commons.notifications.ui.notifications">
       <category
             icon="icons/quickjunit.png"
             id="junit.extensions.eclipse.quick.notifications.category"

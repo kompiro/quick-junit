@@ -1,16 +1,19 @@
 package junit.extensions.eclipse.quick.notifications.internal;
 
 
+import java.util.Date;
+
 import junit.extensions.eclipse.quick.notifications.ImageDesc;
 import junit.extensions.eclipse.quick.notifications.internal.preference.Preference;
 
 import org.eclipse.jdt.junit.model.ITestElement.Result;
 import org.eclipse.jdt.junit.model.ITestRunSession;
-import org.eclipse.mylyn.commons.ui.notifications.AbstractNotification;
+import org.eclipse.mylyn.commons.notifications.core.AbstractNotification;
+import org.eclipse.mylyn.commons.notifications.ui.AbstractUiNotification;
 import org.eclipse.swt.graphics.Image;
 
 @SuppressWarnings("restriction")
-class JUnitNotification extends	AbstractNotification {
+class JUnitNotification extends	AbstractUiNotification {
 	private static final TemplateParser parser = new TemplateParser();
 	private String resultLabel;
 	private Image kind;
@@ -67,10 +70,6 @@ class JUnitNotification extends	AbstractNotification {
 	}
 
 	@Override
-	public void open() {
-	}
-
-	@Override
 	public Image getNotificationKindImage() {
 		return kind;
 	}
@@ -92,5 +91,14 @@ class JUnitNotification extends	AbstractNotification {
 	@Override
 	public String getDescription() {
 		return description;
+	}
+
+	@Override
+	public Date getDate() {
+		return new Date();
+	}
+
+	@Override
+	public void open() {
 	}
 }

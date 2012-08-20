@@ -3,10 +3,9 @@ package junit.extensions.eclipse.quick.notifications.internal;
 import junit.extensions.eclipse.quick.notifications.ImageDesc;
 
 import org.eclipse.jface.layout.GridDataFactory;
-import org.eclipse.mylyn.internal.provisional.commons.ui.AbstractNotificationPopup;
-import org.eclipse.mylyn.internal.provisional.commons.ui.CommonColors;
-import org.eclipse.mylyn.internal.provisional.commons.ui.CommonUiUtil;
-import org.eclipse.mylyn.internal.provisional.commons.ui.ScalingHyperlink;
+import org.eclipse.mylyn.commons.ui.CommonUiUtil;
+import org.eclipse.mylyn.commons.ui.compatibility.CommonColors;
+import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -24,6 +23,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
+import org.eclipse.ui.forms.widgets.ImageHyperlink;
 
 @SuppressWarnings("restriction")
 public class JUnitNotificationPopup	extends	AbstractNotificationPopup {
@@ -69,11 +69,11 @@ public class JUnitNotificationPopup	extends	AbstractNotificationPopup {
 		notificationLabelIcon.setBackground(parent.getBackground());
 		notificationLabelIcon.setImage(notification.getNotificationKindImage());
 
-		final ScalingHyperlink itemLink = new ScalingHyperlink(notificationComposite, SWT.BEGINNING
+		final ImageHyperlink itemLink = new ImageHyperlink(notificationComposite, SWT.BEGINNING
 				| SWT.NO_FOCUS|SWT.WRAP);
 		GridDataFactory.fillDefaults().grab(true, false).align(SWT.FILL, SWT.TOP).applyTo(itemLink);
 		itemLink.setForeground(CommonColors.HYPERLINK_WIDGET);
-		itemLink.registerMouseTrackListener();
+//		itemLink.registerMouseTrackListener();
 		itemLink.setText(CommonUiUtil.toLabel(notification.getLabel()));
 		itemLink.setBackground(parent.getBackground());
 		itemLink.addHyperlinkListener(new HyperlinkAdapter() {

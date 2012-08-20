@@ -7,8 +7,8 @@ import org.eclipse.jdt.junit.JUnitCore;
 import org.eclipse.jdt.junit.TestRunListener;
 import org.eclipse.jdt.junit.model.ITestElement.Result;
 import org.eclipse.jdt.junit.model.ITestRunSession;
-import org.eclipse.mylyn.commons.ui.notifications.AbstractNotification;
-import org.eclipse.mylyn.commons.ui.notifications.Notifications;
+import org.eclipse.mylyn.commons.notifications.core.AbstractNotification;
+import org.eclipse.mylyn.commons.notifications.ui.NotificationsUi;
 
 
 @SuppressWarnings("restriction")
@@ -22,7 +22,7 @@ public class TestNotificationListener extends TestRunListener {
 			public void sessionFinished(ITestRunSession session) {
 				Result testResult = session.getTestResult(true);
 				AbstractNotification notification = new JUnitNotification(QUICK_JUNIT_NOTIFICATION_EVENT_ID, testResult, session);
-				Notifications.getService().notify(Collections.singletonList(notification));
+				NotificationsUi.getService().notify(Collections.singletonList(notification));
 			}
 		});
 	}
