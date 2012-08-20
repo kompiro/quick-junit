@@ -15,8 +15,6 @@ public class JavaElements {
         if (!(element instanceof IMethod))
             return false;
         IMethod method = (IMethod) element;
-        if (method.getNumberOfParameters() != 0)
-            return false;
         if (!method.getReturnType().equals("V"))
             return false;
         int flags = method.getFlags();
