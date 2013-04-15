@@ -7,6 +7,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>junit.extensions.eclipse.quick</module>
+    <module>junit.extensions.eclipse.quick.feature</module>
   </modules>
 
   <properties>
@@ -14,6 +15,18 @@
   </properties>
 
   <repositories>
+   <!--
+    <repository>
+      <id>indigo</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/indigo</url>
+    </repository>
+   <repository>
+     <id>helios</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/helios</url>
+   </repository>
+    -->
    <repository>
      <id>juno</id>
      <layout>p2</layout>
@@ -29,7 +42,14 @@
         <version>${tycho-version}</version>
         <extensions>true</extensions>
       </plugin>
-    </plugins>
+  <plugin>
+    <groupId>org.eclipse.tycho</groupId>
+    <artifactId>target-platform-configuration</artifactId>
+    <version>${tycho-version}</version>
+    <configuration>
+      </configuration>
+    </plugin>
+  </plugins>
   </build>
 
 </project>
