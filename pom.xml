@@ -9,6 +9,7 @@
     <module>junit.extensions.eclipse.quick</module>
     <module>junit.extensions.eclipse.quick.pde</module>
     <module>junit.extensions.eclipse.quick.feature</module>
+    <module>junit.extensions.eclipse.quick.pde.feature</module>
   </modules>
 
   <properties>
