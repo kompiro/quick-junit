@@ -2,7 +2,7 @@
 <feature
       id="junit.extensions.eclipse.quick.growl.feature"
       label="%featureName"
-      version="0.1.1.qualifier"
+      version="0.1.2.qualifier"
       provider-name="%providerName"
       plugin="junit.extensions.eclipse.quick"
       os="macosx"

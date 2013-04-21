@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Quick JUnit Beta Release" url="http://kompiro.org/quick-junit/beta/">
+      update site for Quick JUnit Plugin Beta.
+   </description>
+   <feature url="features/junit.extensions.eclipse.quick.feature_0.5.0.beta3.jar" id="junit.extensions.eclipse.quick.feature" version="0.5.0.beta3">
+      <category name="QuickJUnit"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.mock.feature_0.1.0.jar" id="junit.extensions.eclipse.quick.mock.feature" version="0.1.0">
+      <category name="QuickJUnit"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.javadoc.feature_0.1.0.jar" id="junit.extensions.eclipse.quick.javadoc.feature" version="0.1.0">
+      <category name="QuickJUnit"/>
+   </feature>
+   <feature url="features/junit.extensions.eclipse.quick.pde.feature_0.5.0.jar" id="junit.extensions.eclipse.quick.pde.feature" version="0.5.0">
+      <category name="QuickJUnit"/>
+   </feature>
+   <category-def name="QuickJUnit" label="QuickJUnit">
+      <description>
+         This plugin makes easy to launch JUnit and switch editors between
+test code and production code.
+This plugin dadecated to the memory of Masaru Ishii.
+      </description>
+   </category-def>
+</site>
