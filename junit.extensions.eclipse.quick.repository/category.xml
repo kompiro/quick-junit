@@ -15,6 +15,9 @@
    <feature url="features/junit.extensions.eclipse.quick.template.feature_0.1.0.qualifier.jar" id="junit.extensions.eclipse.quick.template.feature" version="0.1.0.qualifier">
       <category name="junit.extensions.eclipse.quick.feature"/>
    </feature>
+   <feature url="features/junit.extensions.eclipse.quick.notifications.feature_0.2.0.qualifier.jar" id="junit.extensions.eclipse.quick.notifications.feature" version="0.2.0.qualifier">
+      <category name="junit.extensions.eclipse.quick.feature"/>
+   </feature>
    <category-def name="junit.extensions.eclipse.quick.feature" label="Quick JUnit for Java Developer"/>
    <category-def name="junit.extensions.eclipse.quick.mac.feature" label="Quick JUnit for Mac Extension"/>
    <category-def name="junit.extensions.eclipse.quick.pde.feature" label="Quick JUnit for Eclipse Plugin Developer"/>

@@ -13,11 +13,13 @@
     <module>junit.extensions.eclipse.quick.growl</module>
     <module>junit.extensions.eclipse.quick.mock</module>
     <module>junit.extensions.eclipse.quick.template</module>
+    <module>junit.extensions.eclipse.quick.notifications</module>
     <module>junit.extensions.eclipse.quick.feature</module>
     <module>junit.extensions.eclipse.quick.pde.feature</module>
     <module>junit.extensions.eclipse.quick.growl.feature</module>
     <module>junit.extensions.eclipse.quick.mock.feature</module>
     <module>junit.extensions.eclipse.quick.template.feature</module>
+    <module>junit.extensions.eclipse.quick.notifications.feature</module>
     <module>junit.extensions.eclipse.quick.repository</module>
   </modules>
 
@@ -42,6 +44,11 @@
       <id>indigo</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/releases/indigo</url>
+    </repository>
+    <repository>
+      <id>mylyn-indigo</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/mylyn/releases/indigo</url>
     </repository>
   </repositories>
 
