@@ -23,6 +23,7 @@ import org.eclipse.jdt.core.search.SearchMatch;
 import org.eclipse.jdt.core.search.SearchParticipant;
 import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroManager;
 import org.eclipse.ui.intro.IIntroPart;
@@ -100,7 +101,13 @@ public class TestProjectTest {
 	}
 
 	private void closeIntro() {
-		IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();
+		IWorkbench workbench;
+		try {
+			workbench = PlatformUI.getWorkbench();
+		} catch (IllegalStateException e) {
+			return;
+		}
+		IIntroManager introManager = workbench.getIntroManager();
 		IIntroPart intro = introManager.getIntro();
 		if(intro != null && introManager.isIntroStandby(intro)){
 			introManager.closeIntro(intro);

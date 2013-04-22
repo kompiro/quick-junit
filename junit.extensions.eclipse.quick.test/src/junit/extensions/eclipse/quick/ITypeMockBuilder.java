@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IImportDeclaration;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
@@ -21,6 +23,7 @@ public class ITypeMockBuilder {
 	private int flags;
 	private List<IMethod> methods = new ArrayList<IMethod>();
 	private StringBuilder source = new StringBuilder();
+	private IImportDeclaration importDeclaration;
 	
 	{
 		ITypeHierarchy typeHierarchy = mock(ITypeHierarchy.class);
@@ -29,6 +32,10 @@ public class ITypeMockBuilder {
 			when(result.newSupertypeHierarchy((IProgressMonitor)any())).thenReturn(typeHierarchy);
 			when(result.isClass()).thenReturn(true);
 			when(result.getMethods()).thenReturn(new IMethod[]{});
+			ICompilationUnit compilationUnit = mock(ICompilationUnit.class);
+			when(result.getCompilationUnit()).thenReturn(compilationUnit);
+			importDeclaration = mock(IImportDeclaration.class);
+			when(compilationUnit.getImport(JavaTypes.TEST_ANNOTATION_FULL_NAME)).thenReturn(importDeclaration);
 		} catch (JavaModelException e) {
 		}
 

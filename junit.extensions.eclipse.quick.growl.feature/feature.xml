@@ -6,7 +6,7 @@
       provider-name="%providerName"
       plugin="junit.extensions.eclipse.quick"
       os="macosx"
-      arch="x86">
+      arch="x86,x86_64">
 
    <description url="http://quick-junit.sourceforge.jp/">
       This feature provides to notify JUnit test results to growl. So this feature supports only Mac OSX platform.

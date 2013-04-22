@@ -46,7 +46,7 @@ public class JavaElementsTest {
 	@Test
 	public void test_method_should_has_no_args() throws Exception {
 		
-		IMethod element = methodBuilder.setNumberOfParameters(1).build();
+		IMethod element = methodBuilder.returnVoid().setNumberOfParameters(1).build();
 		assertThat(JavaElements.isTestMethod(element),is(false));
 		
 	}

@@ -9,9 +9,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jdt.core;bundle-version="3.4.0",
  org.eclipse.core.resources;bundle-version="3.4.0",
  org.eclipse.jdt.launching;bundle-version="3.4.0",
- org.eclipse.ui;bundle-version="3.4.0"
+ org.eclipse.ui;bundle-version="3.4.0",
+ org.mockito
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: The Quick JUnit Plugin Project
-Import-Package: org.mockito,
- org.mockito.stubbing

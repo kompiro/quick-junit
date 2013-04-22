@@ -1,6 +1,8 @@
 package junit.extensions.eclipse.quick;
 
 import org.eclipse.jdt.core.IAnnotation;
+import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IImportDeclaration;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
@@ -10,7 +12,7 @@ public class JavaTypes {
 	private static final char ENCLOSING_TYPE_SEPARATOR = '.';
 	public static final String TEST_INTERFACE_NAME= "junit.framework.Test"; //$NON-NLS-1$
 	private static final String TEST_ANNOTATION_NAME = "Test"; //$NON-NLS-1$
-	private static final String TEST_ANNOTATION_FULL_NAME = "org.junit.Test"; //$NON-NLS-1$
+	static final String TEST_ANNOTATION_FULL_NAME = "org.junit.Test"; //$NON-NLS-1$
 
     public static boolean isTest(IType type) throws JavaModelException {
 		ITypeHierarchy typeHier= type.newSupertypeHierarchy(null);
@@ -31,6 +33,8 @@ public class JavaTypes {
 				}
 			}
 		}
-		return type.getCompilationUnit().getImport(TEST_ANNOTATION_FULL_NAME).exists();
+		ICompilationUnit compilationUnit = type.getCompilationUnit();
+		IImportDeclaration importDeclaration = compilationUnit.getImport(TEST_ANNOTATION_FULL_NAME);
+		return importDeclaration.exists();
 	}
 }
