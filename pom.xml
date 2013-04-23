@@ -8,11 +8,9 @@
   <modules>
     <module>library</module>
     <module>stable</module>
-    <module>junit.extensions.eclipse.quick.template</module>
     <module>junit.extensions.eclipse.quick.process</module>
     <module>junit.extensions.eclipse.quick.process.test</module>
     <module>junit.extensions.eclipse.quick.notifications</module>
-    <module>junit.extensions.eclipse.quick.template.feature</module>
     <module>junit.extensions.eclipse.quick.process.feature</module>
     <module>junit.extensions.eclipse.quick.notifications.feature</module>
     <module>junit.extensions.eclipse.quick.repository</module>
