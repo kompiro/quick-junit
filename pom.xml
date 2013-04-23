@@ -18,7 +18,6 @@
     <module>junit.extensions.eclipse.quick.process.test</module>
     <module>junit.extensions.eclipse.quick.notifications</module>
     <module>junit.extensions.eclipse.quick.resources</module>
-    <module>junit.extensions.eclipse.quick.javadoc</module>
     <module>junit.extensions.eclipse.quick.feature</module>
     <module>junit.extensions.eclipse.quick.pde.feature</module>
     <module>junit.extensions.eclipse.quick.growl.feature</module>

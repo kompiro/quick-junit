@@ -10,7 +10,7 @@
 
   <artifactId>junit.extensions.eclipse.quick.javadoc.feature</artifactId>
   <packaging>eclipse-feature</packaging>
-  <version>0.1.0.qualifier</version>
+  <version>0.1.0</version>
 
   <build>
     <plugins>
@@ -19,20 +19,6 @@
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <environments>
-            <environment>
-              <os>macosx</os>
-              <ws>cocoa</ws>
-              <arch>x86</arch>
-            </environment>
-          </environments>
-        </configuration>
       </plugin>
     </plugins>
   </build>
