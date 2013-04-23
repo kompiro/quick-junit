@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: run process after JUnit plugin
+Bundle-SymbolicName: junit.extensions.eclipse.quick.process;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Quick JUnit Project
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: .
+Bundle-Activator: junit.extensions.eclipse.quick.process.internal.ProcessActivator
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.jdt.junit,
+ org.eclipse.core.runtime,
+ org.eclipse.ui

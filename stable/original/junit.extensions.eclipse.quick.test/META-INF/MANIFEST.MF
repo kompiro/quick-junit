@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Quick JUnit Test Plug-in
+Bundle-SymbolicName: junit.extensions.eclipse.quick.test
+Bundle-Version: 1.0.0
+Fragment-Host: junit.extensions.eclipse.quick
+Require-Bundle: org.eclipse.core.runtime,
+ org.junit4;bundle-version="4.3.1",
+ org.eclipse.jdt.core;bundle-version="3.4.0",
+ org.eclipse.core.resources;bundle-version="3.4.0",
+ org.eclipse.jdt.launching;bundle-version="3.4.0",
+ org.eclipse.ui;bundle-version="3.4.0",
+ org.mockito
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: The Quick JUnit Plugin Project

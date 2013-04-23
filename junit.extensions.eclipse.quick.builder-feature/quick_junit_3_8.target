@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.6"?>
+<?pde version="3.8"?>
 
 <target sequenceNumber="4">
 <locations>
-<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.mylyn.commons.feature.group" version="3.8.0.v20120612-0600"/>
-<unit id="org.eclipse.mylyn.commons.compatibility.feature.group" version="3.8.0.v20120612-0600"/>
-<unit id="org.eclipse.mylyn.commons.notifications.feature.group" version="1.0.0.v20120612-0600"/>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.mylyn.commons.feature.group" version="3.8.2.v20120916-1200"/>
+<unit id="org.eclipse.mylyn.commons.compatibility.feature.group" version="3.8.2.v20120916-1200"/>
+<unit id="org.eclipse.mylyn.commons.notifications.feature.group" version="1.0.2.v20120916-1200"/>
 <repository location="http://download.eclipse.org/mylyn/releases/latest"/>
 </location>
-<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="3.8.0.v20120525-1249-8-8nFqlFNOfwKDRGz-pXLdGxEM83"/>
 <unit id="org.eclipse.jdt.source.feature.group" version="3.8.0.v20120525-1249-8-8nFqlFNOfwKDRGz-pXLdGxEM83"/>
 <unit id="org.eclipse.pde.source.feature.group" version="3.8.0.v20120525-1249-7c7vFitFFt6Zr5a12MM4IKMFZ"/>

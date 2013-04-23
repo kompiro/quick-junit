@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JUnit Growl Integration
+Bundle-SymbolicName: junit.extensions.eclipse.quick.growl;singleton:=true
+Bundle-Version: 0.2.2.qualifier
+Bundle-Vendor: Quick JUnit Project
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: Growl.jar,
+ growl_extension.jar
+Bundle-Activator: junit.extensions.eclipse.quick.mac.growl.internal.GrowlActivator
+Bundle-ActivationPolicy: lazy
+Bundle-NativeCode: libgrowl.jnilib;osname=macosx;processor=x86
+Eclipse-PlatformFilter: (& (osgi.os=macosx) (osgi.ws=cocoa) (|(osgi.arch=x86)(osgi.arch=x86_86)))
+Require-Bundle: org.eclipse.jdt.junit,
+ org.eclipse.core.runtime,
+ org.eclipse.ui
