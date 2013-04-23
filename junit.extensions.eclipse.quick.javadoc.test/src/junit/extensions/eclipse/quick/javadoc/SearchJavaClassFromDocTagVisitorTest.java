@@ -6,7 +6,7 @@ import static junit.extensions.eclipse.quick.javadoc.CreateTestProjectUtil.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.contribution.junit.test.TestProject;
+import org.eclipse.contribution.junit.javadoc.test.TestProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
@@ -218,13 +218,14 @@ public class SearchJavaClassFromDocTagVisitorTest {
 			"public void do_test() throws Exception{\n" +
 			"}\n";
 		assertExpectOneResultAndVisit();
-		source = 
-			"/**\n" +
-			" * @TestContext Priority\n" +
-			" */\n" +
-			"public void do_test() throws Exception{\n" +
-			"}\n";
-		assertExpectOneResultAndVisit();	}
+//		source = 
+//			"/**\n" +
+//			" * @TestContext Priority\n" +
+//			" */\n" +
+//			"public void do_test() throws Exception{\n" +
+//			"}\n";
+//		assertExpectOneResultAndVisit();
+	}
 
 	private void assertNotExistClassOnMethod() {
 		source = 
@@ -451,9 +452,9 @@ public class SearchJavaClassFromDocTagVisitorTest {
 	}
 
 	/*
-	 * 渡ってくるSourceがNullの場合はNullPointerExceptionが発生する。
-	 * NullPointerExceptionを期待している訳ではないので、assertはしない
-	 * Testも取り合えず行わない
+	 * ���������������Source���Null������������NullPointerException������������������
+	 * NullPointerException���������������������������������������������assert������������
+	 * Test������������������������������
 	 */
 	@Test
 	@Ignore

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.contribution.junit.test.TestProject;
+import org.eclipse.contribution.junit.javadoc.test.TestProject;
 import org.eclipse.jdt.core.IType;
 import org.junit.*;
 

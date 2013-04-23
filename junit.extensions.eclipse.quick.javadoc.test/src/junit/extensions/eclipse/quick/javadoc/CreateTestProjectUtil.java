@@ -3,7 +3,7 @@ package junit.extensions.eclipse.quick.javadoc;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import org.eclipse.contribution.junit.test.TestProject;
+import org.eclipse.contribution.junit.javadoc.test.TestProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IType;
@@ -12,7 +12,7 @@ public final class CreateTestProjectUtil {
 	
 	public static TestProject createTestProject() throws CoreException, MalformedURLException, IOException{
 		final TestProject project = new TestProject();
-		project.addJar("org.junit4", "junit.jar");
+		project.addJar("org.junit", "junit.jar");
 		return project;
 	}
 	
