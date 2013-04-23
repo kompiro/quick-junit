@@ -6,9 +6,6 @@
    <feature url="features/junit.extensions.eclipse.quick.pde.feature_0.6.0.qualifier.jar" id="junit.extensions.eclipse.quick.pde.feature" version="0.6.0.qualifier">
       <category name="junit.extensions.eclipse.quick.pde.feature"/>
    </feature>
-   <feature url="features/junit.extensions.eclipse.quick.growl.feature_0.1.2.qualifier.jar" id="junit.extensions.eclipse.quick.growl.feature" version="0.1.2.qualifier">
-      <category name="junit.extensions.eclipse.quick.mac.feature"/>
-   </feature>
    <feature url="features/junit.extensions.eclipse.quick.mock.feature_0.3.0.qualifier.jar" id="junit.extensions.eclipse.quick.mock.feature" version="0.3.0.qualifier">
       <category name="junit.extensions.eclipse.quick.feature"/>
    </feature>
@@ -19,6 +16,5 @@
       <category name="junit.extensions.eclipse.quick.feature"/>
    </feature>
    <category-def name="junit.extensions.eclipse.quick.feature" label="Quick JUnit for Java Developer"/>
-   <category-def name="junit.extensions.eclipse.quick.mac.feature" label="Quick JUnit for Mac Extension"/>
    <category-def name="junit.extensions.eclipse.quick.pde.feature" label="Quick JUnit for Eclipse Plugin Developer"/>
 </site>
