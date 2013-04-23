@@ -9,6 +9,7 @@
     <module>org.mockito</module>
     <module>junit.extensions.eclipse.quick</module>
     <module>junit.extensions.eclipse.quick.test</module>
+    <module>junit.extensions.eclipse.quick.args</module>
     <module>junit.extensions.eclipse.quick.pde</module>
     <module>junit.extensions.eclipse.quick.growl</module>
     <module>junit.extensions.eclipse.quick.mock</module>
