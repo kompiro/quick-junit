@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>junit.extensions.eclipse.quick</groupId>
+  <artifactId>javadoc</artifactId>
+  <version>0.5.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>../../stable/original/junit.extensions.eclipse.quick</module>
+    <module>../../stable/original/junit.extensions.eclipse.quick.feature</module>
+    <module>junit.extensions.eclipse.quick.javadoc</module>
+    <module>junit.extensions.eclipse.quick.javadoc.ui</module>
+    <module>junit.extensions.eclipse.quick.javadoc.feature</module>
+    <!--
+    <module>junit.extensions.eclipse.quick.javadoc.test</module>
+         -->
+  </modules>
+
+  <parent>
+    <groupId>junit.extensions.eclipse.quick</groupId>
+    <artifactId>experimental</artifactId>
+    <version>0.8.0-SNAPSHOT</version>
+  </parent>
+</project>
+

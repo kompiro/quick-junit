@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>junit.extensions.eclipse.quick</groupId>
+  <artifactId>parent</artifactId>
+  <version>0.8.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>library</module>
+    <module>stable</module>
+    <module>repository</module>
+  </modules>
+
+  <properties>
+    <tycho-version>0.17.0</tycho-version>
+  </properties>
+
+  <repositories>
+   <!--
+   <repository>
+     <id>helios</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/helios</url>
+   </repository>
+   <repository>
+     <id>juno</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/juno</url>
+   </repository>
+    -->
+    <repository>
+      <id>indigo</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/indigo</url>
+    </repository>
+    <repository>
+      <id>mylyn-indigo</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/mylyn/releases/indigo</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <resolver>p2</resolver>
+          <filters>
+              <!-- example 3: work around Equinox bug 348045 -->
+              <filter>
+                <type>p2-installable-unit</type>
+                <id>org.eclipse.objectteams.otdt.core.patch.feature</id>
+                <removeAll />
+              </filter>
+            </filters>
+          <environments>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <!--
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+                 -->
+          </environments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+

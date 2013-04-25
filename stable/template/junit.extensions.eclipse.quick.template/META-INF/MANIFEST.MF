@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Quick JUnit Contents Assist Template
+Bundle-SymbolicName: junit.extensions.eclipse.quick.template;singleton:=true
+Bundle-Version: 0.2.0.qualifier
+Bundle-Vendor: Quick JUnit Plugin Project
+Require-Bundle: org.eclipse.ui.editors
