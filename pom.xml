@@ -8,7 +8,7 @@
   <modules>
     <module>library</module>
     <module>stable</module>
-    <module>junit.extensions.eclipse.quick.repository</module>
+    <module>repository</module>
   </modules>
 
   <properties>
