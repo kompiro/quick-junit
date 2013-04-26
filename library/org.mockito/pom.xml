@@ -10,31 +10,7 @@
   </parent>
 
   <packaging>eclipse-plugin</packaging>
+  <artifactId>org.mockito</artifactId>
   <version>1.9.5</version>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <extensions>true</extensions>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <environments>
-            <environment>
-              <os>macosx</os>
-              <ws>cocoa</ws>
-              <arch>x86</arch>
-            </environment>
-          </environments>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <artifactId>org.mockito</artifactId>
 </project>
