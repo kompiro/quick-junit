@@ -10,6 +10,5 @@
   </parent>
 
   <artifactId>repository</artifactId>
-  <version>0.8.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
 </project>
