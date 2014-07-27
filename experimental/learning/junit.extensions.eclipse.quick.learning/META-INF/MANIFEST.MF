@@ -6,5 +6,4 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: Quick Junit Project
 Fragment-Host: junit.extensions.eclipse.quick
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.junit,
- org.junit4
+Require-Bundle: org.junit

@@ -5,7 +5,7 @@ Bundle-SymbolicName: junit.extensions.eclipse.quick.javadoc.test
 Bundle-Version: 0.5.0.qualifier
 Fragment-Host: junit.extensions.eclipse.quick.javadoc
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.junit4,
+Require-Bundle: org.junit,
  org.eclipse.text,
  org.eclipse.core.resources,
  org.eclipse.jdt.launching
