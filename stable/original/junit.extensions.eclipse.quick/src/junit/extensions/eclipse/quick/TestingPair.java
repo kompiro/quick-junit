@@ -38,7 +38,7 @@ public class TestingPair {
     }
 
     private String escapeAllChars(String str) {
-        // ³‹K•\Œ»‚Ì“Áê•¶š
+        // æ­£è¦è¡¨ç¾ã®ç‰¹æ®Šæ–‡å­—
         final String escapeChars = "\\${}?+.[]-()><!|^:=*&,";
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < str.length(); ++i) {
@@ -52,13 +52,13 @@ public class TestingPair {
 
     private String getTestedClassName(String className, String namingRule) {
         int index = className.lastIndexOf('.');
-        // ³‹K•\Œ»‚Å–â‘è‚Ì‚ ‚é•¶š‚ğ‚·‚×‚ÄƒGƒXƒP[ƒv‚µ‚Ä‚¨‚­
+        // æ­£è¦è¡¨ç¾ã§å•é¡Œã®ã‚ã‚‹æ–‡å­—ã‚’ã™ã¹ã¦ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ã¦ãŠã
         namingRule = escapeAllChars(namingRule);
         if (index == -1) {
-            // ƒfƒtƒHƒ‹ƒgƒpƒbƒP[ƒW‚Ìê‡D
-            // $, {, }‚Ì•¶š‚ÍƒGƒXƒP[ƒv‚³‚ê‚Ä‚¢‚é‚½‚ßC\$, \{, \} ‚Æ•ÏŠ·‚³‚ê‚Ä‚¢‚éD
-            // ‚µ‚½‚ª‚Á‚ÄC•¶š—ñ’†‚É–„‚ß‚Şê‡‚ÍC \$ => \\\\\\$, \{ => \\\\\\{
-            // ‚È‚Ç‚Æ‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢D
+            // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®å ´åˆï¼
+            // $, {, }ã®æ–‡å­—ã¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚Œã¦ã„ã‚‹ãŸã‚ï¼Œ\$, \{, \} ã¨å¤‰æ›ã•ã‚Œã¦ã„ã‚‹ï¼
+            // ã—ãŸãŒã£ã¦ï¼Œæ–‡å­—åˆ—ä¸­ã«åŸ‹ã‚è¾¼ã‚€å ´åˆã¯ï¼Œ \$ => \\\\\\$, \{ => \\\\\\{
+            // ãªã©ã¨ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ï¼
             namingRule = namingRule.replaceAll("\\\\\\$\\\\\\{package\\\\\\}\\\\\\.", "");
             namingRule = namingRule.replaceAll("\\\\\\$\\\\\\{type\\\\\\}", "(\\\\w+)");
             Pattern p = Pattern.compile(namingRule);
